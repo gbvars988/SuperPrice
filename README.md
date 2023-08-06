@@ -1,17 +1,19 @@
-# Web Application Boilerplate Code
+# SuperPrice - Price Matching and Delivery Web Application
 
 
 # RMIT COSC2299 SEPT Major Project
 
 # Group Information
 
-## Group-PX-XX
+## Group-P8-01
 
 ## Members
-* Student Name 1 (sXXXXX)
-* Student Name 2 (sXXXXX)
-* Student Name 3 (sXXXXX)
-* Student Name 4 (sXXXXX)
+* Anthony Imani (s3950363)
+* Dylan Khan (s3916841)
+* Ledy (s3409664)
+* Ronald Ho (s3436258)
+* Thomas Yao (s3832771)
+* Victoria Needs (s3811305)
 
 ## Records
 
