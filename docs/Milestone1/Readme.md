@@ -1,5 +1,6 @@
 # Soft copies for all documents
 
+* SRS (Software Requirements Specification) - PDF in this folder
 * Contribution Statement - PDF in this folder
 * [Figma design](https://www.figma.com/file/gdtCVGjLBgJYozRHVMdZ43/SuperPrice-Design?type=design&node-id=1-11654&mode=design&t=CCWUZsLUoPtW3Bl8-0)
 * [P08-01 - Product and Sprint Backlogs](https://docs.google.com/spreadsheets/d/1LlywG3x-4JsOZBbsmo_Fvfhf6lIGzkWI8IE9GkFPB_4/edit#gid=422798777)
