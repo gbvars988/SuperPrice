@@ -12,7 +12,8 @@
 
 
 ## Link to video recording
-We are having trouble uploading the zip file to the repo as it is too large.
-Please find the videos in the following link:
+We are having trouble committing the zip file of videos as it is too large.
+Instead, we have uploaded each of the videos unzipped to this github repo under the folder `Videos`.
+We have also attached a link to the Google Drive containing these same videos. Please find the drive in the following link:
 
 * [SEPT Group P8-01: M1 Videos](https://drive.google.com/drive/folders/1jPwRY2pTyGaJGQqdkRrGOKW2zIpwuCX2)
