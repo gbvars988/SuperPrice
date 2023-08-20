@@ -10,6 +10,6 @@
 
 
 
-## Links to video recordings
+## Link to video recording
 
-* [Ledy](https://drive.google.com/file/d/1dQnYqLT9K9RN7UDgFMbRI2WoXtvhdAfz/view?usp=sharing)
+* [SEPT Group P8-01: M1 Videos](https://drive.google.com/drive/folders/1jPwRY2pTyGaJGQqdkRrGOKW2zIpwuCX2)
