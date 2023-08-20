@@ -6,3 +6,4 @@
 * [Sprint planning notes](https://docs.google.com/document/d/1-JBkwj-wvrf9y8CCAwUYSwpIWpnKeySG/edit)
 * [Sprint 0 retro notes]()
 * [Test & Acceptance Criteria](https://docs.google.com/spreadsheets/d/1-YODQV8pOCEf4xSC5a1KF4KeWt__eFr9I2X4etmkETs/edit?usp=sharing)
+* [System Architecture Diagram](https://lucid.app/lucidchart/db28873a-e455-477c-91c9-edf457e1afb0/edit?viewport_loc=-792%2C-502%2C3288%2C1650%2C0_0&invitationId=inv_a2cc8911-17b6-4a8d-9c64-09ebac054a6f)
