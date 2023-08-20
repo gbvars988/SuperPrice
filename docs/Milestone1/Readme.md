@@ -11,5 +11,7 @@
 
 
 ## Link to video recording
+We are having trouble uploading the zip file to the repo as it is too large.
+Please find the videos in the following link:
 
 * [SEPT Group P8-01: M1 Videos](https://drive.google.com/drive/folders/1jPwRY2pTyGaJGQqdkRrGOKW2zIpwuCX2)
