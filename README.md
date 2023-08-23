@@ -56,7 +56,19 @@ Other tools will be required to complete the project (e.g., Docker)
 ## Frontend
 - cd into frontend/
 - Install dependencies "npm install"
-- Run the app with "npm run dev"
+- Run the app with "npm start"
+
+
+# Contribution conventions
+
+1. Before contributing make sure a ticket exists in the project board for the work you are doing
+2. Run `git pull` to ensure you are up-to-date with the latest changes
+3. Create a new branch from `main` using the following branch naming conventions: `firstName/FEATURE-short-description`
+    - Replace `FEATURE` with any of the commitizen conventional keywords e.g. `CHORE`, `DEFECT`, `FEATURE`, `REFACTOR`, `TEST`
+4. When you are ready to merge your branch, create a pull request with the following title format: `[FEATURE] Short description`
+    - Replace `FEATURE` with any of the commitizen conventional keywords e.g. `CHORE`, `DEFECT`, `FEATURE`, `REFACTOR`, `TEST`
+    - Fill in the pull request template with the relevant information
+    - Link the pull request to the ticket in the project board via the description - valid keywords include `closes #XX`, `fixes #XX`, `resolves #XX` etc.
 
 
 
