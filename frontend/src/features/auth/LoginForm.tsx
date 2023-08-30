@@ -4,11 +4,11 @@ import {LABEL} from "../../language";
 
 const LoginForm: React.FC = () => {
     return (
-        <Box borderWidth={1} borderRadius="md" p={5} minWidth={"350px"}>
-            <Heading size="md" mb={2}>
+        <Box borderWidth={1} borderRadius="md" p={10} minWidth={"450px"}>
+            <Heading size="lg" mb={2}>
                 {LABEL.WELCOME_BACK}
             </Heading>
-            <Text fontSize="sm" mb={4}>
+            <Text fontSize={"xl"} color={"gray.400"} mb={5}>
                 {LABEL.LOGIN_WITH_EMAIL}
             </Text>
             <FormControl>
@@ -26,12 +26,11 @@ const LoginForm: React.FC = () => {
                         placeholder={LABEL.ENTER_YOUR_PASSWORD}
                     />
                 </Box>
-                <Box mb="10px"
-                     display="flex"
-                     justifyContent="center"
+                <Box
+                    display="flex"
+                    justifyContent="center"
                 >
                     <Button
-                        mt={4}
                         colorScheme="teal"
                         type="submit"
                     >

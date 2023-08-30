@@ -19,7 +19,7 @@ const AuthPage: React.FC = () => {
         <Container maxW="3xl" pt={20}>
             <VStack spacing={8} align={"center"}>
                 {currentForm === AuthFormType.LOGIN ? <LoginForm/> : <SignUpForm/>}
-                <Button colorScheme="teal" onClick={toggleForm}>
+                <Button colorScheme="teal" onClick={toggleForm} variant={"ghost"}>
                     Switch to {currentForm === AuthFormType.LOGIN ? 'Sign Up' : 'Login'}
                 </Button>
             </VStack>
