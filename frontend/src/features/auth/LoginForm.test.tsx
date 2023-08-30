@@ -16,3 +16,5 @@ test('renders LoginForm correctly', () => {
     const submitButton = screen.getByRole('button', {name: LABEL.LOGIN});
     expect(submitButton).toBeInTheDocument();
 });
+
+// TODO: add all login behaviour tests here when that is implemented

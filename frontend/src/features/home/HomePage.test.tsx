@@ -27,6 +27,8 @@ const renderWithRouter = (ui: React.ReactElement) => {
 
 test('renders the home page correctly', () => {
     renderWithRouter(<HomePage/>);
+
+    // check that all labels, buttons and images are rendered
     const headlineElement = screen.getByText(LABEL.HEAD_LINE);
     expect(headlineElement).toBeInTheDocument();
     const shopAllButton = screen.getByRole('button', {name: LABEL.SHOP_ALL})
@@ -40,10 +42,12 @@ test('navigate to /shop when clicking the Shop All button', async () => {
 
     const shopAllButton = screen.getByText(LABEL.SHOP_ALL);
 
+    // click the shop all button
     await act(async () => {
         await userEvent.click(shopAllButton);
     });
 
+    // test that the display location is now /shop
     const locationDisplay = screen.getByTestId('location-display');
     expect(locationDisplay).toHaveTextContent('/shop');
 });
