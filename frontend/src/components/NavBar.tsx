@@ -9,6 +9,9 @@ const NavBar: React.FC = () => {
             <Link as={RouterLink} to="/" mr={4}>
                 Placeholder Home
             </Link>
+            <Link as={RouterLink} to="/login" mr={4}>
+                Placeholder Login
+            </Link>
             <ColorModeSwitcher justifySelf="flex-end"/>
             {/*style and create more links later - Ledy's ticket*/}
         </Box>
