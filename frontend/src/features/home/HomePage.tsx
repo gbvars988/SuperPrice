@@ -1,8 +1,11 @@
 import React from 'react';
 import {Box, Button, Container, Heading, Image, VStack} from '@chakra-ui/react';
 import {LABEL} from "../../language";
+import {useNavigate} from "react-router-dom";
 
 const HomePage: React.FC = () => {
+    const navigate = useNavigate();
+
     return (
         <Container maxW="3xl" pt={20}>
             <VStack spacing={8} align={"center"}>
@@ -12,7 +15,10 @@ const HomePage: React.FC = () => {
                     </Heading>
                 </Box>
                 <Box>
-                    <Button colorScheme="blue">{LABEL.SHOP_ALL}</Button>
+                    <Button colorScheme="blue" onClick={() => {
+                        navigate("/shop");
+                    }}
+                    >{LABEL.SHOP_ALL}</Button>
                 </Box>
                 <Box>
                     <Image
