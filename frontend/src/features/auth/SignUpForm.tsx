@@ -41,7 +41,7 @@ const SignUpForm: React.FC = () => {
                         colorScheme="teal"
                         type="submit"
                     >
-                        {LABEL.SUBMIT}
+                        {LABEL.SIGN_UP}
                     </Button>
                 </Box>
             </FormControl>

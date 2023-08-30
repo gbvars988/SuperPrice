@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Button, Container, VStack} from '@chakra-ui/react';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
+import {LABEL} from "../../language";
 
 enum AuthFormType {
     LOGIN,
@@ -20,7 +21,7 @@ const AuthPage: React.FC = () => {
             <VStack spacing={8} align={"center"}>
                 {currentForm === AuthFormType.LOGIN ? <LoginForm/> : <SignUpForm/>}
                 <Button colorScheme="teal" onClick={toggleForm} variant={"ghost"}>
-                    Switch to {currentForm === AuthFormType.LOGIN ? 'Sign Up' : 'Login'}
+                    Switch to {currentForm === AuthFormType.LOGIN ? LABEL.SIGN_UP : LABEL.LOGIN}
                 </Button>
             </VStack>
         </Container>

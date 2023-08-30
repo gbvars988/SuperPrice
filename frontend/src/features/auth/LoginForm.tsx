@@ -34,7 +34,7 @@ const LoginForm: React.FC = () => {
                         colorScheme="teal"
                         type="submit"
                     >
-                        {LABEL.SUBMIT}
+                        {LABEL.LOGIN}
                     </Button>
                 </Box>
             </FormControl>

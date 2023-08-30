@@ -29,7 +29,7 @@ test('renders the home page correctly', () => {
     renderWithRouter(<HomePage/>);
     const headlineElement = screen.getByText(LABEL.HEAD_LINE);
     expect(headlineElement).toBeInTheDocument();
-    const shopAllButton = screen.getByText(LABEL.SHOP_ALL);
+    const shopAllButton = screen.getByRole('button', {name: LABEL.SHOP_ALL})
     expect(shopAllButton).toBeInTheDocument();
     const image = screen.getByRole('img');
     expect(image).toBeInTheDocument();

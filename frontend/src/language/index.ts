@@ -8,10 +8,10 @@ export const LABEL = {
     ENTER_YOUR_EMAIL: 'Enter your email',
     PASSWORD: 'Password',
     ENTER_YOUR_PASSWORD: 'Enter your password',
-    SUBMIT: 'Submit',
+    LOGIN: 'Login',
+    SIGN_UP: 'Sign up',
     WELCOME: 'Welcome to SuperPrice',
     SIGN_UP_WITH_EMAIL: 'Sign up with email',
     CONFIRM_PASSWORD: 'Confirm password',
     CONFIRM_YOUR_PASSWORD: 'Confirm your password',
-
 };
