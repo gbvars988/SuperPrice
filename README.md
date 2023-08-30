@@ -1,5 +1,6 @@
 # SuperPrice - Price Matching and Delivery Web Application
 
+![Main CI status](https://github.com/cosc2299-sept-2023/team-project-group-p8-01/actions/workflows/ci.yml/badge.svg?branch=main)
 
 # RMIT COSC2299 SEPT Major Project
 
@@ -8,6 +9,7 @@
 ## Group-P8-01
 
 ## Members
+
 * Anthony Imani (s3950363)
 * Dylan Khan (s3916841)
 * Ledy (s3409664)
@@ -21,22 +23,20 @@
 * Github Project Board : https://github.com/orgs/cosc2299-sept-2023/projects/109
 * [Figma design](https://www.figma.com/file/gdtCVGjLBgJYozRHVMdZ43/SuperPrice-Design?type=design&node-id=0-1&mode=design&t=CCWUZsLUoPtW3Bl8-0)
 
-
-	
 ## Code documentation - Release 0.1.0 - date
+
 * feature 1
 * feature 2
 * feature 3
-  
 
 # Run Instructions
 
 Up to date instructions on how to run your project.
 
-
 # Initial Setup
 
-## Setup your environment 
+## Setup your environment
+
 You will need to have in your system
 
 - Java 17.0 or higher
@@ -54,21 +54,25 @@ Other tools will be required to complete the project (e.g., Docker)
 - Confirm you can run your applicaiton (./mvnw package && java -jar target/[microservice]-0.0.1-SNAPSHOT.jar)
 
 ## Frontend
+
 - cd into frontend/
 - Install dependencies "npm install"
 - Run the app with "npm start"
-
 
 # Contribution conventions
 
 1. Before contributing make sure a ticket exists in the project board for the work you are doing
 2. Run `git pull` to ensure you are up-to-date with the latest changes
 3. Create a new branch from `main` using the following branch naming conventions: `firstName/FEATURE-short-description`
-    - Replace `FEATURE` with any of the commitizen conventional keywords e.g. `CHORE`, `DEFECT`, `FEATURE`, `REFACTOR`, `TEST`
-4. When you are ready to merge your branch, create a pull request with the following title format: `[FEATURE] Short description`
-    - Replace `FEATURE` with any of the commitizen conventional keywords e.g. `CHORE`, `DEFECT`, `FEATURE`, `REFACTOR`, `TEST`
+    - Replace `FEATURE` with any of the commitizen conventional keywords
+      e.g. `CHORE`, `DEFECT`, `FEATURE`, `REFACTOR`, `TEST`
+4. When you are ready to merge your branch, create a pull request with the following title
+   format: `[FEATURE] Short description`
+    - Replace `FEATURE` with any of the commitizen conventional keywords
+      e.g. `CHORE`, `DEFECT`, `FEATURE`, `REFACTOR`, `TEST`
     - Fill in the pull request template with the relevant information
-    - Link the pull request to the ticket in the project board via the description - valid keywords include `closes #XX`, `fixes #XX`, `resolves #XX` etc.
+    - Link the pull request to the ticket in the project board via the description - valid keywords
+      include `closes #XX`, `fixes #XX`, `resolves #XX` etc.
 
 
 
