@@ -3,7 +3,7 @@ import {render, screen} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import {BrowserRouter, Route, Routes, useLocation} from 'react-router-dom';
 import HomePage from './HomePage';
-import {LABEL} from '../../language';
+import {LABEL, PATH} from '../../language';
 import {act} from "react-dom/test-utils";
 
 // helper component to display current url location
@@ -12,13 +12,13 @@ export const LocationDisplay = () => {
     return <div data-testid="location-display">{location.pathname}</div>;
 };
 
-// first render the compoent in a router to test for correct navigation behaviour
+// first render the component in a router to test for correct navigation behaviour
 const renderWithRouter = (ui: React.ReactElement) => {
     return render(
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={ui}/>
-                <Route path="/shop" element={<div>Shop Page</div>}/>
+                <Route path={PATH.HOMEPAGE} element={ui}/>
+                <Route path={PATH.SHOP}  element={<div>Shop Page</div>}/>
             </Routes>
             <LocationDisplay/>
         </BrowserRouter>
@@ -49,5 +49,5 @@ test('navigate to /shop when clicking the Shop All button', async () => {
 
     // test that the display location is now /shop
     const locationDisplay = screen.getByTestId('location-display');
-    expect(locationDisplay).toHaveTextContent('/shop');
+    expect(locationDisplay).toHaveTextContent(PATH.SHOP);
 });
