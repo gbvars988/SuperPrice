@@ -1,15 +1,15 @@
-import { Box, Link } from '@chakra-ui/react';
+import {Box, Link} from '@chakra-ui/react';
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import {Link as RouterLink} from 'react-router-dom';
 import {ColorModeSwitcher} from "../ColorModeSwitcher";
 
 const NavBar: React.FC = () => {
     return (
-        <Box p={4}>
+        <Box p={4} backgroundColor={"blue.50"} display="flex" justifyContent="center">
             <Link as={RouterLink} to="/" mr={4}>
-                Home
+                Placeholder Home
             </Link>
-            <ColorModeSwitcher justifySelf="flex-end" />
+            <ColorModeSwitcher justifySelf="flex-end"/>
             {/*style and create more links later - Ledy's ticket*/}
         </Box>
     );
