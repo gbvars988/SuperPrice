@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter, Route, Routes,} from 'react-router-dom';
 import HomePage from "../features/home/HomePage";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/NavBar/NavBar";
 import AuthPage from "../features/auth/AuthPage";
 
 const Router: React.FC = () => {

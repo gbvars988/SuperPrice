@@ -1,6 +1,6 @@
 import React from 'react';
 import {Box, Button, Container, Heading, Image, VStack} from '@chakra-ui/react';
-import {LABEL} from "../../language";
+import {LABEL, PATH} from "../../language";
 import {useNavigate} from "react-router-dom";
 
 const HomePage: React.FC = () => {
@@ -16,7 +16,7 @@ const HomePage: React.FC = () => {
                 </Box>
                 <Box>
                     <Button colorScheme="blue" onClick={() => {
-                        navigate("/shop");
+                        navigate(PATH.SHOP);
                     }}
                     >{LABEL.SHOP_ALL}</Button>
                 </Box>
@@ -30,6 +30,5 @@ const HomePage: React.FC = () => {
         </Container>
     );
 };
-
 
 export default HomePage;
