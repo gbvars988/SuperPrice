@@ -1,5 +1,6 @@
 package com.superprice.productms.service;
 
+import com.superprice.productms.model.PriceInfo;
 import com.superprice.productms.model.Product;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +19,13 @@ public class ProductServiceImpl implements ProductService{
                 01,
                 "https://img.freepik.com/free-vector/isolated-milk-box-cartoon-style_1308-117384.jpg?w=360"));
         return products;
+    }
+
+    @Override
+    public List<PriceInfo> comparePrices(int productId) {
+        List<PriceInfo> prices = new ArrayList<>();
+        prices.add(new PriceInfo("Coles", 2));
+        prices.add(new PriceInfo("Woolworths", 1));
+        return prices;
     }
 }
