@@ -7,7 +7,7 @@ interface PageContainerProps {
 
 const PageContainer: React.FC<PageContainerProps> = ({children}) => {
     return (
-        <Container maxW="7xl" pt={20}>
+        <Container maxW="7xl" pt={20} px={7}>
             {children}
         </Container>
     );

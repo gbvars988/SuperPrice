@@ -7,7 +7,7 @@ import {ColorModeSwitcher} from "../../ColorModeSwitcher";
 const NavBar: React.FC = () => {
     return (
         <Box bg={useColorModeValue('gray.100', 'gray.900')}>
-            <Container maxW={'7xl'}>
+            <Container maxW={'7xl'} px={7}>
                 <Flex h={16} alignItems={'center'} justifyContent={'space-between'} fontSize={'2xl'}>
                     <HStack spacing={8} alignItems={'center'}>
                         <HStack as={'nav'} spacing={10} display={{base: 'none', md: 'flex'}}>
