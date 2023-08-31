@@ -2,9 +2,9 @@ package com.superprice.productms.model;
 
 public class PriceInfo {
     private String supermarket;
-    private int price;
+    private double price;
 
-    public PriceInfo(String supermarket_name, int price) {
+    public PriceInfo(String supermarket_name, double price) {
         this.supermarket = supermarket_name;
         this.price = price;
     }
@@ -13,7 +13,7 @@ public class PriceInfo {
         return supermarket;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 }

@@ -2,6 +2,7 @@ package com.superprice.productms.service;
 
 import com.superprice.productms.model.PriceInfo;
 import com.superprice.productms.model.Product;
+import com.superprice.productms.model.Review;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -24,8 +25,14 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<PriceInfo> comparePrices(int productId) {
         List<PriceInfo> prices = new ArrayList<>();
-        prices.add(new PriceInfo("Coles", 2));
-        prices.add(new PriceInfo("Woolworths", 1));
+        prices.add(new PriceInfo("Coles", 2.50));
+        prices.add(new PriceInfo("Woolworths", 1.90));
         return prices;
+    }
+
+    @Override
+    public void writeReview(int product_id, Review review) {
+        // save review to DB.
+        // TODO: DB creation.
     }
 }

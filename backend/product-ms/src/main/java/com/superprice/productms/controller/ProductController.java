@@ -2,6 +2,7 @@ package com.superprice.productms.controller;
 
 import com.superprice.productms.model.PriceInfo;
 import com.superprice.productms.model.Product;
+import com.superprice.productms.model.Review;
 import com.superprice.productms.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -47,5 +48,11 @@ public class ProductController {
         return ResponseEntity.ok(prices);
     }
 
-    
+    @PostMapping("/{product_id}/reviews")
+    // The users review will be deserialized from JSON body to an object of Review type. Attributes in JSON must match
+    // Review member variables.
+    public ResponseEntity<String> writeReview(@PathVariable int product_id, @RequestBody Review review) {
+        productService.writeReview(product_id, review);
+        return ResponseEntity.ok("Review added successfully");
+    }
 }
