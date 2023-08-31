@@ -1,13 +1,14 @@
 import React from 'react';
-import {Box, Button, Container, Heading, Image, VStack} from '@chakra-ui/react';
+import {Box, Button, Heading, Image, VStack} from '@chakra-ui/react';
 import {LABEL, PATH} from "../../language";
 import {useNavigate} from "react-router-dom";
+import PageContainer from "../../components/common/PageContainer";
 
 const HomePage: React.FC = () => {
     const navigate = useNavigate();
 
     return (
-        <Container maxW="3xl" pt={20}>
+        <PageContainer>
             <VStack spacing={8} align={"center"}>
                 <Box>
                     <Heading as="h1" size="2xl" textAlign={"center"} lineHeight={"60px"}>
@@ -27,7 +28,7 @@ const HomePage: React.FC = () => {
                     />
                 </Box>
             </VStack>
-        </Container>
+        </PageContainer>
     );
 };
 
