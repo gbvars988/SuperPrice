@@ -17,20 +17,20 @@ const NavBar: React.FC = () => {
                         }>
                             {LABEL.SUPER_PRICE}
                         </Link>
-                        <Link as={RouterLink} to={PATH.SHOP} mr={4}>
+                        <Link as={RouterLink} to={PATH.SHOP} mr={4} fontSize={20}>
                             {LABEL.SHOP}
                         </Link>
-                        <Link as={RouterLink} to={PATH.DEALS} mr={4}>
+                        <Link as={RouterLink} to={PATH.DEALS} mr={4} fontSize={20}>
                             {LABEL.DEALS}
                         </Link>
-                        <Link as={RouterLink} to={PATH.ABOUT} mr={4}>
+                        <Link as={RouterLink} to={PATH.ABOUT} mr={4} fontSize={20}>
                             {LABEL.ABOUT}
                         </Link>
                     </HStack>
                 </HStack>
-                <HStack spacing={8} alignItems={'right'} pr={10}>
+                <HStack spacing={8} alignItems={'center'} pr={10}>
                     <ColorModeSwitcher justifySelf="flex-end"/>
-                    <Link as={RouterLink} to={PATH.LOGIN} mr={4}>
+                    <Link as={RouterLink} to={PATH.LOGIN} mr={4} fontSize={20}>
                         Login
                     </Link>
                 </HStack>
