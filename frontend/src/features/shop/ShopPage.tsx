@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Box, Heading, HStack, VStack} from '@chakra-ui/react';
+import {Box, Heading, HStack, useColorModeValue, VStack} from '@chakra-ui/react';
 import PageContainer from '../../components/common/PageContainer';
 import Categories from './Categories';
 import {LABEL} from '../../language';
@@ -37,7 +37,7 @@ const ShopPage: React.FC = () => {
                         <Heading as="h4" size="md" textAlign={"left"}>
                             {LABEL.PRODUCTS}
                         </Heading>
-                        <Box bg={"gray.200"} p={4} mt={4}>
+                        <Box bg={useColorModeValue('gray.100', 'gray.900')} p={4} mt={4}>
                             Product gallery placeholder - add component later
                         </Box>
                     </Box>
