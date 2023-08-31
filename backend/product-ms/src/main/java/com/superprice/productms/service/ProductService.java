@@ -12,4 +12,6 @@ public interface ProductService {
     List<PriceInfo> comparePrices(int productId);
 
     void writeReview(int productId, Review review);
+
+    List<Review> getReviews(int productId);
 }

@@ -55,4 +55,10 @@ public class ProductController {
         productService.writeReview(product_id, review);
         return ResponseEntity.ok("Review added successfully");
     }
+
+    @GetMapping("/{product_id}/reviews")
+    public ResponseEntity<List<Review>> readReviews(@PathVariable int product_id) {
+        List<Review> reviews = productService.getReviews(product_id);
+        return ResponseEntity.ok(reviews);
+    }
 }

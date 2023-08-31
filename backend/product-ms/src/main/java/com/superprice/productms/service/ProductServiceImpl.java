@@ -5,6 +5,7 @@ import com.superprice.productms.model.Product;
 import com.superprice.productms.model.Review;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,5 +35,16 @@ public class ProductServiceImpl implements ProductService{
     public void writeReview(int product_id, Review review) {
         // save review to DB.
         // TODO: DB creation.
+    }
+
+    @Override
+    public List<Review> getReviews(int product_id) {
+        List<Review> reviews = new ArrayList<>();
+        reviews.add(new Review(23,
+                "This is the most fantastic milk you'll ever drink",
+                "John_Doe",
+                5,
+                LocalDateTime.now()));
+        return reviews;
     }
 }

@@ -3,13 +3,13 @@ package com.superprice.productms.model;
 import java.time.LocalDateTime;
 
 public class Review {
-    private Long id;
+    private int id;
     private String content;
     private String username;
     private int rating;
     private LocalDateTime timestamp;
 
-    public Review(Long id, String content, String username, int rating, LocalDateTime timestamp) {
+    public Review(int id, String content, String username, int rating, LocalDateTime timestamp) {
         this.id = id;
         this.content = content;
         this.username = username;
@@ -25,7 +25,7 @@ public class Review {
         return rating;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
