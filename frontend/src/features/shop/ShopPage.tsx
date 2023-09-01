@@ -1,51 +1,65 @@
-import React, {useState} from 'react';
-import {Box, Heading, HStack, useColorModeValue, VStack} from '@chakra-ui/react';
-import PageContainer from '../../components/common/PageContainer';
-import Categories from './Categories';
-import {LABEL} from '../../language';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import {
+  Box,
+  Heading,
+  HStack,
+  useColorModeValue,
+  VStack,
+} from "@chakra-ui/react";
+import PageContainer from "../../components/common/PageContainer";
+import Categories from "./Categories";
+import { LABEL } from "../../language";
 import Filter from "./Filter";
+import Gallery from "./Gallery";
 
 const ShopPage: React.FC = () => {
-    const initialFilterState = Object.fromEntries(
-        Object.values(Categories).map(category => [category, false])
-    ) as Record<string, boolean>;
+  const initialFilterState = Object.fromEntries(
+    Object.values(Categories).map((category) => [category, false])
+  ) as Record<string, boolean>;
 
-    const [filterState, setFilterState] = useState<Record<string, boolean>>(initialFilterState);
+  const [filterState, setFilterState] =
+    useState<Record<string, boolean>>(initialFilterState);
+  const [products, setProducts] = useState([]);
 
-    // TODO: use filterState to filter products later once product data is available
+  useEffect(() => {
+    // TOOD: Replace with actual API call
+    axios
+      .get("/mocks/products.json")
+      .then((res) => {
+        setProducts(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-    return (
-        <PageContainer>
-            <VStack spacing={8} align={"center"}>
+  // TODO: use filterState to filter products later once product data is available
 
-                <Box w={"100%"} textAlign={"left"}>
-                    <Heading as="h2" size="xl">
-                        {LABEL.SHOP}
-                    </Heading>
-                </Box>
+  return (
+    <PageContainer>
+      <VStack spacing={8} align={"center"}>
+        <Box w={"100%"} textAlign={"left"}>
+          <Heading as="h2" size="xl">
+            {LABEL.SHOP}
+          </Heading>
+        </Box>
 
-                <HStack spacing={12} align={"stretch"} w={"100%"}>
+        <HStack spacing={12} align={"stretch"} w={"100%"}>
+          <Box w={"25%"}>
+            <Box pr={4}>
+              <Filter
+                filterState={filterState}
+                setFilterState={setFilterState}
+              />
+            </Box>
+          </Box>
 
-                    <Box w={"25%"}>
-                        <Box pr={4}>
-                            <Filter filterState={filterState} setFilterState={setFilterState}/>
-                        </Box>
-                    </Box>
-
-                    {/* product gallery Placeholder */}
-                    <Box w={"75%"}>
-                        <Heading as="h4" size="md" textAlign={"left"}>
-                            {LABEL.PRODUCTS}
-                        </Heading>
-                        <Box bg={useColorModeValue('gray.100', 'gray.900')} p={4} mt={4}>
-                            Product gallery placeholder - add component later
-                        </Box>
-                    </Box>
-
-                </HStack>
-            </VStack>
-        </PageContainer>
-    );
+          <Gallery products={products} />
+        </HStack>
+      </VStack>
+    </PageContainer>
+  );
 };
 
 export default ShopPage;
