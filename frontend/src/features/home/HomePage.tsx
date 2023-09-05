@@ -3,11 +3,13 @@ import {Box, Button, Heading, Image, VStack} from '@chakra-ui/react';
 import {LABEL, PATH} from "../../language";
 import {useNavigate} from "react-router-dom";
 import PageContainer from "../../components/common/PageContainer";
+import CartDrawer from '../cart/CartDrawer';
 
 const HomePage: React.FC = () => {
     const navigate = useNavigate();
 
     return (
+        
         <PageContainer>
             <VStack spacing={8} align={"center"}>
                 <Box>

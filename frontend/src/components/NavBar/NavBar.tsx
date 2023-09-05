@@ -3,7 +3,7 @@ import React from 'react';
 import {Link as RouterLink} from 'react-router-dom';
 import {LABEL, PATH} from "../../language";
 import {ColorModeSwitcher} from "../../ColorModeSwitcher";
-import {CartButton} from "../../features/cart/CartButton";
+import CartDrawer from '../../features/cart/CartDrawer';
 
 const NavBar: React.FC = () => {
     return (
@@ -31,8 +31,8 @@ const NavBar: React.FC = () => {
                         </HStack>
                     </HStack>
                     <HStack spacing={8} alignItems={'center'}>
+                        <CartDrawer></CartDrawer>
                         <ColorModeSwitcher justifySelf="flex-end"/>
-                        <CartButton justifySelf="flex-end"/>
                         <Link as={RouterLink} to={PATH.LOGIN} fontSize={20}>
                             Login
                         </Link>
