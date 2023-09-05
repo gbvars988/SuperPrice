@@ -21,6 +21,7 @@ import {
     AddIcon, 
     MinusIcon 
 } from '@chakra-ui/icons'
+import cartImage from './cart.png'
 
 
 // CHANGE THIS TO CORRECT PATH ONCE PRODUCTS IS COMPLETE //
@@ -40,9 +41,9 @@ function CartDrawer() {
                 //ref = {btnRef}
                 aria-label='Shopping Cart'  
                 onClick={onOpen}
-                icon={<Image  
-                    src='C:\Users\Slick\github-classroom\cosc2299-sept-2023\team-project-group-p8-01\frontend\src\features\cart\cart.png' 
-                    />}>
+                icon={<Image src={cartImage}
+                boxSize='28px'
+                />}>
             </IconButton>
             
             <Drawer
