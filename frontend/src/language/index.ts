@@ -12,6 +12,7 @@ export const LABEL = {
     HEAD_LINE: 'One stop price matching for your groceries',
     LOGIN: 'Login',
     LOGIN_WITH_EMAIL: 'Login with email',
+    ORDER_SUM: 'Order Summary',
     PASSWORD: 'Password',
     PRODUCTS: 'Products',
     SHOP: 'Shop',
@@ -21,6 +22,7 @@ export const LABEL = {
     SUPER_PRICE: 'SuperPrice',
     WELCOME: 'Welcome to SuperPrice',
     WELCOME_BACK: 'Welcome back'
+
 };
 export const PATH = {
     ABOUT: '/about',
@@ -28,4 +30,5 @@ export const PATH = {
     HOMEPAGE: '/',
     LOGIN: '/login',
     SHOP: '/shop',
+    ORDER: '/ordersummary',
 };
