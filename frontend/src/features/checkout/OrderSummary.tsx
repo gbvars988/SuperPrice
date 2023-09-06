@@ -75,17 +75,15 @@ export const OrderSummary: React.FC = () => {
                     </AccordionItem>
                     </Accordion>
                 </Center>
+                <br/>
+                
 
                 <OrderSummaryItem label="Subtotal $0.00" />
-                <OrderSummaryItem label="Shipping + Tax">
-                <Link href="#" textDecor="underline" ml='20px'>
-                    Calculate shipping
-                </Link>
+                <OrderSummaryItem label="Shipping $">
                 </OrderSummaryItem>
-                <OrderSummaryItem label="Coupon Code">
-                <Link href="#" textDecor="underline" ml='20px'>
-                    Add coupon code
-                </Link>
+                <br/>
+                <Center><Text>Delivery:</Text></Center>
+                <OrderSummaryItem label="Coupon Amount $">
                 </OrderSummaryItem>
                 <Flex justify="center" mt='50px'>
                 <Text fontSize="xl" fontWeight="semibold">
@@ -94,16 +92,8 @@ export const OrderSummary: React.FC = () => {
                 <Text fontSize="xl" fontWeight="extrabold">
                     
                 </Text>
-                
                 </Flex>
-                <Center>
-                <Box mt='50px'>
-                    <Button colorScheme="teal" onClick={() => {
-                        
-                    }}
-                    >Confirm Order</Button>
-                </Box>
-                </Center>
+                
         </PageContainer>
     );
 };
