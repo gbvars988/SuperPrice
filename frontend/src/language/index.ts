@@ -22,6 +22,8 @@ export const LABEL = {
   WELCOME: "Welcome to SuperPrice",
   WELCOME_BACK: "Welcome back",
   NO_PRODUCTS: "No products found",
+  INGREDIENTS: "Ingredients",
+  ADD_TO_TROLLEY: "Add to trolley",
 };
 export const PATH = {
   ABOUT: "/about",

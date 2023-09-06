@@ -4,7 +4,7 @@ import HomePage from "../features/home/HomePage";
 import NavBar from "../components/NavBar/NavBar";
 import AuthPage from "../features/auth/AuthPage";
 import ShopPage from "../features/shop/ShopPage";
-import ProductPage from "../features/shop/ProductPage";
+import ProductPage from "../features/product/ProductPage";
 import { PATH } from "../language";
 
 const Router: React.FC = () => {
