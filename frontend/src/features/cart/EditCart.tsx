@@ -6,7 +6,8 @@ import {Box,
     VStack, 
     Text, 
     Flex, 
-    IconButton} from '@chakra-ui/react';
+    IconButton,
+    Center} from '@chakra-ui/react';
 import { 
     AddIcon, 
     MinusIcon,
@@ -38,6 +39,14 @@ const EditCart: React.FC = () => {
                 <Box>
                     <CartSummary/>
                 </Box>
+                <Center>
+                <Box mt='50px'>
+                    <Button colorScheme="teal" onClick={() => {
+                        
+                    }}
+                    >Proceed to Checkout</Button>
+                </Box>
+                </Center>
             </VStack>
         </PageContainer>
     );

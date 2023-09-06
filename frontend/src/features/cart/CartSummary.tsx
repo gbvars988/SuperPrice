@@ -46,7 +46,7 @@ export const CartSummary = () => {
         <Box>
         <Flex align='center' w='100%' justifyContent='space-between'>
             <Flex align="flex-end">
-                <Text>Product 1</Text> 
+                <Text mr='25px'>Product 1</Text> 
             </Flex>
             <Flex w='80px' align='left' justify="center">
                 <Box>
@@ -72,7 +72,7 @@ export const CartSummary = () => {
                     </Box>
             </Flex>
             <Box>
-                <Text>$0.00</Text> 
+                <Text ml='25px'>$0.00</Text> 
             </Box>
         </Flex>
         
@@ -85,6 +85,8 @@ export const CartSummary = () => {
                 {LABEL.TOTAL_PRICE}0.00
             </Heading>
         </Text>  
+
+       
         </Box>
     )
 
