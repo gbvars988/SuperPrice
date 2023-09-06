@@ -20,7 +20,11 @@ export const LABEL = {
     SIGN_UP_WITH_EMAIL: 'Sign up with email',
     SUPER_PRICE: 'SuperPrice',
     WELCOME: 'Welcome to SuperPrice',
-    WELCOME_BACK: 'Welcome back'
+    WELCOME_BACK: 'Welcome back',
+    EDIT_CART: 'Edit Your Shopping Cart',
+    YOUR_CART: 'Your Shopping Cart:',
+    TOTAL_PRICE: 'Total Price: $',
+    ORDER_SUMMARRY: 'Your Order Summary',
 };
 export const PATH = {
     ABOUT: '/about',
@@ -28,4 +32,6 @@ export const PATH = {
     HOMEPAGE: '/',
     LOGIN: '/login',
     SHOP: '/shop',
+    CART: '/editcart',
+    ORDER: '/ordersummary',
 };

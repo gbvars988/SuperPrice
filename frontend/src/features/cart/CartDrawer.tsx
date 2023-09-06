@@ -11,17 +11,23 @@ import {
     Heading, 
     IconButton, 
     ButtonGroup,
-    IconButtonProps, 
+    Box, 
     Image,
     Button, 
     useDisclosure,
-    Center
+    Center,
+    VStack,
+    Text,
+    Flex
 } from '@chakra-ui/react';
 import { 
     AddIcon, 
     MinusIcon 
-} from '@chakra-ui/icons'
+} from '@chakra-ui/icons';
 import cartImage from './cart.png'
+import {LABEL, PATH} from "../../language";
+import {useNavigate} from "react-router-dom";
+import { CartSummary } from './CartSummary';
 
 
 // CHANGE THIS TO CORRECT PATH ONCE PRODUCTS IS COMPLETE //
@@ -34,7 +40,8 @@ import cartImage from './cart.png'
 //export const CartButton = () => {
 function CartDrawer() {
     const { isOpen, onOpen, onClose } = useDisclosure()
-
+    const navigate = useNavigate();
+    
     return (
         <>
             <IconButton 
@@ -49,33 +56,50 @@ function CartDrawer() {
             <Drawer
                 isOpen = {isOpen}
                 placement = 'right'
-                onClose = {onClose}
-                //finalFocusRef={btnRef}
-            >
+                onClose = {onClose}>
                 <DrawerOverlay/>
                 <DrawerContent>
                     <DrawerCloseButton/>
-                    <DrawerHeader>Your Shopping Cart:</DrawerHeader>
-                    <DrawerBody>
-                        
-                        <p>Product 2</p>
-                        <p>Product 2</p>
-                        <p>Product 3</p>
-                        <p> </p>
-                        <p> </p>
-                        <b>Total Price: $0.00</b>
-                    </DrawerBody>
+                    <Box 
+                        alignItems='center'
+                        justifyContent='center'
+                        width='98%'
+                        >
+                        <Text align={"center"}>
+                            <DrawerHeader
+                                mt='25px'
+                                mb='5px'>
+                                {LABEL.YOUR_CART}
+                            </DrawerHeader>
+                        </Text>
+                        <DrawerBody border='20px'>
+                            <CartSummary/>
+                        </DrawerBody>
+                    </Box>
                     <DrawerFooter>
-                        
-                        <Button
-                            aria-label='Check Out'
-                            colorScheme='teal'
-                            size='md'
-
-                            >
-                                Checkout
-                            </Button>
-
+                        <Box
+                            alignItems='center'
+                            justifyContent='center'
+                            width='98%'
+                            height='15%'>
+                            <ButtonGroup variant='outline' spacing='6'>
+                                <Button
+                                    aria-label='Edit Cart'
+                                    size='md'
+                                    leftIcon={<Image 
+                                                src={cartImage}
+                                                boxSize='15px'/>}
+                                    onClick={() => {navigate(PATH.CART);}}>
+                                    Edit Cart
+                                </Button>
+                                <Button
+                                    aria-label='Check Out'
+                                    colorScheme='teal'
+                                    size='md'>
+                                    Checkout
+                                </Button>
+                            </ButtonGroup>
+                        </Box>
                     </DrawerFooter>
                 </DrawerContent>
             </Drawer>
