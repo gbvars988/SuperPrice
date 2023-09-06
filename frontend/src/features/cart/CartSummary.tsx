@@ -19,12 +19,28 @@ import {
     Center,
     VStack,
     Text,
-    Flex
+    Flex,
+    NumberInput,
+    Input,
+    useNumberInput
 } from '@chakra-ui/react';
 import MinusQty from './minus.png';
 import PlusQty from './plus.png';
 
+
+
 export const CartSummary = () => {
+    const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
+    useNumberInput({
+      step: 1,
+      defaultValue: 0,
+      min: 0,
+      max: 100
+    })
+    
+    const inc = getIncrementButtonProps()
+    const dec = getDecrementButtonProps()
+    const input = getInputProps()
 
     return (
         <Box>
@@ -33,82 +49,33 @@ export const CartSummary = () => {
                 <Text>Product 1</Text> 
             </Flex>
             <Flex w='80px' align='left' justify="center">
+                <Box>
                 <IconButton
+                    {...dec}
                     w='15px'
                     m='5px'
                     size='sml'
                     aria-label='Decrease Qty' 
                     icon={<Image src={MinusQty}
                     boxSize='10px'/>}/>
-                <Text m='2px'>0</Text> 
+                <Input m='2px'{...input} size='xs' border='none' w='25px' justifyContent={'left'}/> 
                 <IconButton
+                    {...inc}
                     w='15px'
-                    m='5px'
+                    mt='5px'
+                    mb='5px'
+                    ml='2px'
                     size='sml'
                     aria-label='Increase Qty'  
                     icon={<Image src={PlusQty}
                     boxSize='10px'/>}/>
+                    </Box>
             </Flex>
             <Box>
                 <Text>$0.00</Text> 
             </Box>
         </Flex>
-        <Flex align='center' 
-            w='100%'
-            justifyContent='space-between'>
-            <Flex align="flex-end">
-                <Text>Product 2</Text> 
-            </Flex>
-            <Flex w='80px' align='left' justify="center">
-                <IconButton
-                    w='15px'
-                    m='5px'
-                    size='sml'
-                    aria-label='Decrease Qty' 
-                    icon={<Image src={MinusQty}
-                    boxSize='10px'/>}/>
-                <Text m='2px'>0</Text> 
-                <IconButton
-                    w='15px'
-                    m='5px'
-                    size='sml'
-                    aria-label='Increase Qty'  
-                    icon={<Image src={PlusQty}
-                    boxSize='10px'/>}/>
-            </Flex>
-            <Box>
-                
-                <Text>$0.00</Text> 
-                
-            </Box>
-        </Flex>
-        <Flex align='center' 
-            w='100%'
-            justifyContent='space-between'>
-            <Flex align="flex-end">
-                <Text>Product 3</Text> 
-            </Flex>
-            <Flex w='80px' align='left' justify="center">
-                <IconButton
-                    w='15px'
-                    m='5px'
-                    size='sml'
-                    aria-label='Decrease Qty' 
-                    icon={<Image src={MinusQty}
-                    boxSize='10px'/>}/>
-                <Text m='2px'>0</Text> 
-                <IconButton
-                    w='15px'
-                    m='5px'
-                    size='sml'
-                    aria-label='Increase Qty'  
-                    icon={<Image src={PlusQty}
-                    boxSize='10px'/>}/>
-            </Flex>
-            <Box>
-                <Text>$0.00</Text> 
-            </Box>
-        </Flex>
+        
 
         <Text align={"center"}>
             <Heading 
