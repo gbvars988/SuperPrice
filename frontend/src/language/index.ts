@@ -20,7 +20,10 @@ export const LABEL = {
     SIGN_UP_WITH_EMAIL: 'Sign up with email',
     SUPER_PRICE: 'SuperPrice',
     WELCOME: 'Welcome to SuperPrice',
-    WELCOME_BACK: 'Welcome back',
+    WELCOME_BACK: 'Welcome back'
+    NO_PRODUCTS: "No products found",
+    INGREDIENTS: "Ingredients",
+    ADD_TO_TROLLEY: "Add to trolley",
     EDIT_CART: 'Edit Your Shopping Cart',
     YOUR_CART: 'Your Shopping Cart:',
     TOTAL_PRICE: 'Total Price: $',
