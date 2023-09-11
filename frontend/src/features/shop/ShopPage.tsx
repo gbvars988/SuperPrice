@@ -12,6 +12,7 @@ import Categories from "./Categories";
 import { LABEL } from "../../language";
 import Filter from "./Filter";
 import Gallery from "./Gallery";
+import SortButton from "../../components/sort/SortButton";
 
 const ShopPage: React.FC = () => {
   const initialFilterState = Object.fromEntries(
@@ -39,10 +40,13 @@ const ShopPage: React.FC = () => {
   return (
     <PageContainer>
       <VStack spacing={8} align={"center"}>
-        <Box w={"100%"} textAlign={"left"}>
-          <Heading as="h2" size="xl">
-            {LABEL.SHOP}
-          </Heading>
+        <Box w={"100%"}>
+          <HStack justify="space-between">
+            <Heading as="h2" size="xl">
+              {LABEL.SHOP}
+            </Heading>
+            <SortButton></SortButton>
+          </HStack>
         </Box>
 
         <HStack spacing={12} align={"stretch"} w={"100%"}>
