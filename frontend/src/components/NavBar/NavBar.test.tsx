@@ -22,4 +22,5 @@ test('renders the navbar correctly', () => {
     expect(screen.getByText(LABEL.DEALS)).toBeInTheDocument();
     expect(screen.getByText(LABEL.ABOUT)).toBeInTheDocument();
     expect(screen.getByText(LABEL.LOGIN)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("Search products")).toBeInTheDocument();
 });
