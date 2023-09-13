@@ -7,12 +7,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("delivery")
 public class DeliveryController {
 
-    private final DeliveryService deliveryService;
+    DeliveryService deliveryService;
 
     @Autowired
     public DeliveryController(DeliveryService deliveryService) {
@@ -24,7 +25,7 @@ public class DeliveryController {
         return ResponseEntity.ok("Order added successfully");
     }
     @GetMapping("/{orderNo}")
-    public ResponseEntity<Delivery> getDelivery (@PathVariable int orderNo){
+    public ResponseEntity<Optional<Delivery>> getDelivery (@PathVariable int orderNo){
         return ResponseEntity.ok(deliveryService.deliveryInfo(orderNo));
     }
 }
