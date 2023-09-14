@@ -1,11 +1,13 @@
 package com.superprice.productms.service;
 
 
+
 import com.superprice.productms.dto.ProductDto;
 import com.superprice.productms.model.Supermarket;
 import com.superprice.productms.model.Product;
 import com.superprice.productms.model.Review;
 import com.superprice.productms.repository.ProductRepository;
+
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -14,6 +16,7 @@ import java.util.List;
 
 @Service
 public class ProductServiceImpl implements ProductService{
+
 
     public ProductServiceImpl(ProductRepository productRepository) {
         this.productRepository = productRepository;
@@ -40,6 +43,7 @@ public class ProductServiceImpl implements ProductService{
 //    }
 
 
+
     @Override
     public void writeReview(int product_id, Review review) {
         // save review to DB.
@@ -56,6 +60,7 @@ public class ProductServiceImpl implements ProductService{
                 LocalDateTime.now()));
         return reviews;
     }
+
 
     public List<ProductDto> addProduct(List<ProductDto> products) {
         List<ProductDto> savedProducts = new ArrayList<>();
