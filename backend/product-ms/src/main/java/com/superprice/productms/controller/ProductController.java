@@ -29,11 +29,12 @@ public class ProductController {
      * by providing a search query.
      * @param query
      * @return products matching query
+     * E.g.: http://localhost:8080/products/search?query=Apple
      */
     @GetMapping("/search")
-    public ResponseEntity<List<Product>> searchProducts(@RequestParam String query) {
-        List<Product> products = productService.searchProducts(query);
-        return ResponseEntity.ok(products);
+    public List<ProductDto> searchProducts(@RequestParam String query) {
+        List<ProductDto> products = productService.searchProducts(query);
+        return products;
     }
 
     /**HTTP Method: GET

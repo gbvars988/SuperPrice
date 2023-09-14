@@ -20,16 +20,16 @@ public class ProductServiceImpl implements ProductService{
     }
 
     private ProductRepository productRepository;
-    @Override
-    public List<Product> searchProducts(String query) {
-        List<Product> products = new ArrayList<>();
-//        products.add(new Product(1,
-//                "milk",
-//                "full cream 2L",
-//                01,
-//                "https://img.freepik.com/free-vector/isolated-milk-box-cartoon-style_1308-117384.jpg?w=360"));
-        return products;
-    }
+//    @Override
+//    public List<ProductDto> searchProducts(String query) {
+//        List<ProductDto> products = new ArrayList<>();
+////        products.add(new Product(1,
+////                "milk",
+////                "full cream 2L",
+////                01,
+////                "https://img.freepik.com/free-vector/isolated-milk-box-cartoon-style_1308-117384.jpg?w=360"));
+//        return products;
+//    }
 
 //    @Override
 //    public List<PriceInfo> comparePrices(int productId) {
@@ -81,6 +81,12 @@ public class ProductServiceImpl implements ProductService{
                     .build());
         }
         return savedProducts;
+    }
+
+    @Override
+    public List<ProductDto> searchProducts(String query) {
+        // Call the custom repository method to search for products by name
+        return productRepository.findByProductName(query);
     }
 
 }

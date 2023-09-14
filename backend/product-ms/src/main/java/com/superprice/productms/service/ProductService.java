@@ -8,7 +8,7 @@ import com.superprice.productms.model.Review;
 import java.util.List;
 
 public interface ProductService {
-    List<Product> searchProducts(String query);
+//    List<Product> searchProducts(String query);
 
 //    List<PriceInfo> comparePrices(int productId);
 
@@ -16,7 +16,7 @@ public interface ProductService {
 
     List<Review> getReviews(int productId);
 
-
+    List<ProductDto> searchProducts(String query);
     List<ProductDto> addProduct(List<ProductDto> products);
 
 }
