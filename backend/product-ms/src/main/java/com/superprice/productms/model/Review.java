@@ -36,4 +36,6 @@ public class Review {
     public String getUsername() {
         return username;
     }
+
 }
+

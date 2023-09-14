@@ -1,37 +1,58 @@
 package com.superprice.productms.model;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
+@Entity(name = "product")
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
 public class Product {
-    private int productID;
-    private String name;
-    private String description;
-    private int categoryID;
-    private String imageURL;
 
-    public Product(int productID, String name, String description, int categoryID, String imageURL) {
-        this.productID = productID;
-        this.name = name;
-        this.description = description;
-        this.categoryID = categoryID;
-        this.imageURL = imageURL;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int ProductID;
+    private String Name;
+    private String Description;
+    private String Category;
+    private String ImageURL;
+    private int Weight;
+//    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+//    private List<String> Supermarkets;
 
-    public int getProductID() {
-        return productID;
-    }
+//    public Product(int productID, String name, String description, int categoryID, String imageURL) {
+//        this.productID = productID;
+//        this.name = name;
+//        this.description = description;
+//        this.categoryID = categoryID;
+//        this.imageURL = imageURL;
+//    }
 
-    public String getName() {
-        return name;
-    }
+//    public int getProductID() {
+//        return productID;
+//    }
+//
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public String getDescription() {
+//        return description;
+//    }
 
-    public String getDescription() {
-        return description;
-    }
+//    public int getCategoryID() {
+//        return categoryID;
+//    }
 
-    public int getCategoryID() {
-        return categoryID;
-    }
+//    public String getImageURL() {
+//        return imageURL;
+//    }
 
-    public String getImageURL() {
-        return imageURL;
-    }
+
 }
