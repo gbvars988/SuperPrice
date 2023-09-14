@@ -17,12 +17,18 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int ProductID;
-    private String Name;
-    private String Description;
-    private String Category;
-    private String ImageURL;
-    private int Weight;
+    @Column(name = "ProductID")
+    private int productId;
+    @Column(name = "Name")
+    private String name;
+    @Column(name = "Description")
+    private String description;
+    @Column(name = "Category")
+    private String category;
+    @Column(name = "ImageURL")
+    private String imageURL;
+    @Column(name = "Weight")
+    private double weight;
 //    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
 //    private List<String> Supermarkets;
 
