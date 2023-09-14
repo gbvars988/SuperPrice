@@ -1,5 +1,6 @@
 package com.superprice.productms.controller;
 
+//import com.superprice.productms.dto.ProductDto;
 import com.superprice.productms.dto.ProductDto;
 import com.superprice.productms.model.PriceInfo;
 import com.superprice.productms.model.Supermarket;
@@ -34,11 +35,11 @@ public class ProductController {
 
      * E.g.: http://localhost:8080/products/search?query=Apple
      */
-//    @GetMapping("/search")
-//    public List<ProductDto> searchProducts(@RequestParam String query) {
-//        List<ProductDto> products = productService.searchProducts(query);
-//        return products;
-//    }
+    @GetMapping("/search")
+    public List<ProductDto> searchProductsByName(@RequestParam String query) {
+        List<ProductDto> products = productService.searchProductsByName(query);
+        return products;
+    }
 
     /**HTTP Method: GET
      * Endpoint: "/products/compare/{product_id}
@@ -67,11 +68,11 @@ public class ProductController {
     }
     
 
-    @PostMapping("/add")
-    public List<ProductDto> addProducts(@RequestBody List<ProductDto> products) {
-        List<ProductDto> productDtos = productService.addProduct(products);
-        return productDtos;
-    }
+//    @PostMapping("/add")
+//    public List<ProductDto> addProducts(@RequestBody List<ProductDto> products) {
+//        List<ProductDto> productDtos = productService.addProduct(products);
+//        return productDtos;
+//    }
 
 
 }

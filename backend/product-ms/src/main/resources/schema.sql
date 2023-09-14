@@ -1,5 +1,6 @@
 -- Create Product Table
-CREATE TABLE IF NOT EXISTS Product (
+# DROP TABLE IF EXISTS Product;
+CREATE TABLE Product (
     ProductID INT PRIMARY KEY AUTO_INCREMENT,
     Name VARCHAR(255) NOT NULL,
     Description TEXT,
@@ -8,14 +9,16 @@ CREATE TABLE IF NOT EXISTS Product (
     Weight DOUBLE
     );
 
--- Create Supermarket Table
-CREATE TABLE IF NOT EXISTS Supermarket (
+# Create Supermarket Table
+# DROP TABLE IF EXISTS Supermarket;
+CREATE TABLE Supermarket (
     SupermarketID INT PRIMARY KEY AUTO_INCREMENT,
     Name VARCHAR(255) NOT NULL
     );
 
 -- Create SupermarketProduct Table
-CREATE TABLE IF NOT EXISTS SupermarketProduct (
+# DROP TABLE IF EXISTS SupermarketProduct;
+CREATE TABLE SupermarketProduct (
     SupermarketID INT,
     ProductID INT,
     Price DOUBLE NOT NULL,

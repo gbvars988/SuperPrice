@@ -1,8 +1,7 @@
 -- Insert Data into Supermarket Table
-INSERT INTO Supermarket (Name) VALUES
-    ('Coles'),
-    ('Woolworths'),
-    ('Aldi');
+INSERT INTO Supermarket (Name) VALUES ('Coles');
+INSERT INTO Supermarket (Name) VALUES ('Woolworths');
+INSERT INTO Supermarket (Name) VALUES ('Aldi');
 
 -- Insert Data into Product Table
 INSERT INTO Product (Name, Description, Category, ImageURL, Weight) VALUES
@@ -85,10 +84,10 @@ INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
     (1, 34, 3.20),
     (1, 35, 2.30),
     (1, 36, 1.20),
-    (1, 37, 0.60);
+    (1, 37, 0.60),
+    (1, 38, 0.90);
 
 -- Prices for products in Woolworths (SupermarketID = 2)
-INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
 INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
     (2, 1, 1.40),
     (2, 2, 0.50),
@@ -126,10 +125,10 @@ INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
     (2, 34, 3.30),
     (2, 35, 2.20),
     (2, 36, 1.20),
-    (2, 37, 0.60);
+    (2, 37, 0.60),
+    (2, 38, 2.90);
 
 -- Prices for products in Aldi (SupermarketID = 3)
-INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
 INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
     (3, 1, 1.20),
     (3, 2, 0.60),
@@ -167,6 +166,7 @@ INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
     (3, 34, 3.10),
     (3, 35, 1.90),
     (3, 36, 0.80),
-    (3, 37, 0.40);
+    (3, 37, 0.40),
+    (3, 38, 1.60);
 
 

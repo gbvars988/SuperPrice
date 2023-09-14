@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface ProductService {
 
-//    List<Product> searchProducts(String query);
+    List<ProductDto> searchProductsByName(String query);
 
     List<PriceInfo> comparePrices(int productId);
 
@@ -20,6 +20,6 @@ public interface ProductService {
 
     List<Review> getReviews(int productId);
 
-    List<ProductDto> addProduct(List<ProductDto> products);
+//    List<ProductDto> addProduct(List<ProductDto> products);
 
 }
