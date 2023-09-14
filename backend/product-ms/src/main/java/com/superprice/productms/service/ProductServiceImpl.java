@@ -3,6 +3,7 @@ package com.superprice.productms.service;
 
 
 import com.superprice.productms.dto.ProductDto;
+import com.superprice.productms.model.PriceInfo;
 import com.superprice.productms.model.Supermarket;
 import com.superprice.productms.model.Product;
 import com.superprice.productms.model.Review;
@@ -22,25 +23,18 @@ public class ProductServiceImpl implements ProductService{
         this.productRepository = productRepository;
     }
 
-    private ProductRepository productRepository;
+//    private ProductRepository productRepository;
 //    @Override
 //    public List<ProductDto> searchProducts(String query) {
 //        List<ProductDto> products = new ArrayList<>();
-////        products.add(new Product(1,
-////                "milk",
-////                "full cream 2L",
-////                01,
-////                "https://img.freepik.com/free-vector/isolated-milk-box-cartoon-style_1308-117384.jpg?w=360"));
+//        products.add(new Product(1,
+//                "milk",
+//                "full cream 2L",
+//                01,
+//                "https://img.freepik.com/free-vector/isolated-milk-box-cartoon-style_1308-117384.jpg?w=360"));
 //        return products;
 //    }
-
-//    @Override
-//    public List<PriceInfo> comparePrices(int productId) {
-//        List<PriceInfo> prices = new ArrayList<>();
-//        prices.add(new PriceInfo("Coles", 2.50));
-//        prices.add(new PriceInfo("Woolworths", 1.90));
-//        return prices;
-//    }
+//
 
 
 
@@ -61,6 +55,14 @@ public class ProductServiceImpl implements ProductService{
         return reviews;
     }
 
+    @Override
+    public List<PriceInfo> comparePrices(int productId) {
+        List<PriceInfo> prices = new ArrayList<>();
+        prices.add(new PriceInfo("Coles", 2.50));
+        prices.add(new PriceInfo("Woolworths", 1.90));
+        return prices;
+
+    }
 
     public List<ProductDto> addProduct(List<ProductDto> products) {
         List<ProductDto> savedProducts = new ArrayList<>();
@@ -88,10 +90,11 @@ public class ProductServiceImpl implements ProductService{
         return savedProducts;
     }
 
-    @Override
-    public List<ProductDto> searchProducts(String query) {
-        // Call the custom repository method to search for products by name
-        return productRepository.findByProductName(query);
-    }
+//    @Override
+//    public List<ProductDto> searchProducts(String query) {
+//        // Call the custom repository method to search for products by name
+//        return productRepository.findByProductName(query);
+//    }
+
 
 }
