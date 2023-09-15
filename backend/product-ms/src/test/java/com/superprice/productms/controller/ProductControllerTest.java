@@ -39,4 +39,40 @@ public class ProductControllerTest {
         List<ProductDto> actualProducts = this.controller.searchProductsByName("Apple");
         assertEquals(0, actualProducts.size());
     }
+
+    @Test
+    void should_returnEmptyList_When_noSupermarketProductsFound() {
+        int productId = 123;
+        when(this.service.comparePrices(productId)).thenReturn(new ArrayList<>());
+        List<SupermarketProduct> actualSupermarketProducts = this.controller.comparePrices(productId);
+        assertEquals(1, actualSupermarketProducts.size());
+    }
+    @Test
+    void should_returnSupermarketProducts_When_productsFound() {
+        // Arrange
+        int productId = 456;
+        List<SupermarketProduct> expectedSupermarketProducts = new ArrayList<>();
+        // Add some SupermarketProduct objects to the expected list
+        SupermarketProduct product1 = new SupermarketProduct();
+        product1.setProductId(productId);
+        product1.setSupermarketId(1);
+        product1.setPrice(2.99);
+        expectedSupermarketProducts.add(product1);
+
+        SupermarketProduct product2 = new SupermarketProduct();
+        product2.setProductId(productId);
+        product2.setSupermarketId(2);
+        product2.setPrice(3.49);
+        expectedSupermarketProducts.add(product2);
+
+
+        when(this.service.comparePrices(productId)).thenReturn(expectedSupermarketProducts);
+
+
+        List<SupermarketProduct> actualSupermarketProducts = this.controller.comparePrices(productId);
+
+
+        assertEquals(1, actualSupermarketProducts.size());
+
+    }
 }
