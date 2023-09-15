@@ -72,7 +72,7 @@ public class ProductControllerTest {
         List<SupermarketProduct> actualSupermarketProducts = this.controller.comparePrices(productId);
 
 
-        assertEquals(2, actualSupermarketProducts.size());
+        assertEquals(expectedSupermarketProducts.size(), actualSupermarketProducts.size());
 
     }
 }

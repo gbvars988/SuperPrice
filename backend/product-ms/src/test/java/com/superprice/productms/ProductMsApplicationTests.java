@@ -8,8 +8,8 @@ class ProductMsApplicationTests {
 
 	// contextLoads commented until database integration with gitHub actions is implemented
 
-//	@Test
-//	void contextLoads() {
-//	}
+	@Test
+	void contextLoads() {
+	}
 
 }
