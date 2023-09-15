@@ -2,11 +2,7 @@ package com.superprice.productms.service;
 
 
 import com.superprice.productms.dto.ProductDto;
-import com.superprice.productms.model.PriceInfo;
-import com.superprice.productms.model.Supermarket;
-
-import com.superprice.productms.model.Product;
-import com.superprice.productms.model.Review;
+import com.superprice.productms.model.*;
 
 import java.util.List;
 
@@ -14,7 +10,9 @@ public interface ProductService {
 
     List<ProductDto> searchProductsByName(String query);
 
-    List<PriceInfo> comparePrices(int productId);
+    List<ProductDto> getAllProducts();
+
+    List<SupermarketProduct> comparePrices(int productId);
 
     void writeReview(int productId, Review review);
 

@@ -1,8 +1,16 @@
 package com.superprice.productms.model;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-//@Table(name = "SupermarketProduct")
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
+@Table(name = "supermarketproduct")
 @IdClass(SupermarketProductId.class)  // Composite Primary Key class
 public class SupermarketProduct {
 
@@ -17,11 +25,11 @@ public class SupermarketProduct {
     @Column(name = "Price")
     private double price;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne // (fetch = FetchType.LAZY)
     @JoinColumn(name = "SupermarketID", referencedColumnName = "SupermarketID", insertable = false, updatable = false)
     private Supermarket supermarket;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne // (fetch = FetchType.LAZY)
     @JoinColumn(name = "ProductID", referencedColumnName = "ProductID", insertable = false, updatable = false)
     private Product product;
 
