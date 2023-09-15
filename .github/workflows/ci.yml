@@ -36,5 +36,6 @@ jobs:
 
       - name: Build and test productms
         run: |
-          ./backend/product-ms/mvnw --batch-mode --update-snapshots package
-          ./backend/product-ms/mvnw --batch-mode test
+          cd backend/product-ms
+          ./mvnw --batch-mode --update-snapshots package
+          ./mvnw --batch-mode test
