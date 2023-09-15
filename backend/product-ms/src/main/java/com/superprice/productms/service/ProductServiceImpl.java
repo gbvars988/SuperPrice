@@ -4,10 +4,7 @@ package com.superprice.productms.service;
 
 //import com.superprice.productms.dto.ProductDto;
 import com.superprice.productms.dto.ProductDto;
-import com.superprice.productms.model.PriceInfo;
-import com.superprice.productms.model.Supermarket;
-import com.superprice.productms.model.Product;
-import com.superprice.productms.model.Review;
+import com.superprice.productms.model.*;
 import com.superprice.productms.repository.ProductRepository;
 
 import com.superprice.productms.repository.SupermarketProductRepository;
@@ -78,12 +75,8 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public List<PriceInfo> comparePrices(int productId) {
-        List<PriceInfo> prices = new ArrayList<>();
-        prices.add(new PriceInfo("Coles", 2.50));
-        prices.add(new PriceInfo("Woolworths", 1.90));
-        return prices;
-
+    public List<SupermarketProduct> comparePrices(int productId) {
+        return supermarketProductRepository.findByProductId(productId);
     }
 
 //    public List<ProductDto> addProduct(List<ProductDto> products) {

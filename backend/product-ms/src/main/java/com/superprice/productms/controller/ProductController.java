@@ -2,10 +2,7 @@ package com.superprice.productms.controller;
 
 //import com.superprice.productms.dto.ProductDto;
 import com.superprice.productms.dto.ProductDto;
-import com.superprice.productms.model.PriceInfo;
-import com.superprice.productms.model.Supermarket;
-import com.superprice.productms.model.Product;
-import com.superprice.productms.model.Review;
+import com.superprice.productms.model.*;
 
 import com.superprice.productms.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,10 +45,14 @@ public class ProductController {
      * @param product_id
      * @return list of PriceInfo objects (supermarket, price)
      */
+//    @GetMapping("/compare/{product_id}")
+//    public ResponseEntity<List<PriceInfo>> comparePrices(@PathVariable int product_id) {
+//        List<PriceInfo> prices = productService.comparePrices(product_id);
+//        return ResponseEntity.ok(prices);
+//    }
     @GetMapping("/compare/{product_id}")
-    public ResponseEntity<List<PriceInfo>> comparePrices(@PathVariable int product_id) {
-        List<PriceInfo> prices = productService.comparePrices(product_id);
-        return ResponseEntity.ok(prices);
+    public List<SupermarketProduct> comparePrices(@PathVariable int product_id) {
+        return productService.comparePrices(product_id);
     }
 
     @PostMapping("/{product_id}/reviews")
