@@ -18,3 +18,5 @@ jobs:
           distribution: 'temurin'
       - name: Build with Maven
         run: ./mvnw --batch-mode --update-snapshots package
+      - name: Run Tests
+        run: ./mvnw --batch-mode test
