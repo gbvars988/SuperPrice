@@ -16,7 +16,7 @@ public class ProductDto {
     private String Description;
     private String Category;
     private String ImageURL;
-    private int Weight;
+    private double Weight;
 //    private List<Supermarket> Supermarkets;
 
 }
