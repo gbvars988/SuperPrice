@@ -27,3 +27,15 @@ jobs:
 
       - name: Test code
         run: cd frontend && npm test
+
+      - name: Use Java 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build and test productms
+        run: |
+          cd backend/product-ms
+          ./mvnw --batch-mode --update-snapshots package
+          ./mvnw --batch-mode test
