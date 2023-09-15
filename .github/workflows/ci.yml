@@ -27,3 +27,20 @@ jobs:
 
       - name: Test code
         run: cd frontend && npm test
+        
+      - name: Change to the root directory
+        run: cd ..
+
+      - name: Change to productms directory
+        run: cd backend/product-ms
+
+      - name: Use Java 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Build and test productms
+        run: |
+          ./mvnw --batch-mode --update-snapshots package
+          ./mvnw --batch-mode test
