@@ -28,7 +28,7 @@ public class ProductControllerTest {
     void should_returnEmpty_When_noProducts() {
         when(this.service.searchProductsByName("Apple")).thenReturn(new ArrayList<>());
         List<ProductDto> actualProducts = this.controller.searchProductsByName("Apple");
-        assertEquals(1, actualProducts.size());
+        assertEquals(0, actualProducts.size());
     }
     @Test
     void should_return1_When_matchingProduct() {
@@ -37,7 +37,7 @@ public class ProductControllerTest {
         products.add(apple);
         when(this.service.searchProductsByName("Apple")).thenReturn(products);
         List<ProductDto> actualProducts = this.controller.searchProductsByName("Apple");
-        assertEquals(0, actualProducts.size());
+        assertEquals(1, actualProducts.size());
     }
 
     @Test
@@ -45,7 +45,7 @@ public class ProductControllerTest {
         int productId = 123;
         when(this.service.comparePrices(productId)).thenReturn(new ArrayList<>());
         List<SupermarketProduct> actualSupermarketProducts = this.controller.comparePrices(productId);
-        assertEquals(1, actualSupermarketProducts.size());
+        assertEquals(0, actualSupermarketProducts.size());
     }
     @Test
     void should_returnSupermarketProducts_When_productsFound() {
@@ -72,7 +72,7 @@ public class ProductControllerTest {
         List<SupermarketProduct> actualSupermarketProducts = this.controller.comparePrices(productId);
 
 
-        assertEquals(1, actualSupermarketProducts.size());
+        assertEquals(2, actualSupermarketProducts.size());
 
     }
 }

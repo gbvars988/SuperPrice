@@ -6,8 +6,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class ProductMsApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+	// contextLoads commented until database integration with gitHub actions is implemented
+
+//	@Test
+//	void contextLoads() {
+//	}
 
 }
