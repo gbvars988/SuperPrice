@@ -4,6 +4,7 @@ package com.superprice.productms.service;
 
 //import com.superprice.productms.dto.ProductDto;
 import com.superprice.productms.dto.ProductDto;
+import com.superprice.productms.dto.SupermarketPriceDto;
 import com.superprice.productms.model.*;
 import com.superprice.productms.repository.ProductRepository;
 
@@ -37,6 +38,13 @@ public class ProductServiceImpl implements ProductService{
                 .collect(Collectors.toList());
     }
 
+    public List<ProductDto> getAllProducts() {
+        List<Product> products = productRepository.findAll();
+        return products.stream()
+                .map(this::convertToDto)
+                .collect(Collectors.toList());
+    }
+
     private ProductDto convertToDto(Product product) {
         ProductDto dto = new ProductDto();
         dto.setProductID(product.getProductId());
@@ -46,6 +54,12 @@ public class ProductServiceImpl implements ProductService{
         dto.setImageURL(product.getImageURL());
         dto.setWeight(product.getWeight());
 
+        List<SupermarketProduct> supermarketProducts = supermarketProductRepository.findByProductId(product.getProductId());
+        List<SupermarketPriceDto> supermarketPrices = supermarketProducts.stream()
+                .map(sp -> new SupermarketPriceDto(sp.getSupermarketId(), sp.getSupermarket().getName(), sp.getPrice()))
+                .collect(Collectors.toList());
+
+        dto.setSupermarketPrices(supermarketPrices);
         // If you want to also populate the Supermarkets for each product
         // List<Supermarket> supermarkets = supermarketProductRepository.findSupermarketsByProduct(product);
         // dto.setSupermarkets(supermarkets);

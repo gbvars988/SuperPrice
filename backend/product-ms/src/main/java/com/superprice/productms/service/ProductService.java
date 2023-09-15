@@ -10,6 +10,8 @@ public interface ProductService {
 
     List<ProductDto> searchProductsByName(String query);
 
+    List<ProductDto> getAllProducts();
+
     List<SupermarketProduct> comparePrices(int productId);
 
     void writeReview(int productId, Review review);

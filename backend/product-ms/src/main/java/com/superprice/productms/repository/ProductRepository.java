@@ -14,5 +14,5 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
 //    @Query("SELECT NEW com.superprice.productms.dto.ProductDto(p.ProductID, p.Name, p.Description, p.Category, p.ImageURL, p.Weight) FROM product p WHERE p.Name = :productName")
 //    List<ProductDto> findByProductName(@Param("productName") String productName);
     List<Product> findByNameContaining(String query);
-
+    List<Product> findAll();
 }
