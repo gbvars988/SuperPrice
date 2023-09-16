@@ -43,16 +43,16 @@ INSERT INTO Product (Name, Description, Category, ImageURL, Weight) VALUES
     ('Orange Juice', '100% freshly squeezed with no added nothing.', 'Drinks', 'https://source.unsplash.com/featured/?orangejuice', 150),
     ('Espresso Coffee', 'Pick me up Im in a rush', 'Drinks', 'https://source.unsplash.com/featured/?espresso', 50),
     ('Mineral Water', 'If the tap is not enough than get it from the mountain', 'Drinks', 'https://source.unsplash.com/featured/?mineralwater', 1000),
-    ('Salmon Fillet', 'Fresh Atlantic salmon fillet', 'Meat & Seafood', 'https://source.unsplash.com/featured/?salmon', 500),
-    ('Ribeye Steak', 'Prime ribeye steak, perfect for grilling', 'Meat & Seafood', 'https://source.unsplash.com/featured/?ribeye', 800),
-    ('Chicken Breast', 'Boneless, skinless chicken breast', 'Meat & Seafood', 'https://source.unsplash.com/featured/?chicken', 300),
-    ('Tuna Steak', 'Sushi-grade ahi tuna steak', 'Meat & Seafood', 'https://source.unsplash.com/featured/?tuna', 400),
-    ('Pork Chop', 'Center-cut pork chop', 'Meat & Seafood', 'https://source.unsplash.com/featured/?pork', 600),
-    ('Lobster Tail', 'Maine lobster tail, great for special occasions', 'Meat & Seafood', 'https://source.unsplash.com/featured/?lobster', 700),
-    ('Ground Beef', 'Lean ground beef, perfect for burgers', 'Meat & Seafood', 'https://source.unsplash.com/featured/?beef', 500),
-    ('Shrimp', 'Jumbo shrimp, deveined and peeled', 'Meat & Seafood', 'https://source.unsplash.com/featured/?shrimp', 400),
-    ('Lamb Chops', 'Grass-fed lamb chops', 'Meat & Seafood', 'https://source.unsplash.com/featured/?lamb', 500),
-    ('Scallops', 'Fresh sea scallops', 'Meat & Seafood', 'https://source.unsplash.com/featured/?scallops', 300);
+    ('Salmon Fillet', 'Fresh Atlantic salmon fillet', 'Meat & Seafood', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-e33uc11FLqbDZzto0BTxkfMaAAYnE9eR9HKqt62D-E3v4Qri', 500),
+    ('Ribeye Steak', 'Prime ribeye steak, perfect for grilling', 'Meat & Seafood', 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRLdiN290YYOV_gPIKo7Qs06J9QlwIcjxrhjmxgAsMOJVkKsjrW', 800),
+    ('Chicken Breast', 'Boneless, skinless chicken breast', 'Meat & Seafood', 'https://t3.gstatic.com/images?q=tbn:ANd9GcQx9orKHqo_HIsIhshAkSSCcvbtnDppD5Fv5Um_kjfGLRzjoRfU', 300),
+    ('Tuna Steak', 'Sushi-grade ahi tuna steak', 'Meat & Seafood', 'https://t0.gstatic.com/images?q=tbn:ANd9GcRruGpW5SnPwTL1veRtQiI3_e1379Q-Ef0Sk7FNDQIZvQObm5xj', 400),
+    ('Pork Chop', 'Center-cut pork chop', 'Meat & Seafood', 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTqMYdYWAaB4QRL2Qfg7x9G1x_S1OrerCSiGa6dH6nFZW1RW3Kt', 600),
+    ('Lobster Tail', 'Maine lobster tail, great for special occasions', 'Meat & Seafood', 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRNtGrS4fEuKJDwjhKfFKBquzb2lSZNsM8MqyQVML8KkAFvIaOn', 700),
+    ('Ground Beef', 'Lean ground beef, perfect for burgers', 'Meat & Seafood', 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRxXox9gXCXtwpFBr7IWjcVP134ufIf2leQBaU4YIumRvrFOH72', 500),
+    ('Shrimp', 'Jumbo shrimp, deveined and peeled', 'Meat & Seafood', 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRTHm52TcmfsO-T_DDmdX3TiZCXtjeAi8wG5dWpqoFCqSo9aC5O', 400),
+    ('Lamb Chops', 'Grass-fed lamb chops', 'Meat & Seafood', 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRzIKULWn-FBudSTZa9aAI7WnZ4DQvCRdWvssYftWRZ8ekVqMMk', 500),
+    ('Scallops', 'Fresh sea scallops', 'Meat & Seafood', 'https://t3.gstatic.com/images?q=tbn:ANd9GcTbiVo6mGy-8qrx_vSXbnE8cDNs-cSgvpW_HyEu23k3Md3qFGwG', 300);
 -- Insert Data into SupermarketProduct Table (SupermarketID, ProductID, Price)
 
 -- Prices for products in Coles (SupermarketID = 1)
