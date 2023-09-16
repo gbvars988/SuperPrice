@@ -24,9 +24,9 @@ const ShopPage: React.FC = () => {
     useState<Record<string, boolean>>(initialFilterState);
 
   const [products, setProducts] = useState([]);
+  const [allProducts, setAllProducts] = useState([]);
 
-  const [keyword, setKeyword] = useState('');
-
+  const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
     axios
@@ -39,16 +39,25 @@ const ShopPage: React.FC = () => {
       });
   }, []);
 
-
   const updateKeyword = (keyword: string) => {
-    const filtered = products.filter(product => {
+    // const filtered = products.filter((product) => {
+    //   // @ts-ignore
+    //   return `${product.name.toLowerCase()}}`.includes(keyword.toLowerCase());
+    // });
+    axios
+      .get(
+        `http://localhost:8080/product-service/products/search?query=${keyword.toLowerCase()}`
+      )
+      .then((res) => {
+        console.log(res.data);
+        setProducts(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
-      // @ts-ignore
-      return `${product.name.toLowerCase()}}`.includes(keyword.toLowerCase());
-    })
-    setKeyword(keyword);
-    setProducts(filtered);
-  }
+    http: setKeyword(keyword);
+  };
 
   // TODO: use filterState to filter products later once product data is available
 
@@ -60,7 +69,7 @@ const ShopPage: React.FC = () => {
             <Heading as="h2" size="xl" paddingRight={20}>
               {LABEL.SHOP}
             </Heading>
-            <SearchBar keyword={keyword} onChange={updateKeyword}/>
+            <SearchBar keyword={keyword} onChange={updateKeyword} />
             <SortButton></SortButton>
           </HStack>
         </Box>
