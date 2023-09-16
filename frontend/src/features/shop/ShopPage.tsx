@@ -13,7 +13,6 @@ import { LABEL } from "../../language";
 import Filter from "./Filter";
 import Gallery from "./Gallery";
 import SortButton from "../../components/sort/SortButton";
-import SearchBar from "../../components/search/SearchBar";
 
 const ShopPage: React.FC = () => {
   const initialFilterState = Object.fromEntries(
@@ -22,13 +21,10 @@ const ShopPage: React.FC = () => {
 
   const [filterState, setFilterState] =
     useState<Record<string, boolean>>(initialFilterState);
-
   const [products, setProducts] = useState([]);
-  const [allProducts, setAllProducts] = useState([]);
-
-  const [keyword, setKeyword] = useState("");
 
   useEffect(() => {
+    // TOOD: Replace with actual API call
     axios
       .get("http://localhost:8080/product-service/products/all")
       .then((res) => {
@@ -39,26 +35,6 @@ const ShopPage: React.FC = () => {
       });
   }, []);
 
-  const updateKeyword = (keyword: string) => {
-    // const filtered = products.filter((product) => {
-    //   // @ts-ignore
-    //   return `${product.name.toLowerCase()}}`.includes(keyword.toLowerCase());
-    // });
-    axios
-      .get(
-        `http://localhost:8080/product-service/products/search?query=${keyword.toLowerCase()}`
-      )
-      .then((res) => {
-        console.log(res.data);
-        setProducts(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
-    http: setKeyword(keyword);
-  };
-
   // TODO: use filterState to filter products later once product data is available
 
   return (
@@ -66,10 +42,9 @@ const ShopPage: React.FC = () => {
       <VStack spacing={8} align={"center"}>
         <Box w={"100%"}>
           <HStack justify="space-between">
-            <Heading as="h2" size="xl" paddingRight={20}>
+            <Heading as="h2" size="xl">
               {LABEL.SHOP}
             </Heading>
-            <SearchBar keyword={keyword} onChange={updateKeyword} />
             <SortButton></SortButton>
           </HStack>
         </Box>

@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8246521-ea13-4813-b56a-fd31fca3eaea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../frontend/src/components/search/SearchBar.test.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/start-productms.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/delivery-ms/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/delivery-ms/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notifications-ms/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/notifications-ms/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-ms/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/user-ms/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

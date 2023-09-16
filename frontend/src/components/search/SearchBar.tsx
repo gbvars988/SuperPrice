@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from "react";
+import React from "react";
 import {
     Input,
     InputGroup,
@@ -6,8 +6,7 @@ import {
 } from "@chakra-ui/react";
 import { Search2Icon } from "@chakra-ui/icons";
 
-// @ts-ignore
-const SearchBar = ({keyword, onChange}) => {
+const SearchBar = () => {
     return (
         <>
             <InputGroup borderRadius={5} size="md">
@@ -15,15 +14,7 @@ const SearchBar = ({keyword, onChange}) => {
                     pointerEvents="none"
                     children={<Search2Icon color="gray.600" />}
                 />
-                <Input
-                    value={keyword}
-                    variant="outline"
-                    type="text"
-                    placeholder="Search products"
-                    fontSize={20}
-                    htmlSize={30}
-                    onChange={(e) => onChange(e.target.value)}
-                />
+                <Input variant="outline" type="text" placeholder="Search products" fontSize={20} htmlSize={30} width='auto' />
             </InputGroup>
         </>
     );

@@ -85,18 +85,7 @@ INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
     (1, 35, 2.30),
     (1, 36, 1.20),
     (1, 37, 0.60),
-    (1, 38, 0.90),
-    (1, 39, 10.25),
-    (1, 40, 12.75),
-    (1, 41, 15.50),
-    (1, 42, 11.99),
-    (1, 43, 14.25),
-    (1, 44, 18.99),
-    (1, 45, 13.75),
-    (1, 46, 10.99),
-    (1, 47, 19.50),
-    (1, 48, 16.75);
-
+    (1, 38, 0.90);
 
 -- Prices for products in Woolworths (SupermarketID = 2)
 INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
@@ -137,17 +126,7 @@ INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
     (2, 35, 2.20),
     (2, 36, 1.20),
     (2, 37, 0.60),
-    (2, 38, 2.90),
-    (2, 39, 11.75),
-    (2, 40, 10.50),
-    (2, 41, 12.25),
-    (2, 42, 14.99),
-    (2, 43, 15.75),
-    (2, 44, 13.50),
-    (2, 45, 16.25),
-    (2, 46, 17.99),
-    (2, 47, 18.50),
-    (2, 48, 19.75);
+    (2, 38, 2.90);
 
 -- Prices for products in Aldi (SupermarketID = 3)
 INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
@@ -188,16 +167,6 @@ INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
     (3, 35, 1.90),
     (3, 36, 0.80),
     (3, 37, 0.40),
-    (3, 38, 1.60),
-    (3, 39, 10.50),
-    (3, 40, 12.00),
-    (3, 41, 11.25),
-    (3, 42, 13.75),
-    (3, 43, 14.50),
-    (3, 44, 16.00),
-    (3, 45, 15.25),
-    (3, 46, 18.00),
-    (3, 47, 17.25),
-    (3, 48, 19.00);
+    (3, 38, 1.60);
 
 
