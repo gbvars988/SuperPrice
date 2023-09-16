@@ -3,8 +3,8 @@ on:
   push:
     branches:
       - '*'
-    paths:
-      - 'team-project-group-p8-01/backend/product-ms/**'
+#    paths:
+#      - 'team-project-group-p8-01/backend/product-ms/**'
 
 jobs:
   build-backend:
@@ -25,4 +25,5 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Build with Maven
+        working-directory: backend/product-ms
         run: ./mvnw --batch-mode --update-snapshots package
