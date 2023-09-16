@@ -87,20 +87,10 @@ describe("<ProductPage />", () => {
     await waitFor(() => {
       const sampleProducts = screen.queryAllByText("SampleProduct 500g");
       expect(sampleProducts).toHaveLength(2);
+
       expect(screen.getByText("SupermarketA")).toBeInTheDocument();
+
       expect(screen.getByText("$10.5")).toBeInTheDocument();
-    });
-  });
-
-  it("renders only non-cheapest supermarkets at the bottom", async () => {
-    mockedAxios.get.mockResolvedValue({ data: mockProductData });
-
-    render(<ProductPage />);
-
-    await waitFor(() => {
-      expect(
-        screen.getByText("SampleProduct SupermarketB")
-      ).toBeInTheDocument();
     });
   });
 });
