@@ -57,7 +57,7 @@ const ShopPage: React.FC = () => {
       <VStack spacing={8} align={"center"}>
         <Box w={"100%"}>
           <HStack justify="space-between">
-            <Heading as="h2" size="xl">
+            <Heading as="h2" size="xl" paddingRight={20}>
               {LABEL.SHOP}
             </Heading>
             <SearchBar keyword={keyword} onChange={updateKeyword}/>

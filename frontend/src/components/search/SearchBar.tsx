@@ -22,7 +22,6 @@ const SearchBar = ({keyword, onChange}) => {
                     placeholder="Search products"
                     fontSize={20}
                     htmlSize={30}
-                    width='auto'
                     onChange={(e) => onChange(e.target.value)}
                 />
             </InputGroup>
