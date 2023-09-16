@@ -8,8 +8,9 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class UserDto {
-    private int userID;
-    private String firstName;
-    private String lastName;
-    private String email;
+    private int UserID;
+    private String FirstName;
+    private String LastName;
+    private String Email;
+    private String Password;
 }

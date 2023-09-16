@@ -12,6 +12,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
+
 @RestController
 @RequestMapping("user")
 public class UserController {
@@ -24,14 +28,15 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> userRegistration(@RequestBody UserDto userDto) {
-        boolean regStatus = userService.userRegistration(userDto);
-        if (regStatus) {
-            return ResponseEntity.status(HttpStatus.CREATED).body("User created successfully!");
-        }
-        else {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Failed to register user.");
-        }
+    public ResponseEntity<Object> userRegistration(@RequestBody UserDto userDto) {
+        UserDto registeredUser = userService.userRegistration(userDto);
 
+        if (registeredUser.getUserID() > 0) {
+            return ResponseEntity.status(HttpStatus.CREATED).body(registeredUser);
+        } else {
+            Map<String, String> errorResponse = new HashMap<>();
+            errorResponse.put("message", "Failed to register user.");
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
+        }
     }
 }

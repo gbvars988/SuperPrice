@@ -15,8 +15,18 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public boolean userRegistration(UserDto userDto) {
+    public UserDto userRegistration(UserDto userDto) {
+        User user = User.builder()
+                .firstName(userDto.getFirstName())
+                .lastName(userDto.getLastName())
+                .email(userDto.getEmail())
+                .password(userDto.getPassword())
+                .build();
 
-        return true;
+        user = userRepository.save(user);
+
+        userDto.setUserID(user.getUserID());
+
+        return userDto;
     }
 }
