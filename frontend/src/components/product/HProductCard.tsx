@@ -5,18 +5,18 @@ type Props = {
 };
 
 interface IProduct {
-  ProductID: number;
-  Name: string;
-  Weight: number;
-  ImageURL: string;
-  Price: number;
-  SupermarketName: string;
+  productID: string;
+  name: string;
+  weight: number;
+  imageURL: string;
+  price: number;
+  supermarketName: string;
 }
 
 const HProductCard = (props: Props) => {
   return (
     <div>
-      {props.product.Name} {props.product.SupermarketName}
+      {props.product.name} {props.product.supermarketName}
     </div>
   );
 };

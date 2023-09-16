@@ -5,22 +5,24 @@ import VProductCard from "./VProductCard";
 
 describe("VProductCard", () => {
   const mockProduct = {
-    ProductID: "1",
-    Name: "Test Product",
-    Weight: 100,
-    ImageURL: "https://example.com/image.jpg",
-    Supermarkets: [
+    productID: "1",
+    name: "Test Product",
+    weight: 100,
+    imageURL: "https://example.com/image.jpg",
+    supermarketPrices: [
       {
-        SupermarketID: "1",
-        Name: "Supermarket 1",
-        Price: 50,
+        supermarketId: 1,
+        supermarketName: "Supermarket 1",
+        price: 50,
       },
       {
-        SupermarketID: "2",
-        Name: "Supermarket 2",
-        Price: 40,
+        supermarketId: 2,
+        supermarketName: "Supermarket 2",
+        price: 40,
       },
     ],
+    category: "Test Category",
+    description: "Test Description",
   };
 
   it("renders the product name and weight", () => {
