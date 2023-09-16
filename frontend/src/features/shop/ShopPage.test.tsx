@@ -30,6 +30,8 @@ describe("<ShopPage />", () => {
     const filterHeader = screen.getByText(LABEL.FILTER);
     expect(filterHeader).toBeInTheDocument();
 
+    expect(screen.getByText(LABEL.SORT)).toBeInTheDocument();
+
     // const productsHeader = screen.getByText(LABEL.PRODUCTS);
     // expect(productsHeader).toBeInTheDocument();
   });
