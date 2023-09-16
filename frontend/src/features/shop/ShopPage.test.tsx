@@ -33,8 +33,6 @@ describe("<ShopPage />", () => {
     expect(screen.getByText(LABEL.SORT)).toBeInTheDocument();
     expect(screen.getByPlaceholderText("Search products")).toBeInTheDocument();
 
-    // const productsHeader = screen.getByText(LABEL.PRODUCTS);
-    // expect(productsHeader).toBeInTheDocument();
   });
 
   // TODO: add more tests for added functionality later

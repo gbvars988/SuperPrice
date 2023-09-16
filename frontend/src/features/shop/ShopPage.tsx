@@ -24,7 +24,6 @@ const ShopPage: React.FC = () => {
     useState<Record<string, boolean>>(initialFilterState);
 
   const [products, setProducts] = useState([]);
-  const [allProducts, setAllProducts] = useState([]);
 
   const [keyword, setKeyword] = useState("");
 
@@ -40,10 +39,6 @@ const ShopPage: React.FC = () => {
   }, []);
 
   const updateKeyword = (keyword: string) => {
-    // const filtered = products.filter((product) => {
-    //   // @ts-ignore
-    //   return `${product.name.toLowerCase()}}`.includes(keyword.toLowerCase());
-    // });
     axios
       .get(
         `http://localhost:8080/product-service/products/search?query=${keyword.toLowerCase()}`

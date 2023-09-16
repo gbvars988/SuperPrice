@@ -28,7 +28,6 @@ const NavBar: React.FC = () => {
                             <Link as={RouterLink} to={PATH.ABOUT} mr={4} fontSize={20}>
                                 {LABEL.ABOUT}
                             </Link>
-                            {/*<SearchBar></SearchBar>*/}
                         </HStack>
                     </HStack>
                     <HStack spacing={8} alignItems={'center'}>
