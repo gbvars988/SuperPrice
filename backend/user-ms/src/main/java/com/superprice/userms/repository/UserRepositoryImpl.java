@@ -1,4 +1,4 @@
-//package com.superprice.userms.repository;
-//
-//public class UserRepositoryImpl implements UserRepository{
-//}
+package com.superprice.userms.repository;
+
+public class UserRepositoryImpl implements UserRepository{
+}
