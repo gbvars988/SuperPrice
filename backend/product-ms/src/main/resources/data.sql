@@ -42,8 +42,17 @@ INSERT INTO Product (Name, Description, Category, ImageURL, Weight) VALUES
     ('Lemonade', 'Straight from the stand.', 'Drinks', 'https://source.unsplash.com/featured/?lemonade', 250),
     ('Orange Juice', '100% freshly squeezed with no added nothing.', 'Drinks', 'https://source.unsplash.com/featured/?orangejuice', 150),
     ('Espresso Coffee', 'Pick me up Im in a rush', 'Drinks', 'https://source.unsplash.com/featured/?espresso', 50),
-    ('Mineral Water', 'If the tap is not enough than get it from the mountain', 'Drinks', 'https://source.unsplash.com/featured/?mineralwater', 1000);
-
+    ('Mineral Water', 'If the tap is not enough than get it from the mountain', 'Drinks', 'https://source.unsplash.com/featured/?mineralwater', 1000),
+    ('Salmon Fillet', 'Fresh Atlantic salmon fillet', 'Meat & Seafood', 'https://source.unsplash.com/featured/?salmon', 500),
+    ('Ribeye Steak', 'Prime ribeye steak, perfect for grilling', 'Meat & Seafood', 'https://source.unsplash.com/featured/?ribeye', 800),
+    ('Chicken Breast', 'Boneless, skinless chicken breast', 'Meat & Seafood', 'https://source.unsplash.com/featured/?chicken', 300),
+    ('Tuna Steak', 'Sushi-grade ahi tuna steak', 'Meat & Seafood', 'https://source.unsplash.com/featured/?tuna', 400),
+    ('Pork Chop', 'Center-cut pork chop', 'Meat & Seafood', 'https://source.unsplash.com/featured/?pork', 600),
+    ('Lobster Tail', 'Maine lobster tail, great for special occasions', 'Meat & Seafood', 'https://source.unsplash.com/featured/?lobster', 700),
+    ('Ground Beef', 'Lean ground beef, perfect for burgers', 'Meat & Seafood', 'https://source.unsplash.com/featured/?beef', 500),
+    ('Shrimp', 'Jumbo shrimp, deveined and peeled', 'Meat & Seafood', 'https://source.unsplash.com/featured/?shrimp', 400),
+    ('Lamb Chops', 'Grass-fed lamb chops', 'Meat & Seafood', 'https://source.unsplash.com/featured/?lamb', 500),
+    ('Scallops', 'Fresh sea scallops', 'Meat & Seafood', 'https://source.unsplash.com/featured/?scallops', 300);
 -- Insert Data into SupermarketProduct Table (SupermarketID, ProductID, Price)
 
 -- Prices for products in Coles (SupermarketID = 1)
@@ -85,7 +94,18 @@ INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
     (1, 35, 2.30),
     (1, 36, 1.20),
     (1, 37, 0.60),
-    (1, 38, 0.90);
+    (1, 38, 0.90),
+    (1, 39, 10.25),
+    (1, 40, 12.75),
+    (1, 41, 15.50),
+    (1, 42, 11.99),
+    (1, 43, 14.25),
+    (1, 44, 18.99),
+    (1, 45, 13.75),
+    (1, 46, 10.99),
+    (1, 47, 19.50),
+    (1, 48, 16.75);
+
 
 -- Prices for products in Woolworths (SupermarketID = 2)
 INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
@@ -126,7 +146,17 @@ INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
     (2, 35, 2.20),
     (2, 36, 1.20),
     (2, 37, 0.60),
-    (2, 38, 2.90);
+    (2, 38, 2.90),
+    (2, 39, 11.75),
+    (2, 40, 10.50),
+    (2, 41, 12.25),
+    (2, 42, 14.99),
+    (2, 43, 15.75),
+    (2, 44, 13.50),
+    (2, 45, 16.25),
+    (2, 46, 17.99),
+    (2, 47, 18.50),
+    (2, 48, 19.75);
 
 -- Prices for products in Aldi (SupermarketID = 3)
 INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
@@ -167,6 +197,16 @@ INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
     (3, 35, 1.90),
     (3, 36, 0.80),
     (3, 37, 0.40),
-    (3, 38, 1.60);
+    (3, 38, 1.60),
+    (3, 39, 10.50),
+    (3, 40, 12.00),
+    (3, 41, 11.25),
+    (3, 42, 13.75),
+    (3, 43, 14.50),
+    (3, 44, 16.00),
+    (3, 45, 15.25),
+    (3, 46, 18.00),
+    (3, 47, 17.25),
+    (3, 48, 19.00);
 
 
