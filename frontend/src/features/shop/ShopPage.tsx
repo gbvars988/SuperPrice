@@ -13,6 +13,7 @@ import { LABEL } from "../../language";
 import Filter from "./Filter";
 import Gallery from "./Gallery";
 import SortButton from "../../components/sort/SortButton";
+import SearchBar from "../../components/search/SearchBar";
 
 const ShopPage: React.FC = () => {
   const initialFilterState = Object.fromEntries(
@@ -21,10 +22,13 @@ const ShopPage: React.FC = () => {
 
   const [filterState, setFilterState] =
     useState<Record<string, boolean>>(initialFilterState);
+
   const [products, setProducts] = useState([]);
 
+  const [keyword, setKeyword] = useState('');
+
+
   useEffect(() => {
-    // TOOD: Replace with actual API call
     axios
       .get("http://localhost:8080/product-service/products/all")
       .then((res) => {
@@ -34,6 +38,17 @@ const ShopPage: React.FC = () => {
         console.log(err);
       });
   }, []);
+
+
+  const updateKeyword = (keyword: string) => {
+    const filtered = products.filter(product => {
+
+      // @ts-ignore
+      return `${product.name.toLowerCase()}}`.includes(keyword.toLowerCase());
+    })
+    setKeyword(keyword);
+    setProducts(filtered);
+  }
 
   // TODO: use filterState to filter products later once product data is available
 
@@ -45,6 +60,7 @@ const ShopPage: React.FC = () => {
             <Heading as="h2" size="xl">
               {LABEL.SHOP}
             </Heading>
+            <SearchBar keyword={keyword} onChange={updateKeyword}/>
             <SortButton></SortButton>
           </HStack>
         </Box>
