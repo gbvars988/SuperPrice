@@ -38,4 +38,3 @@ jobs:
         run: |
           cd backend/product-ms
           ./mvnw --batch-mode --update-snapshots package
-          ./mvnw --batch-mode test
