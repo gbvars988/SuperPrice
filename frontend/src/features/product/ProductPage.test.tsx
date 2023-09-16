@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import axios from "axios";
 import ProductPage from "./ProductPage";
@@ -85,7 +85,8 @@ describe("<ProductPage />", () => {
     render(<ProductPage />);
 
     await waitFor(() => {
-      expect(screen.getByText("SampleProduct 500g")).toBeInTheDocument();
+      const sampleProducts = screen.queryAllByText("SampleProduct 500g");
+      expect(sampleProducts).toHaveLength(2);
       expect(screen.getByText("SupermarketA")).toBeInTheDocument();
       expect(screen.getByText("$10.5")).toBeInTheDocument();
     });
