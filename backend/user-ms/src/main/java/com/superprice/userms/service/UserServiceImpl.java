@@ -5,6 +5,7 @@ import com.superprice.userms.model.User;
 import com.superprice.userms.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.mindrot.jbcrypt.BCrypt;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -16,11 +17,13 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public UserDto userRegistration(UserDto userDto) {
+        String hashedPassword = BCrypt.hashpw(userDto.getPassword(), BCrypt.gensalt());
+
         User user = User.builder()
                 .firstName(userDto.getFirstName())
                 .lastName(userDto.getLastName())
                 .email(userDto.getEmail())
-                .password(userDto.getPassword())
+                .password(hashedPassword)
                 .build();
 
         user = userRepository.save(user);
@@ -28,5 +31,12 @@ public class UserServiceImpl implements UserService{
         userDto.setUserID(user.getUserID());
 
         return userDto;
+    }
+    public boolean authenticateUser(String email, String enteredPassword) {
+        User user = userRepository.findByEmail(email);
+        if (user != null) {
+            return BCrypt.checkpw(enteredPassword, user.getPassword());
+        }
+        return false;
     }
 }
