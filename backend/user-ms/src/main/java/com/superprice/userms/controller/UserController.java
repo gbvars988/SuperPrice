@@ -1,6 +1,7 @@
 package com.superprice.userms.controller;
 
 
+import com.superprice.userms.dto.UserDto;
 import com.superprice.userms.model.User;
 import com.superprice.userms.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +24,8 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<String> userRegistration(@RequestBody User user) {
-        boolean regStatus = userService.userRegistration(user);
+    public ResponseEntity<String> userRegistration(@RequestBody UserDto userDto) {
+        boolean regStatus = userService.userRegistration(userDto);
         if (regStatus) {
             return ResponseEntity.status(HttpStatus.CREATED).body("User created successfully!");
         }
