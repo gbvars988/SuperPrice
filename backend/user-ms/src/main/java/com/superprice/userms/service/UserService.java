@@ -1,7 +1,9 @@
 package com.superprice.userms.service;
 
+import com.superprice.userms.dto.UserDto;
 import com.superprice.userms.model.User;
 
 public interface UserService {
-    boolean userRegistration(User user);
+    UserDto userRegistration(UserDto userDto);
+    boolean authenticateUser(String email, String enteredPassword);
 }
