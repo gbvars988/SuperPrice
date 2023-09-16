@@ -15,24 +15,61 @@ jest.mock("react-router-dom", () => ({
   }),
 }));
 
+// const mockProductData = [
+//   {
+//     productID: "1",
+//     name: "SampleProduct",
+//     weight: 500,
+//     imageURL: "http://sampleurl.com/image.jpg",
+//     supermarketPrices: [
+//       {
+//         supermarketId: 1,
+//         supermarketName: "SupermarketA",
+//         price: 10.5,
+//       },
+//       {
+//         supermarketId: 2,
+//         supermarketName: "SupermarketB",
+//         price: 12,
+//       },
+//     ],
+//   },
+// ];
+
 const mockProductData = [
   {
-    ProductID: 1,
-    Name: "SampleProduct",
-    Weight: 500,
-    ImageURL: "http://sampleurl.com/image.jpg",
-    Supermarkets: [
-      {
-        SupermarketID: "1",
-        Name: "SupermarketA",
-        Price: 10.5,
-      },
-      {
-        SupermarketID: "2",
-        Name: "SupermarketB",
-        Price: 12,
-      },
-    ],
+    supermarketId: 1,
+    productId: "1",
+    price: 10.5,
+    supermarket: {
+      supermarketId: 1,
+      name: "SupermarketA",
+    },
+    product: {
+      productId: 1,
+      name: "SampleProduct",
+      description: "SampleDescription",
+      category: "SampleCategory",
+      imageURL: "http://sampleurl.com/image.jpg",
+      weight: 500,
+    },
+  },
+  {
+    supermarketId: 2,
+    productId: "1",
+    price: 12,
+    supermarket: {
+      supermarketId: 2,
+      name: "SupermarketB",
+    },
+    product: {
+      productId: 1,
+      name: "SampleProduct",
+      description: "SampleDescription",
+      category: "SampleCategory",
+      imageURL: "http://sampleurl.com/image.jpg",
+      weight: 500,
+    },
   },
 ];
 
@@ -63,7 +100,6 @@ describe("<ProductPage />", () => {
       expect(
         screen.getByText("SampleProduct SupermarketB")
       ).toBeInTheDocument();
-      // expect(screen.queryByText("SupermarketA")).not.toBeInTheDocument(); // Not at the bottom
     });
   });
 });

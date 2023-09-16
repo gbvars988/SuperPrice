@@ -3,28 +3,30 @@ import { render, screen } from "@testing-library/react";
 import ProductInfo from "./ProductInfo";
 
 const mockProduct = {
-  ProductID: 1,
-  Name: "SampleProduct",
-  Weight: 500,
-  ImageURL: "http://sampleurl.com/image.jpg",
-  Supermarkets: [
+  productID: "1",
+  name: "SampleProduct",
+  weight: 500,
+  imageURL: "http://sampleurl.com/image.jpg",
+  supermarketPrices: [
     {
-      SupermarketID: "1",
-      Name: "SupermarketA",
-      Price: 10.5,
+      supermarketId: 1,
+      supermarketName: "SupermarketA",
+      price: 10.5,
     },
     {
-      SupermarketID: "2",
-      Name: "SupermarketB",
-      Price: 12,
+      supermarketId: 2,
+      supermarketName: "SupermarketB",
+      price: 12,
     },
   ],
+  category: "Sample Category",
+  description: "Sample Description",
 };
 
 const mockCheapestSupermarket = {
-  SupermarketID: "1",
-  Name: "SupermarketA",
-  Price: 10.5,
+  supermarketId: 1,
+  supermarketName: "SupermarketA",
+  price: 10.5,
 };
 
 describe("<ProductInfo />", () => {

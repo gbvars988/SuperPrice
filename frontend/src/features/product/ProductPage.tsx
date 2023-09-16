@@ -12,30 +12,39 @@ import HProductCard from "../../components/product/HProductCard";
 import { LABEL } from "../../language/index";
 
 interface IProduct {
-  ProductID: number;
-  Name: string;
-  Weight: number;
-  ImageURL: string;
-  Description: string;
-  Supermarkets: {
-    SupermarketID: string;
-    Name: string;
-    Price: number;
+  productID: string;
+  name: string;
+  weight: number;
+  imageURL: string;
+  supermarketPrices: {
+    supermarketId: number;
+    supermarketName: string;
+    price: number;
   }[];
+  category: string;
+  description: string;
 }
 
 interface ISupermarket {
-  SupermarketID: string;
-  Name: string;
-  Price: number;
+  supermarketId: number;
+  supermarketName: string;
+  price: number;
+}
+
+interface ReqISupermarket {
+  supermarket: {
+    supermarketId: number;
+    name: string;
+  };
+  price: number;
 }
 
 const ProductPage = () => {
   const [product, setProduct] = useState<IProduct | null>(null);
   const [cheapestSupermarket, setCheapestSupermarket] = useState({
-    SupermarketID: "",
-    Name: "",
-    Price: 0,
+    supermarketId: 0,
+    supermarketName: "",
+    price: 0,
   });
   const [productLoaded, setProductLoaded] = useState(false);
   const [quantity, setQuantity] = useState(1);
@@ -44,23 +53,38 @@ const ProductPage = () => {
 
   useEffect(() => {
     if (!productID) return;
-    // TOOD: Replace with actual API call
     axios
-      .get("/mocks/products.json")
+      .get(
+        `http://localhost:8080/product-service/products/compare/${productID}`
+      )
       .then((res) => {
-        const product = res.data.find(
-          (product: IProduct) => product.ProductID === parseInt(productID)
-        );
+        setProduct(res.data);
+        const p = res.data[0];
+        const product = {
+          productID: p.productId,
+          name: p.product.name,
+          weight: p.product.weight,
+          imageURL: p.product.imageURL,
+          description: p.product.description,
+          category: p.product.category,
+          supermarketPrices: res.data.map((supermarket: ReqISupermarket) => {
+            return {
+              supermarketId: supermarket.supermarket.supermarketId,
+              supermarketName: supermarket.supermarket.name,
+              price: supermarket.price,
+            };
+          }),
+        };
         setProduct(product);
         let cheapestSupermarket = {
-          SupermarketID: "",
-          Name: "",
-          Price: 0,
+          supermarketId: 0,
+          supermarketName: "",
+          price: 0,
         };
-        product.Supermarkets.forEach((supermarket: ISupermarket) => {
-          if (cheapestSupermarket.Price === 0) {
+        product.supermarketPrices.forEach((supermarket: ISupermarket) => {
+          if (cheapestSupermarket.price === 0) {
             cheapestSupermarket = supermarket;
-          } else if (supermarket.Price < cheapestSupermarket.Price) {
+          } else if (supermarket.price < cheapestSupermarket.price) {
             cheapestSupermarket = supermarket;
           }
         });
@@ -81,12 +105,12 @@ const ProductPage = () => {
       <Flex flexDir="column" gap="10">
         <Flex gap="24">
           <Image
-            src={product?.ImageURL}
+            src={product?.imageURL}
             fallback={<Skeleton boxSize={{ base: "132.5px", lg: "555px" }} />}
             boxSize={{ base: "132.5px", lg: "555px" }}
             alt={
               product
-                ? `${product.Name} ${product.Weight}g`
+                ? `${product.name} ${product.weight}g`
                 : "Loading product image"
             }
           ></Image>
@@ -98,7 +122,7 @@ const ProductPage = () => {
                 cheapestSupermarket={cheapestSupermarket}
               />
               <Flex flexDir="column" gap="4">
-                <Text>{product?.Description}</Text>
+                <Text>{product?.description}</Text>
                 <Text fontSize="17px">
                   {LABEL.INGREDIENTS}: {"To be implemented"}
                 </Text>
@@ -112,19 +136,19 @@ const ProductPage = () => {
           </Flex>
         </Flex>
         <Flex gap="3">
-          {product?.Supermarkets.map((supermarket, i) => {
+          {product?.supermarketPrices.map((supermarket, i) => {
             if (
-              supermarket.SupermarketID !== cheapestSupermarket.SupermarketID
+              supermarket.supermarketId !== cheapestSupermarket.supermarketId
             ) {
               const newProduct = {
-                ProductID: product?.ProductID,
-                Name: product?.Name,
-                Weight: product?.Weight,
-                ImageURL: product?.ImageURL,
-                SupermarketName: supermarket.Name,
-                Price: supermarket.Price,
+                productID: product?.productID,
+                name: product?.name,
+                weight: product?.weight,
+                imageURL: product?.imageURL,
+                supermarketName: supermarket.supermarketName,
+                price: supermarket.price,
               };
-              return <HProductCard product={newProduct} />;
+              return <HProductCard key={i} product={newProduct} />;
             }
           })}
         </Flex>
