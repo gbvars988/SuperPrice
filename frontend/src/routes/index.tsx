@@ -6,12 +6,14 @@ import AuthPage from "../features/auth/AuthPage";
 import ShopPage from "../features/shop/ShopPage";
 import ProductPage from "../features/product/ProductPage";
 import { PATH } from "../language";
+import AboutStatic from "../features/about/AboutStatic";
 
 const Router: React.FC = () => {
   return (
     <BrowserRouter>
       <NavBar />
       <Routes>
+        <Route path={PATH.ABOUT} element={<AboutStatic />} />
         <Route path={PATH.HOMEPAGE} element={<HomePage />} />
         <Route path={PATH.LOGIN} element={<AuthPage />} />
         <Route path={PATH.SHOP} element={<ShopPage />} />
