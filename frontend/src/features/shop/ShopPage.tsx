@@ -26,7 +26,7 @@ const ShopPage: React.FC = () => {
   useEffect(() => {
     // TOOD: Replace with actual API call
     axios
-      .get("/mocks/products.json")
+      .get("http://localhost:8080/product-service/products/all")
       .then((res) => {
         setProducts(res.data);
       })
