@@ -8,6 +8,11 @@ on:
 jobs:
   build-backend:
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.1
+        env:
+          MYSQL_ROOT_PASSWORD: rootpassword
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
@@ -16,5 +21,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Build with Maven
+        env:
+          SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/productdb_CI
+          SPRING_DATASOURCE_USERNAME: root
+          SPRING_DATASOURCE_PASSWORD: rootpassword
         working-directory: team-project-group-p8-01/backend/product-ms
         run: ./mvnw --batch-mode --update-snapshots package
