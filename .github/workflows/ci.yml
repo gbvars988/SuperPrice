@@ -38,8 +38,8 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
     steps:
       - uses: actions/checkout@v3
-      - name: Debug MySQL
-        run: docker logs mysql
+#      - name: Debug MySQL
+#        run: docker logs mysql
       - name: Wait for MySQL to start
         run: wget -qO- https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh > wait-for-it.sh && chmod +x wait-for-it.sh && ./wait-for-it.sh mysql:3306 --timeout=120
       - name: Set up JDK 17
