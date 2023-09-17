@@ -1,6 +1,7 @@
 package com.superprice.userms.service;
 
 import com.superprice.userms.dto.UserDto;
+import com.superprice.userms.dto.UserResponseDto;
 import com.superprice.userms.model.User;
 import com.superprice.userms.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +39,18 @@ public class UserServiceImpl implements UserService{
             return BCrypt.checkpw(enteredPassword, user.getPassword());
         }
         return false;
+    }
+
+    public UserResponseDto getUserDetailsByEmail(String email) {
+        User user = userRepository.findByEmail(email);
+        if (user != null) {
+            return UserResponseDto.builder()
+                    .UserID(user.getUserID())
+                    .FirstName(user.getFirstName())
+                    .LastName(user.getLastName())
+                    .Email(user.getEmail())
+                    .build();
+        }
+        return null;
     }
 }
