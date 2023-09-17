@@ -27,10 +27,12 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
+
     /**
      * HTTP Method: POST
      * Endpoint: "/user/register"
      * Description: Register a new user.
+     *
      * @param userDto The user registration information in JSON format.
      * @return HTTP 201 Created with the registered user information if successful
      */
@@ -39,6 +41,8 @@ public class UserController {
         UserDto registeredUser = userService.userRegistration(userDto);
 
         if (registeredUser.getUserID() > 0) {
+            // remove the password from the response
+            registeredUser.setPassword(null);
             return ResponseEntity.status(HttpStatus.CREATED).body(registeredUser);
         } else {
             Map<String, String> errorResponse = new HashMap<>();
@@ -46,13 +50,15 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResponse);
         }
     }
+
     /**
      * HTTP Method: POST
      * Endpoint: "/user/authenticate"
      * Description: Authenticate a user.
+     *
      * @param userLoginRequest The user login request containing email and password in JSON format.
      * @return HTTP 200 OK with "Authentication successful" if authentication is successful,
-     *         or HTTP 401 Unauthorized with "Authentication failed" if authentication fails.
+     * or HTTP 401 Unauthorized with "Authentication failed" if authentication fails.
      */
     @PostMapping("/authenticate")
     public ResponseEntity<String> authenticateUser(@RequestBody UserLoginRequest userLoginRequest) {
