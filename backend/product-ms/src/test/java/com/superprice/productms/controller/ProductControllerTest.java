@@ -38,6 +38,7 @@ public class ProductControllerTest {
 //        List<ProductDto> actualProducts = this.controller.searchProductsByName("Apple");
 //        assertEquals(1, actualProducts.size());
 //    }
+    // test
 
     @Test
     void should_returnEmptyList_When_noSupermarketProductsFound() {
