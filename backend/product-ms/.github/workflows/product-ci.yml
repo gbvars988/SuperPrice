@@ -2,7 +2,7 @@ name: Build and test product service
 on:
   push:
     branches:
-      - '*'
+      - 'main'
     paths:
       - 'team-project-group-p8-01/backend/product-ms/**'
 
