@@ -4,9 +4,18 @@ import userEvent from '@testing-library/user-event';
 import AuthPage from './AuthPage';
 import {act} from 'react-dom/test-utils';
 import {LABEL} from "../../language";
+import {BrowserRouter} from "react-router-dom";
+
+const renderWithRouter = (ui: React.ReactElement) => {
+    return render(
+        <BrowserRouter>
+            {ui}
+        </BrowserRouter>
+    );
+};
 
 test('renders AuthPage correctly and can toggle between forms', async () => {
-    render(<AuthPage/>);
+    renderWithRouter(<AuthPage/>);
 
     // check if LoginForm is rendered initially
     const loginButton = screen.getByRole('button', {name: LABEL.LOGIN});
