@@ -13,8 +13,11 @@ jobs:
         image: mysql:8.1
         env:
           MYSQL_ROOT_PASSWORD: rootpassword
+          options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
     steps:
       - uses: actions/checkout@v3
+      - name: Wait for MySQL to start
+        run: wget -qO- https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh > wait-for-it.sh && chmod +x wait-for-it.sh && ./wait-for-it.sh mysql:3306 --timeout=60
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
