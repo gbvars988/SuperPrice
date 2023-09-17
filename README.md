@@ -54,13 +54,11 @@ Optional if you do not have MySQL setup on your device:
 1. Download and install the MySQL community server for your OS - https://dev.mysql.com/downloads/mysql/
 2. Select a password for the root user and remember it during installation
 3. Download and install MySQL shell for your OS - https://dev.mysql.com/downloads/shell/
-
-**Mandatory:**
-4. Verify your MySQL db is up by running `mysql -u root -p` in a terminal and entering your password, it should open
+4. **Mandatory:** Verify your MySQL db is up by running `mysql -u root -p` in a terminal and entering your password, it should open
    a MySQL shell
-5. Change the password in `__-ms/src/main/resources/application.properties` to the one you selected in the MySQL installation step (for the microservices you want to run)
-6. cd into `__-ms/` and run `mvn clean package` to build the microservice (for M2, start up user-ms and product-ms, others are still WIP)
-7. Run `java -jar target/*.jar` to run the microservice where '*' is package name (e.g. product-ms-0.0.1-SNAPSHOT.jar)
+5. **Mandatory:** Change the password in `__-ms/src/main/resources/application.properties` to the one you selected in the MySQL installation step (for the microservices you want to run)
+6. **Mandatory:** cd into `__-ms/` and run `mvn clean package` to build the microservice (for M2, start up user-ms and product-ms, others are still WIP)
+7. **Mandatory:** Run `java -jar target/*.jar` to run the microservice where '*' is package name (e.g. product-ms-0.0.1-SNAPSHOT.jar)
 
 ## Frontend
 
