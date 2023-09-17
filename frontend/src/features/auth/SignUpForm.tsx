@@ -17,6 +17,8 @@ const SignUpForm: React.FC = () => {
     const {setUser} = useContext(UserContext);
     const navigate = useNavigate();
 
+    const allFieldsFilled = firstName && lastName && email && password && confirmPassword;
+
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
 
@@ -109,6 +111,7 @@ const SignUpForm: React.FC = () => {
                         colorScheme="teal"
                         type="submit"
                         onClick={handleSubmit}
+                        isDisabled={!allFieldsFilled}
                     >
                         {LABEL.SIGN_UP}
                     </Button>
