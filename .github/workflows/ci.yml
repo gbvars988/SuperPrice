@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ 'ron/DEFECT-backendci' ]
+    branches: [ 'ron/DEFECT-backendci-fix' ]
   pull_request:
     branches: [ 'main' ]
 
