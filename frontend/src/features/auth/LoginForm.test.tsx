@@ -2,9 +2,18 @@ import React from 'react';
 import {render, screen} from '@testing-library/react';
 import LoginForm from './LoginForm';
 import {LABEL} from '../../language';
+import {BrowserRouter} from "react-router-dom";
+
+const renderWithRouter = (ui: React.ReactElement) => {
+    return render(
+        <BrowserRouter>
+            {ui}
+        </BrowserRouter>
+    );
+};
 
 test('renders LoginForm correctly', () => {
-    render(<LoginForm/>);
+    renderWithRouter(<LoginForm/>);
 
     // check all labels and buttons are included in the login form
     const emailLabel = screen.getByText(LABEL.EMAIL);
@@ -16,5 +25,3 @@ test('renders LoginForm correctly', () => {
     const submitButton = screen.getByRole('button', {name: LABEL.LOGIN});
     expect(submitButton).toBeInTheDocument();
 });
-
-// TODO: add all login behaviour tests here when that is implemented

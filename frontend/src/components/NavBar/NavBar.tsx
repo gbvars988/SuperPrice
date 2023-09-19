@@ -1,11 +1,20 @@
-import {Box, Container, Flex, HStack, Link, useColorModeValue} from '@chakra-ui/react';
-import React from 'react';
-import {Link as RouterLink} from 'react-router-dom';
+import {Box, Button, Container, Flex, HStack, Link, useColorModeValue} from '@chakra-ui/react';
+import React, {useContext} from 'react';
+import {Link as RouterLink, useNavigate} from 'react-router-dom';
 import {LABEL, PATH} from "../../language";
 import {ColorModeSwitcher} from "../../ColorModeSwitcher";
+import {UserContext} from '../../context/UserContext';
 import CartDrawer from '../../features/cart/CartDrawer';
 
 const NavBar: React.FC = () => {
+    const {user, setUser} = useContext(UserContext);
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        setUser(null);
+        navigate(PATH.HOMEPAGE);
+    };
+
     return (
         <Box bg={useColorModeValue('gray.100', 'gray.900')}>
             <Container maxW={'7xl'} px={7}>
@@ -33,9 +42,15 @@ const NavBar: React.FC = () => {
                     <HStack spacing={8} alignItems={'center'}>
                         <CartDrawer></CartDrawer>
                         <ColorModeSwitcher justifySelf="flex-end"/>
-                        <Link as={RouterLink} to={PATH.LOGIN} fontSize={20}>
-                            Login
-                        </Link>
+                        {user ? (
+                            <Button onClick={handleLogout} fontSize={20} fontWeight={400}>
+                                Logout
+                            </Button>
+                        ) : (
+                            <Link as={RouterLink} to={PATH.LOGIN} fontSize={20}>
+                                Login
+                            </Link>
+                        )}
                     </HStack>
                 </Flex>
             </Container>

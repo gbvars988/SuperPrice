@@ -7,6 +7,7 @@ import ShopPage from "../features/shop/ShopPage";
 import EditCart from '../features/cart/EditCart';
 import ProductPage from "../features/product/ProductPage";
 import {PATH} from "../language";
+import AboutStatic from "../features/about/AboutStatic";
 
 
 const Router: React.FC = () => {
@@ -14,6 +15,7 @@ const Router: React.FC = () => {
         <BrowserRouter>
             <NavBar/>
             <Routes>
+        <Route path={PATH.ABOUT} element={<AboutStatic />} />
                 <Route path={PATH.HOMEPAGE} element={<HomePage/>}/>
                 <Route path={PATH.LOGIN} element={<AuthPage/>}/>
                 <Route path={PATH.SHOP} element={<ShopPage/>}/>

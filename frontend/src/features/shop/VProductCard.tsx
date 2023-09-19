@@ -3,37 +3,39 @@ import { Flex, Link, Image, Text, Skeleton } from "@chakra-ui/react";
 
 interface VProductCardProps {
   product: {
-    ProductID: string;
-    Name: string;
-    Weight: number;
-    ImageURL: string;
-    Supermarkets: {
-      SupermarketID: string;
-      Name: string;
-      Price: number;
+    productID: string;
+    name: string;
+    weight: number;
+    imageURL: string;
+    supermarketPrices: {
+      supermarketId: number;
+      supermarketName: string;
+      price: number;
     }[];
+    category: string;
+    description: string;
   };
 }
 
 const VProductCard = (props: VProductCardProps) => {
   const [cheapeastSupermarket, setCheapestSupermarket] = useState({
-    SupermarketID: "",
-    Name: "",
-    Price: 0,
+    supermarketId: 0,
+    supermarketName: "",
+    price: 0,
   });
   const [imgLoaded, setImgLoaded] = useState(false);
 
   useEffect(() => {
     // Find the cheapest supermarket
     let cheapestSupermarket = {
-      SupermarketID: "",
-      Name: "",
-      Price: 0,
+      supermarketId: 0,
+      supermarketName: "",
+      price: 0,
     };
-    props.product.Supermarkets.forEach((supermarket) => {
-      if (cheapestSupermarket.Price === 0) {
+    props.product.supermarketPrices.forEach((supermarket) => {
+      if (cheapestSupermarket.price === 0) {
         cheapestSupermarket = supermarket;
-      } else if (supermarket.Price < cheapestSupermarket.Price) {
+      } else if (supermarket.price < cheapestSupermarket.price) {
         cheapestSupermarket = supermarket;
       }
     });
@@ -42,7 +44,7 @@ const VProductCard = (props: VProductCardProps) => {
 
   return (
     <Link
-      href={`/shop/${props.product.ProductID}`}
+      href={`/shop/${props.product.productID}`}
       _hover={{ textDecoration: "none" }}
       _focus={{ textDecoration: "none" }}
       _active={{ textDecoration: "none" }}
@@ -65,8 +67,8 @@ const VProductCard = (props: VProductCardProps) => {
           boxSize={{ base: "132.5px", lg: "265px" }}
         >
           <Image
-            src={props.product.ImageURL}
-            alt={props.product.Name + " " + props.product.Weight + "g"}
+            src={props.product.imageURL}
+            alt={props.product.name + " " + props.product.weight + "g"}
             boxSize={{ base: "132.5px", lg: "265px" }}
             objectFit="cover"
             userSelect={"none"}
@@ -75,16 +77,18 @@ const VProductCard = (props: VProductCardProps) => {
         </Skeleton>
         <Flex gap="2">
           <Flex flexDir="column">
-            <Text fontWeight="bold">{`${props.product.Name} ${props.product.Weight}g`}</Text>
+            <Text fontWeight="bold">{`${props.product.name} ${props.product.weight}g`}</Text>
             <Flex gap="3">
               <Flex flexDir="column">
-                <Text fontWeight="bold">{cheapeastSupermarket.Name}</Text>
-                <Text>${cheapeastSupermarket.Price}</Text>
+                <Text fontWeight="bold">
+                  {cheapeastSupermarket.supermarketName}
+                </Text>
+                <Text>${cheapeastSupermarket.price}</Text>
               </Flex>
-              {props.product.Supermarkets.map((supermarket, i) => {
+              {props.product.supermarketPrices.map((supermarket, i) => {
                 if (
-                  supermarket.SupermarketID !==
-                  cheapeastSupermarket.SupermarketID
+                  supermarket.supermarketId !==
+                  cheapeastSupermarket.supermarketId
                 ) {
                   return (
                     <Flex
@@ -97,8 +101,10 @@ const VProductCard = (props: VProductCardProps) => {
                       transition={"all 0.2s ease-in-out"}
                       display={{ base: "none", lg: "flex" }}
                     >
-                      <Text fontWeight="bold">{supermarket.Name}</Text>
-                      <Text>${supermarket.Price}</Text>
+                      <Text fontWeight="bold">
+                        {supermarket.supermarketName}
+                      </Text>
+                      <Text>${supermarket.price}</Text>
                     </Flex>
                   );
                 }

@@ -5,22 +5,24 @@ type Props = {
   product: IProduct | null;
   productLoaded: boolean;
   cheapestSupermarket: {
-    SupermarketID: string;
-    Name: string;
-    Price: number;
+    supermarketId: number;
+    supermarketName: string;
+    price: number;
   };
 };
 
 interface IProduct {
-  ProductID: number;
-  Name: string;
-  Weight: number;
-  ImageURL: string;
-  Supermarkets: {
-    SupermarketID: string;
-    Name: string;
-    Price: number;
+  productID: string;
+  name: string;
+  weight: number;
+  imageURL: string;
+  supermarketPrices: {
+    supermarketId: number;
+    supermarketName: string;
+    price: number;
   }[];
+  category: string;
+  description: string;
 }
 
 const ProductInfo = (props: Props) => {
@@ -33,15 +35,15 @@ const ProductInfo = (props: Props) => {
         <Text
           fontSize="36px"
           fontWeight="semibold"
-        >{`${props.product?.Name} ${props.product?.Weight}g`}</Text>
+        >{`${props.product?.name} ${props.product?.weight}g`}</Text>
       </Skeleton>
       <Skeleton isLoaded={props.productLoaded}>
         <Text fontSize="36px" fontWeight="semibold">
-          {props.cheapestSupermarket.Name}
+          {props.cheapestSupermarket.supermarketName}
         </Text>
       </Skeleton>
       <Skeleton isLoaded={props.productLoaded}>
-        <Text fontSize="24px">${props.cheapestSupermarket.Price}</Text>
+        <Text fontSize="24px">${props.cheapestSupermarket.price}</Text>
       </Skeleton>
     </Flex>
   );
