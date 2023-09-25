@@ -40,3 +40,7 @@ jobs:
         run: cd backend/product-ms && ./mvnw --batch-mode --update-snapshots package
       - name: Build user-ms
         run: cd backend/user-ms && ./mvnw --batch-mode --update-snapshots package
+      - name: Build delivery-ms
+        run: cd backend/delivery-ms && ./mvnw --batch-mode --update-snapshots package
+      - name: Build notifications-ms
+        run: cd backend/notifications-ms && ./mvnw --batch-mode --update-snapshots package
