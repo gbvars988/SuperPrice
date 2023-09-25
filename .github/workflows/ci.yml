@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ 'ron/TASK-update-backend-ci' ]
+    branches: [ 'main' ]
   pull_request:
     branches: [ 'main' ]
 
