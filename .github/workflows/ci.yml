@@ -38,3 +38,5 @@ jobs:
           distribution: 'temurin'
       - name: Build product-ms
         run: cd backend/product-ms && ./mvnw --batch-mode --update-snapshots package
+      - name: Build user-ms
+        run: cd backend/user-ms && ./mvnw --batch-mode --update-snapshots package
