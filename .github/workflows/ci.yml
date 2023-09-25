@@ -49,7 +49,7 @@ jobs:
           distribution: 'temurin'
       - name: Build product-ms
         env:
-          SPRING_DATASOURCE_URL: 'jdbc:mysql://product-ms_mysqldb:3306/productdb_CI'
+          SPRING_DATASOURCE_URL: 'jdbc:mysql://mysql:3306/productdb_CI'
           SPRING_DATASOURCE_USERNAME: 'root'
           SPRING_DATASOURCE_PASSWORD: 'rootpassword'
         run: cd backend/product-ms && ./mvnw --batch-mode --update-snapshots package

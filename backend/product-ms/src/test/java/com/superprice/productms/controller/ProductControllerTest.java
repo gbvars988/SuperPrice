@@ -1,10 +1,16 @@
 package com.superprice.productms.controller;
 
 import com.superprice.productms.dto.ProductDto;
+import com.superprice.productms.model.Product;
 import com.superprice.productms.model.SupermarketProduct;
+import com.superprice.productms.repository.ProductRepository;
 import com.superprice.productms.service.ProductService;
+import com.superprice.productms.service.ProductServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
@@ -13,13 +19,14 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest
 public class ProductControllerTest {
     ProductController controller;
     ProductService service;
     @BeforeEach
     void setup() {
         this.service = mock(ProductService.class);
+        this.controller = new ProductController(this.service);
+        MockitoAnnotations.initMocks(this);
         this.controller = new ProductController(this.service);
     }
 
