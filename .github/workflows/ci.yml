@@ -30,12 +30,12 @@ jobs:
 
   build-backend:
     runs-on: ubuntu-latest
-    services:
-      mysql:
-        image: mysql:8.1.0
-        env:
-          MYSQL_ROOT_PASSWORD: 'rootpassword'
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
+#    services:
+#      mysql:
+#        image: mysql:8.1.0
+#        env:
+#          MYSQL_ROOT_PASSWORD: 'rootpassword'
+#        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=5
     steps:
       - uses: actions/checkout@v3
 #      - name: Debug MySQL
@@ -48,9 +48,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
       - name: Build product-ms
-        env:
-          SPRING_DATASOURCE_URL: 'jdbc:mysql://mysql:3306/productdb_CI'
-          SPRING_DATASOURCE_USERNAME: 'root'
-          SPRING_DATASOURCE_PASSWORD: 'rootpassword'
+#        env:
+#          SPRING_DATASOURCE_URL: 'jdbc:mysql://mysql:3306/productdb_CI'
+#          SPRING_DATASOURCE_USERNAME: 'root'
+#          SPRING_DATASOURCE_PASSWORD: 'rootpassword'
         run: cd backend/product-ms && ./mvnw --batch-mode --update-snapshots package
 
