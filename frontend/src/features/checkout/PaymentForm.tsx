@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   Grid,
   Input,
@@ -17,6 +18,23 @@ import "react-credit-cards-2/dist/es/styles-compiled.css";
 
 const PaymentForm: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
+
+  const [state, setState] = useState({
+    name: "",
+    number: "",
+    expiry: "",
+    cvc: "",
+    focus: "",
+  });
+
+  const handleInputChange = (evt: any) => {
+    const { name, value } = evt.target;
+    setState((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleInputFocus = (evt: any) => {
+    setState((prev) => ({ ...prev, focus: evt.target.name }));
+  };
 
   const validateInputs = () => {
     const nameRegex = /^[a-zA-Z\s]*$/;
@@ -44,23 +62,6 @@ const PaymentForm: React.FC = () => {
     return true;
   };
 
-  const [state, setState] = useState({
-    name: "",
-    number: "",
-    expiry: "",
-    cvc: "",
-    focus: "",
-  });
-
-  const handleInputChange = (evt: any) => {
-    const { name, value } = evt.target;
-    setState((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleInputFocus = (evt: any) => {
-    setState((prev) => ({ ...prev, focus: evt.target.name }));
-  };
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -76,7 +77,7 @@ const PaymentForm: React.FC = () => {
 
   return (
     <Box w={"70%"}>
-      <Progress colorScheme="teal" size="xs" isAnimated value={66} mb={5} />
+      <Progress colorScheme="teal" size="xs" isAnimated value={99} mb={5} />
 
       <Box borderWidth={1} borderRadius="md" p={10} minWidth={"450px"}>
         <FormControl onSubmit={handleSubmit} isInvalid={!!error}>
@@ -153,11 +154,7 @@ const PaymentForm: React.FC = () => {
                 </Text>
               </Box>
 
-              {error && (
-                <Text color="red.500" mb={5}>
-                  {error}
-                </Text>
-              )}
+              {error && <FormErrorMessage mt={5}>{error}</FormErrorMessage>}
             </Box>
 
             <Box display="flex" justifyContent="center" alignItems="center">

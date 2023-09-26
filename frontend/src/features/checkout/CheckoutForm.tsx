@@ -10,10 +10,10 @@ import {
   Progress,
   Radio,
   RadioGroup,
-  Text,
 } from "@chakra-ui/react";
-import { LABEL } from "../../language";
+import { LABEL, PATH } from "../../language";
 import { CartContext } from "../../context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm: React.FC = () => {
   const [fullName, setFullName] = useState("");
@@ -28,8 +28,42 @@ const CheckoutForm: React.FC = () => {
 
   const { setCheckoutInfo } = useContext(CartContext);
 
+  const validateInputs = () => {
+    const nameRegex = /^[a-zA-Z]+\s[a-zA-Z]+$/;
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    const phoneRegex = /^\+?[0-9]{10,15}$/; // allow optional + at the start
+
+    if (!nameRegex.test(fullName)) {
+      setError(
+        "Full Name should have a first and last name with alphabetic characters.",
+      );
+      return false;
+    }
+    if (!emailRegex.test(email)) {
+      setError("Enter a valid email address.");
+      return false;
+    }
+    if (!address) {
+      setError("Address is required.");
+      return false;
+    }
+    if (!phoneRegex.test(phone)) {
+      setError("Phone Number should be between 10 to 15 numeric digits.");
+      return false;
+    }
+    setError(null);
+    return true;
+  };
+
+  const navigate = useNavigate();
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (!validateInputs()) {
+      return;
+    }
+
     const info = {
       fullName,
       email,
@@ -38,17 +72,15 @@ const CheckoutForm: React.FC = () => {
       deliveryOption,
     };
     setCheckoutInfo(info);
-    console.log("submitting form");
+
+    navigate(PATH.PAYMENT);
   };
 
   return (
     <Box w={"80%"}>
-      <Progress colorScheme="teal" size="xs" isAnimated value={33} mb={5} />
+      <Progress colorScheme="teal" size="xs" isAnimated value={66} mb={5} />
 
       <Box borderWidth={1} borderRadius="md" p={10} minWidth={"450px"}>
-        <Text fontSize={"xl"} color={"gray.400"} mb={5}>
-          {LABEL.PLEASE_ENTER_YOUR_DETAILS}
-        </Text>
         <FormControl onSubmit={handleSubmit} isInvalid={!!error}>
           <Box display="flex" justifyContent="space-between" mb={7}>
             <Box w="48%">
@@ -101,7 +133,7 @@ const CheckoutForm: React.FC = () => {
               onChange={(e) => setPhone(e.target.value)}
             />
           </Box>
-          <Box h="100px">
+          <Box>
             <FormLabel>{LABEL.DELIVERY_OPTIONS}</FormLabel>
             <RadioGroup onChange={setDeliveryOption} value={deliveryOption}>
               <HStack spacing="24px">
@@ -111,8 +143,12 @@ const CheckoutForm: React.FC = () => {
               </HStack>
             </RadioGroup>
           </Box>
-          {error && <FormErrorMessage mb={5}>{error}</FormErrorMessage>}
-          <Box display="flex" justifyContent="center">
+          {error && (
+            <FormErrorMessage mt={5} mb={5}>
+              {error}
+            </FormErrorMessage>
+          )}
+          <Box display="flex" justifyContent="center" mt={5}>
             <Button
               colorScheme="teal"
               type="submit"

@@ -8,8 +8,8 @@ const CheckoutPage: React.FC = () => {
   return (
     <PageContainer>
       <VStack spacing={8} align={"center"}>
-        <Heading size="2xl" mb={4}>
-          {LABEL.CHECKOUT}
+        <Heading size="xl" fontWeight={600}>
+          {LABEL.CHECKOUT}: step 2 of 3
         </Heading>
         <CheckoutForm />
       </VStack>

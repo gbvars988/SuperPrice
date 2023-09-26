@@ -7,8 +7,8 @@ const PaymentPage: React.FC = () => {
   return (
     <PageContainer>
       <VStack spacing={8} align={"center"}>
-        <Heading size="2xl" mb={4}>
-          Payment
+        <Heading size="xl" fontWeight={600}>
+          Payment: step 3 of 3
         </Heading>
         <PaymentForm />
       </VStack>
