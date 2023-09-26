@@ -130,6 +130,7 @@ const ProductPage = () => {
             src={product?.imageURL}
             fallback={<Skeleton boxSize={{ base: "132.5px", lg: "555px" }} />}
             boxSize={{ base: "132.5px", lg: "555px" }}
+            objectFit="cover"
             alt={
               product
                 ? `${product.name} ${product.weight}g`
