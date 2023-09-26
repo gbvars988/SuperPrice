@@ -46,5 +46,6 @@ export const PATH = {
   DEALS: "/deals",
   HOMEPAGE: "/",
   LOGIN: "/login",
+  PAYMENT: "/payment",
   SHOP: "/shop",
 };

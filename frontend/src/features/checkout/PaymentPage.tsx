@@ -1,20 +1,19 @@
 import React from "react";
 import { Heading, VStack } from "@chakra-ui/react";
-import CheckoutForm from "./CheckoutForm";
 import PageContainer from "../../components/common/PageContainer";
-import { LABEL } from "../../language";
+import PaymentForm from "./PaymentForm";
 
-const CheckoutPage: React.FC = () => {
+const PaymentPage: React.FC = () => {
   return (
     <PageContainer>
       <VStack spacing={8} align={"center"}>
         <Heading size="2xl" mb={4}>
-          {LABEL.CHECKOUT}
+          Payment
         </Heading>
-        <CheckoutForm />
+        <PaymentForm />
       </VStack>
     </PageContainer>
   );
 };
 
-export default CheckoutPage;
+export default PaymentPage;
