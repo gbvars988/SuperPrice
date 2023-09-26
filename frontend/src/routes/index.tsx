@@ -7,6 +7,7 @@ import ShopPage from "../features/shop/ShopPage";
 import ProductPage from "../features/product/ProductPage";
 import { PATH } from "../language";
 import AboutStatic from "../features/about/AboutStatic";
+import CheckoutPage from "../features/checkout/CheckoutPage";
 
 const Router: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const Router: React.FC = () => {
         <Route path={PATH.LOGIN} element={<AuthPage />} />
         <Route path={PATH.SHOP} element={<ShopPage />} />
         <Route path={PATH.SHOP + "/:productID"} element={<ProductPage />} />
+        <Route path={PATH.CHECKOUT} element={<CheckoutPage />} />
         {/* add more routes later for other features */}
       </Routes>
     </BrowserRouter>
