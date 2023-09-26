@@ -8,12 +8,13 @@ import {
   HStack,
   Input,
   Progress,
-  Radio,
   RadioGroup,
+  useRadioGroup,
 } from "@chakra-ui/react";
 import { LABEL, PATH } from "../../language";
 import { CartContext } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
+import RadioCard from "../../components/common/RadioCard";
 
 const CheckoutForm: React.FC = () => {
   const [fullName, setFullName] = useState("");
@@ -25,6 +26,16 @@ const CheckoutForm: React.FC = () => {
 
   const allFieldsFilled =
     fullName && email && address && phone && deliveryOption;
+
+  const deliveryOptions = ["Standard", "Express", "Overnight"];
+
+  const { getRootProps, getRadioProps } = useRadioGroup({
+    name: "framework",
+    defaultValue: "react",
+    onChange: setDeliveryOption,
+  });
+
+  const group = getRootProps();
 
   const { setCheckoutInfo } = useContext(CartContext);
 
@@ -136,10 +147,15 @@ const CheckoutForm: React.FC = () => {
           <Box>
             <FormLabel>{LABEL.DELIVERY_OPTIONS}</FormLabel>
             <RadioGroup onChange={setDeliveryOption} value={deliveryOption}>
-              <HStack spacing="24px">
-                <Radio value="standard">Standard</Radio>
-                <Radio value="express">Express</Radio>
-                <Radio value="overnight">Overnight</Radio>
+              <HStack {...group}>
+                {deliveryOptions.map((value) => {
+                  const radio = getRadioProps({ value });
+                  return (
+                    <RadioCard key={value} {...radio}>
+                      {value}
+                    </RadioCard>
+                  );
+                })}
               </HStack>
             </RadioGroup>
           </Box>
@@ -148,7 +164,7 @@ const CheckoutForm: React.FC = () => {
               {error}
             </FormErrorMessage>
           )}
-          <Box display="flex" justifyContent="center" mt={5}>
+          <Box display="flex" justifyContent="center" mt={10}>
             <Button
               colorScheme="teal"
               type="submit"

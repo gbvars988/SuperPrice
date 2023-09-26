@@ -204,7 +204,7 @@ const PaymentForm: React.FC = () => {
             </Box>
           </Grid>
 
-          <Box display="flex" justifyContent="center">
+          <Box display="flex" justifyContent="center" mt={10}>
             <Button
               isLoading={submitted}
               colorScheme="teal"
