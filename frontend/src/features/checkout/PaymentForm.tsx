@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Box,
   Button,
@@ -11,10 +11,12 @@ import {
   InputLeftElement,
   Progress,
   Text,
+  VStack,
 } from "@chakra-ui/react";
 import { FaCalendarAlt, FaRegCreditCard, FaUserAlt } from "react-icons/fa";
 import Cards, { Focused } from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
+import { CartContext } from "../../context/CartContext";
 
 const PaymentForm: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
@@ -26,6 +28,14 @@ const PaymentForm: React.FC = () => {
     cvc: "",
     focus: "",
   });
+
+  const { cartItems } = useContext(CartContext);
+
+  const calculateTotal = () => {
+    return cartItems
+      .reduce((sum, item) => sum + item.price * item.quantity, 0)
+      .toFixed(2);
+  };
 
   const handleInputChange = (evt: any) => {
     const { name, value } = evt.target;
@@ -158,13 +168,18 @@ const PaymentForm: React.FC = () => {
             </Box>
 
             <Box display="flex" justifyContent="center" alignItems="center">
-              <Cards
-                number={state.number}
-                expiry={state.expiry}
-                cvc={state.cvc}
-                name={state.name}
-                focused={state.focus as Focused}
-              />
+              <VStack spacing={5}>
+                <Cards
+                  number={state.number}
+                  expiry={state.expiry}
+                  cvc={state.cvc}
+                  name={state.name}
+                  focused={state.focus as Focused}
+                />
+                <Text fontSize="lg" fontWeight={600}>
+                  Total Amount: ${calculateTotal()}
+                </Text>
+              </VStack>
             </Box>
           </Grid>
 
