@@ -1,15 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { Router, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import PageContainer from "../../components/common/PageContainer";
-import { Flex, Image, Text, Skeleton } from "@chakra-ui/react";
+import { Flex, Image, Skeleton, Text, useToast } from "@chakra-ui/react";
 import ProductInfo from "./ProductInfo";
 import QuantitySelector from "./QuantitySelector";
 import AddBtn from "./AddBtn";
 import HProductCard from "../../components/product/HProductCard";
 
 import { LABEL } from "../../language/index";
+import { CartContext } from "../../context/CartContext";
 
 interface IProduct {
   productID: string;
@@ -51,11 +52,15 @@ const ProductPage = () => {
 
   const { productID } = useParams<{ productID: string }>();
 
+  const { addToCart } = useContext(CartContext);
+
+  const toast = useToast();
+
   useEffect(() => {
     if (!productID) return;
     axios
       .get(
-        `http://localhost:8080/product-service/products/compare/${productID}`
+        `http://localhost:8080/product-service/products/compare/${productID}`,
       )
       .then((res) => {
         setProduct(res.data);
@@ -97,7 +102,25 @@ const ProductPage = () => {
   }, []);
 
   const addToTrolley = () => {
-    console.log("TODO: Add to trolley");
+    if (product && cheapestSupermarket) {
+      addToCart({
+        productID: product.productID,
+        name: product.name,
+        quantity: quantity,
+        price: cheapestSupermarket.price,
+        supermarketName: cheapestSupermarket.supermarketName,
+        imageURL: product.imageURL,
+      });
+
+      toast({
+        title: "Item added to cart",
+        description: `Added ${quantity} x ${product.name} to cart from ${cheapestSupermarket.supermarketName}`,
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+        position: "top-right",
+      });
+    }
   };
 
   return (
