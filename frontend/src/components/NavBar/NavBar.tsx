@@ -51,9 +51,6 @@ const NavBar: React.FC = () => {
               <Link as={RouterLink} to={PATH.SHOP} mr={4} fontSize={20}>
                 {LABEL.SHOP}
               </Link>
-              <Link as={RouterLink} to={PATH.DEALS} mr={4} fontSize={20}>
-                {LABEL.DEALS}
-              </Link>
               <Link as={RouterLink} to={PATH.ABOUT} mr={4} fontSize={20}>
                 {LABEL.ABOUT}
               </Link>

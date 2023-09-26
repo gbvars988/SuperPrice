@@ -11,15 +11,18 @@ import {
   InputLeftElement,
   Progress,
   Text,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
 import { FaCalendarAlt, FaRegCreditCard, FaUserAlt } from "react-icons/fa";
 import Cards, { Focused } from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
 import { CartContext } from "../../context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 const PaymentForm: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
+  const [submitted, setSubmitted] = useState(false); // add 3 sec delay
 
   const [state, setState] = useState({
     name: "",
@@ -30,6 +33,9 @@ const PaymentForm: React.FC = () => {
   });
 
   const { cartItems } = useContext(CartContext);
+
+  const toast = useToast();
+  const navigate = useNavigate();
 
   const calculateTotal = () => {
     return cartItems
@@ -79,7 +85,22 @@ const PaymentForm: React.FC = () => {
       return;
     }
 
-    console.log("submitting payment form");
+    console.log("submitting payment form to backend");
+
+    setSubmitted(true);
+
+    setTimeout(() => {
+      toast({
+        title: "Payment Successful",
+        description:
+          "Your payment has been processed successfully and your delivery will soon be on its way!",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      });
+
+      navigate("/");
+    }, 3000);
   };
 
   const allFieldsFilled =
@@ -185,6 +206,7 @@ const PaymentForm: React.FC = () => {
 
           <Box display="flex" justifyContent="center">
             <Button
+              isLoading={submitted}
               colorScheme="teal"
               type="submit"
               onClick={handleSubmit}

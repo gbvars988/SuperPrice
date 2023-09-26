@@ -77,7 +77,7 @@ const CheckoutForm: React.FC = () => {
   };
 
   return (
-    <Box w={"80%"}>
+    <Box w={"70%"}>
       <Progress colorScheme="teal" size="xs" isAnimated value={66} mb={5} />
 
       <Box borderWidth={1} borderRadius="md" p={10} minWidth={"450px"}>

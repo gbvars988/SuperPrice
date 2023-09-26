@@ -6,7 +6,6 @@ export const LABEL = {
   CLEAR_FILTERS: "Clear filters",
   CONFIRM_PASSWORD: "Confirm password",
   CONFIRM_YOUR_PASSWORD: "Confirm your password",
-  DEALS: "Deals",
   DELIVERY_OPTIONS: "Delivery options",
   EMAIL: "Email",
   ENTER_YOUR_EMAIL: "Enter your email",
@@ -43,7 +42,6 @@ export const LABEL = {
 export const PATH = {
   ABOUT: "/about",
   CHECKOUT: "/checkout",
-  DEALS: "/deals",
   HOMEPAGE: "/",
   LOGIN: "/login",
   PAYMENT: "/payment",
