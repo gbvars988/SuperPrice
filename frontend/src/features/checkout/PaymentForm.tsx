@@ -197,7 +197,7 @@ const PaymentForm: React.FC = () => {
                   name={state.name}
                   focused={state.focus as Focused}
                 />
-                <Text fontSize="lg" fontWeight={600}>
+                <Text fontSize="lg" fontWeight={500}>
                   Total Amount: ${calculateTotal()}
                 </Text>
               </VStack>
