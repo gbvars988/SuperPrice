@@ -20,38 +20,4 @@ const ShoppingCart: React.FC = () => {
 
 export default ShoppingCart;
 
-/*
-type ShoppingCartProps = {
-    isOpen: boolean;
-};
-
-export function ShoppingCart ({ isOpen}: ShoppingCartProps) {
-    cont { closeCart, cartItems } = useShoppingCart();
-    return (
-        <OffscreenCanvas show = {isOpen} onHide = {closeCart} placement = "end">
-            <OffscreenCanvas.Header closeButton>
-                <OffscreenCanvas.Title> Shopping Cart </OffscreenCanvas.Title>
-            </OffscreenCanvas.Header>
-            <OffscreenCanvas.Body>
-                <Stack
-            </OffscreenCanvas.Body>
-        </OffscreenCanvas>
-    );
-}
-
-
-*/
-
-/*
-// this is in app.js??//
-
-const [cart, setCart] = useState ([]);
-const [total, setTotal] = useState(0);
-
-const addToCart = (productId, variantInfo) => {
-
-    if(variantInfo)
-
-}
-*/
 

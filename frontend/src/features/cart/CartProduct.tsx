@@ -13,65 +13,120 @@ import {
     IconButtonProps, 
     Image,
     Button, 
+    Box,
+    Input,
     useDisclosure,
     Center,
     Select,
     SelectProps,
-    useColorModeValue
+    useColorModeValue,
+    Container
 } from '@chakra-ui/react';
 
-type CartProductProps = {
+import MinusQty from './minus.png';
+import PlusQty from './plus.png';
+
+import { ICartProduct } from '../../context/cart-context/CartProdContext'
+
+import useCart from '../cart/useCart'
+
+/*
+export interface ICartProduct extends IProduct {
+  quantity: number;
+}
+
+export interface ICartTotal {
+  productQuantity: number;
+  installments: number;
+  totalPrice: number;
+  currencyId: string;
+  currencyFormat: string;
+}
+
+export interface IGetProductsResponse {
+  data: {
+    products: IProduct[];
+  };
+}
+*/
+interface IProps {
+  product: ICartProduct;
+}
+
+/*type CartProductProps = {
     name: string
     description: string
     quantity: number
     price: number
     imageURL: string
-    onChangeQty?: (quantity: number) => void
     onClickDelete?: () => void
 }
+*/
 
-const QuantitySelect = (props: SelectProps) => {
+//export const CartProduct = (props: CartProductProps) => {
+const CartProduct = ({ product }: IProps) => {
+  
+  const { removeProduct, increaseProductQty, decreaseProductQty } = useCart();
 
-    return (
-        <Select
-        maxW="64px"
-        aria-label="Select quantity"
-        focusBorderColor={useColorModeValue('teal.500', 'teal.200')}
-        {...props}
-      >
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-      </Select>
-    )
-}
+  const {
+    name,
+    description,
+    weight,
+    imageURL,
+    supermarketPrices: price,
+    quantity,
+  } = product
 
-export const CartProduct = (props: CartProductProps) => {
-    const {
-      name,
-      description,
-      quantity,
-      imageURL,
-      price,
-      onChangeQty,
-      onClickDelete,
-    } = props
+    const handleRemoveProduct = () => removeProduct(product);
+    const handleIncreaseProductQuantity = () => increaseProductQty(product);
+    const handleDecreaseProductQuantity = () => decreaseProductQty(product);
   
     return (
-        /*<CartProductDeets
-          name={name}
-          description={description}
-          image={imageURL}
-        />
-        */
-        <QuantitySelect
-          value={quantity}
-          onChange={(e) => {
-            onChangeQty?.(+e.currentTarget.value)
-          }}
-        />
-        //price={price}
-        //<CloseButton aria-label={`Delete ${name} from cart`} onClick={onClickDelete} />
+      <Box>
+        <Button 
+          onClick={handleRemoveProduct}
+          title='remove from cart'>
+          x
+        </Button>
+        <Image
+          src={require(`static/products/${name}-1-cart.webp`)}
+          alt={name}/>
+        <Container
+          width={'50%'}
+          display={'inline-block'}
+          verticalAlign={'middle'}
+          >
+            {name}
+            {description}
+            {weight}
+            Quantity: {quantity}
+        </Container>
+        {product.supermarketPrices[0].price}
+        <Box>
+        <IconButton
+          {...handleDecreaseProductQuantity}
+          w='15px'
+          m='5px'
+          size='sml'
+          aria-label='Decrease Qty' 
+          icon={<Image src={MinusQty}
+          boxSize='10px'/>}/>
+      <IconButton
+          {...handleIncreaseProductQuantity}
+          w='15px'
+          mt='5px'
+          mb='5px'
+          ml='2px'
+          size='sml'
+          aria-label='Increase Qty'  
+          icon={<Image src={PlusQty}
+          boxSize='10px'/>}/>
+
+        </Box>
+        
+
+      </Box>
     )
-  }
+  };
+
+  export default CartProduct;

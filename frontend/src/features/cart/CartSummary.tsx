@@ -27,6 +27,10 @@ import {
 import MinusQty from './minus.png';
 import PlusQty from './plus.png';
 
+import CartProducts from './CartProducts';
+
+import useCart from './useCart';
+
 
 
 export const CartSummary = () => {
