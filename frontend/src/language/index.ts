@@ -2,6 +2,7 @@ export const LABEL = {
   ABOUT: "About",
   ADDRESS: "Address",
   CATEGORIES: "Categories",
+  CHECKOUT: "Checkout",
   CLEAR_FILTERS: "Clear filters",
   CONFIRM_PASSWORD: "Confirm password",
   CONFIRM_YOUR_PASSWORD: "Confirm your password",
