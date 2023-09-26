@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Box,
   Button,
@@ -13,6 +13,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { LABEL } from "../../language";
+import { CartContext } from "../../context/CartContext";
 
 const CheckoutForm: React.FC = () => {
   const [fullName, setFullName] = useState("");
@@ -25,8 +26,18 @@ const CheckoutForm: React.FC = () => {
   const allFieldsFilled =
     fullName && email && address && phone && deliveryOption;
 
+  const { setCheckoutInfo } = useContext(CartContext);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const info = {
+      fullName,
+      email,
+      address,
+      phone,
+      deliveryOption,
+    };
+    setCheckoutInfo(info);
     console.log("submitting form");
   };
 
