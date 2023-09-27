@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS TimeSlot;
 
 CREATE TABLE IF NOT EXISTS Order (
     OrderID INT PRIMARY KEY AUTO_INCREMENT,
-    UserID INT, -- This references the UserID from user-ms but without FK constraints due to microservices architecture
+    UserID INT, -- Currently nullable assuming user does not need to be registered to request delivery. Otherwise references the UserID from user-ms but without FK constraints due to microservices architecture
     DateCreated DATETIME DEFAULT CURRENT_TIMESTAMP,
     Status VARCHAR(255) DEFAULT 'Pending'
     );
