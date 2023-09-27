@@ -10,4 +10,5 @@ public interface NotificationService {
     Notification generic(int userId);
     Notification delivery(int userId);
     Notification pricedrop(int userId);
+    void sendSimpleMessage(String to, String subject, String text);
 }

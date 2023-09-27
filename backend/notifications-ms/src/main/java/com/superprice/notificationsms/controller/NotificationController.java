@@ -5,10 +5,7 @@ import com.superprice.notificationsms.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("notifications")
@@ -39,6 +36,13 @@ public class NotificationController {
     @GetMapping("/generic/{user_id}")
     public ResponseEntity<Notification> NotifyGeneric(@PathVariable int user_id) {
         Notification notification = notificationService.generic(user_id);
+        return ResponseEntity.ok(notification);
+    }
+
+    @PostMapping("/1")
+    public ResponseEntity<Notification> NotifyMe() {
+        notificationService.sendSimpleMessage("anthony_imani@hotmail.com", "price-drop", "Bananas are now only $1.90 a kilo down from $2.10 at Coles.");
+        Notification notification = notificationService.generic(1);
         return ResponseEntity.ok(notification);
     }
 }
