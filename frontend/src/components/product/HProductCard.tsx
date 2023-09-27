@@ -1,5 +1,5 @@
 import React from "react";
-import { Flex, Text, Image, Skeleton } from "@chakra-ui/react";
+import { Flex, Image, Skeleton, Text } from "@chakra-ui/react";
 
 type Props = {
   product: IProduct;
@@ -19,6 +19,7 @@ const HProductCard = (props: Props) => {
     <Flex gap="2" w="full" maxW="424px" border="1px" borderColor="gray.200">
       <Image
         src={props.product?.imageURL}
+        objectFit="cover"
         boxSize={{ base: "129px", lg: "129px" }}
         fallback={<Skeleton boxSize={{ base: "129px", lg: "129px" }} />}
       ></Image>

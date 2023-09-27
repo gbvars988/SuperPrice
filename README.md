@@ -59,6 +59,7 @@ Optional if you do not have MySQL setup on your device:
 5. **Mandatory:** Change the password in `__-ms/src/main/resources/application.properties` to the one you selected in the MySQL installation step (for the microservices you want to run)
 6. **Mandatory:** cd into `__-ms/` and run `mvn clean package` to build the microservice (for M2, start up user-ms and product-ms, others are still WIP)
 7. **Mandatory:** Run `java -jar target/*.jar` to run the microservice where '*' is package name (e.g. product-ms-0.0.1-SNAPSHOT.jar)
+8. AWS account is using s3436258@student.rmit.edu.au account (Ronald Ho - s3436258)
 
 ## Frontend
 

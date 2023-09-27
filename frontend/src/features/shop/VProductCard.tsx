@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Flex, Link, Image, Text, Skeleton } from "@chakra-ui/react";
+import { Flex, Image, Link, Skeleton, Text } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 
 interface VProductCardProps {
   product: {
@@ -44,7 +45,8 @@ const VProductCard = (props: VProductCardProps) => {
 
   return (
     <Link
-      href={`/shop/${props.product.productID}`}
+      as={RouterLink}
+      to={`/shop/${props.product.productID}`}
       _hover={{ textDecoration: "none" }}
       _focus={{ textDecoration: "none" }}
       _active={{ textDecoration: "none" }}
