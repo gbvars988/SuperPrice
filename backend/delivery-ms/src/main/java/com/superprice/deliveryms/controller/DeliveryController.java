@@ -19,13 +19,13 @@ public class DeliveryController {
     public DeliveryController(DeliveryService deliveryService) {
         this.deliveryService = deliveryService;
     }
-    @PostMapping("")
-    public ResponseEntity<String> orderDelivery(@RequestBody Delivery orderDetails){
-        deliveryService.orderDelivery("20 Paperbark Av Springfield 3121", "Lettuce(1), Zappos(2)", 2231, LocalDateTime.now());
-        return ResponseEntity.ok("Order added successfully");
-    }
-    @GetMapping("/{orderNo}")
-    public ResponseEntity<Optional<Delivery>> getDelivery (@PathVariable int orderNo){
-        return ResponseEntity.ok(deliveryService.deliveryInfo(orderNo));
-    }
+//    @PostMapping("")
+//    public ResponseEntity<String> orderDelivery(@RequestBody Delivery orderDetails){
+//        deliveryService.orderDelivery("20 Paperbark Av Springfield 3121", "Lettuce(1), Zappos(2)", 2231, LocalDateTime.now());
+//        return ResponseEntity.ok("Order added successfully");
+//    }
+//    @GetMapping("/{orderNo}")
+//    public ResponseEntity<Optional<Delivery>> getDelivery (@PathVariable int orderNo){
+//        return ResponseEntity.ok(deliveryService.deliveryInfo(orderNo));
+//    }
 }
