@@ -1,26 +1,34 @@
 package com.superprice.deliveryms.model;
 
-import java.time.LocalDateTime;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
 public class Delivery {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "DeliveryID")
+    private int deliveryId;
+    @Column(name = "Address")
     private String address;
-    private String items;
-    private int userId;
-    private String timeslot;
-    private int orderNo;
+    @Column(name = "Email")
+    private String email;
+    @Column(name = "DeliveryStatus")
+    private String deliveryStatus;
 
-    public Delivery(int orderNo, String address, String items, String timeslot, int userId) {
-        this.orderNo = orderNo;
-        this.address = address;
-        this.items = items;
-        this.timeslot = timeslot;
-        this.userId = userId;
-    }
+    @ManyToOne
+    @JoinColumn(name = "TimeSlotID", referencedColumnName = "TimeSlotID", insertable = false, updatable = false)
+    private TimeSlot timeSlot;
 
-    public String getAddress(){return address;}
-    public String getItems(){return items;}
-    public int getUserId(){return userId;}
-    public String getTimeslot(){return timeslot;}
-
-    public int getOrderNo(){return orderNo;}
+    @ManyToOne
+    @JoinColumn(name = "OrderID", referencedColumnName = "OrderID", insertable = false, updatable = false)
+    private Order order;
 }

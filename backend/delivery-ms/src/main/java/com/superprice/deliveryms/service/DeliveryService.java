@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface DeliveryService {
 
-    void orderDelivery(String address, String items, int userId, LocalDateTime timeslot);
-
-    Optional<Delivery> deliveryInfo (int orderNo);
+//    void orderDelivery(String address, String items, int userId, LocalDateTime timeslot);
+//
+//    Optional<Delivery> deliveryInfo (int orderNo);
 }

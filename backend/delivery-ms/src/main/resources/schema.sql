@@ -24,9 +24,10 @@ CREATE TABLE IF NOT EXISTS Delivery (
     OrderID INT,
     Address TEXT NOT NULL,
     Email VARCHAR(255) NOT NULL,
-    TimeSlot VARCHAR(255),
+    TimeSlotID VARCHAR(255),
     DeliveryStatus VARCHAR(255) DEFAULT 'Scheduled',
-    FOREIGN KEY (OrderID) REFERENCES Order(OrderID)
+    FOREIGN KEY (OrderID) REFERENCES Order(OrderID),
+    FOREIGN KEY (TimeSlotID) REFERENCES TimeSlot(TimeSlotID)
     );
 
 CREATE TABLE IF NOT EXISTS TimeSlot (
