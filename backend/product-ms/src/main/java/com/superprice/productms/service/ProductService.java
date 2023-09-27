@@ -18,6 +18,8 @@ public interface ProductService {
 
     List<Review> getReviews(int productId);
 
+    boolean updateProductPrice(int productID, int supermarketID, double newPrice);
+
 //    List<ProductDto> addProduct(List<ProductDto> products);
 
 }

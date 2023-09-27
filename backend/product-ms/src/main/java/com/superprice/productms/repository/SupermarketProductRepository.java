@@ -13,6 +13,9 @@ public interface SupermarketProductRepository extends JpaRepository<SupermarketP
     // Custom query to find SupermarketProduct based on ProductID
     List<SupermarketProduct> findByProductId(int productId);
 
+    // Custom query to find SupermarketProduct based on ProductID AND SupermarketID
+    SupermarketProduct findByProductIdAndSupermarketId(int productId, int supermarketId);
+
     // Custom query to find SupermarketProduct based on SupermarketID
     List<SupermarketProduct> findBySupermarketId(int supermarketId);
 }
