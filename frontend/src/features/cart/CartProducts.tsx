@@ -1,22 +1,38 @@
-import { Container, Box
+import { Container, 
+  Box
 } from '@chakra-ui/react';
+import { useContext } from 'react';
 
-import { ICartProduct } from '../../context/cart-context/CartProdContext'
+import { CartContext, CartContextType, CartItem, CartProvider, CheckoutInfo } from '../../context/CartContext';
+
+//import { ICartProduct } from '../../context/cart-context/CartProdContext'
 import CartProduct from './CartProduct';
 
+
 interface IProps {
-  products: ICartProduct[];
+  cartItems: CartItem[];
+  checkoutInfo: CheckoutInfo | null;
+  setCheckoutInfo: (info: CheckoutInfo) => void;
+  //setProducts(cartItems: CartItem[]): void;
+  addToCart: (item: CartItem) => void;
+  increaseQty: (item: CartItem) => void;
+  decreaseQty: (item: CartItem) => void;
+  //removeFromCart: (productID: string) => void;
+  removeFromCart: (item: CartItem) => void;
+  clearCart: () => void;
 }
 
-const CartProducts = ({ products }: IProps) => {
+
+const { cartItems } = useContext(CartContext);
+
+const CartProducts = ({ cartItems }: CartContextType) => {
   return (
     <Container>
-      {products?.length ? (
-        products.map((p) => <CartProduct product={p} key={p.name} />)
+      {cartItems?.length ? (
+        cartItems.map((p) => <CartProduct  product={p} key={p.name} />)
       ) : (
         <Box>
-          Add some products in the cart <br />
-          :)
+          
         </Box>
       )}
     </Container>

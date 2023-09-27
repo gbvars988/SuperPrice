@@ -1,8 +1,7 @@
-import { useCartContext } from '../../context/cart-context/CartContext';
-import { ICartProduct } from '../../context/cart-context/CartProdContext';
-
+import { CartContext } from "../../context/CartContext";
+/*
 const cartTotal = () => {
-  const { total, setTotal } = useCartContext();
+  const { total, setTotal } = car();
 
   const updateCartTotal = (products: ICartProduct[]) => {
     const productQuantity = products.reduce(
@@ -36,3 +35,4 @@ const cartTotal = () => {
 };
 
 export default cartTotal;
+*/

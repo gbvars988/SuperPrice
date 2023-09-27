@@ -28,6 +28,7 @@ import cartImage from './cart.png'
 import {LABEL, PATH} from "../../language";
 import {useNavigate} from "react-router-dom";
 import { CartSummary } from './CartSummary';
+import { CartContext } from '../../context/CartContext';
 
 
 // CHANGE THIS TO CORRECT PATH ONCE PRODUCTS IS COMPLETE //
@@ -41,6 +42,7 @@ import { CartSummary } from './CartSummary';
 function CartDrawer() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const navigate = useNavigate();
+    
     
     return (
         <>

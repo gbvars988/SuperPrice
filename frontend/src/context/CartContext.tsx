@@ -1,8 +1,12 @@
 import React from "react";
+import { IProduct } from '../features/product/ProductInfo';
 
-export type CartItem = {
+
+export interface CartItem extends IProduct {
   productID: string;
   name: string;
+  description: string;
+  weight: number;
   quantity: number;
   price: number;
   supermarketName: string;
@@ -17,12 +21,24 @@ export type CheckoutInfo = {
   deliveryOption: string;
 };
 
+//maybe delete this thing here
+export interface ProductsResponse {
+  data: {
+    products: IProduct[];
+  };
+}
+//above this
+
 export type CartContextType = {
   cartItems: CartItem[];
   checkoutInfo: CheckoutInfo | null;
   setCheckoutInfo: (info: CheckoutInfo) => void;
+  //setProducts(cartItems: CartItem[]): void;
   addToCart: (item: CartItem) => void;
-  removeFromCart: (productID: string) => void;
+  increaseQty: (item: CartItem) => void;
+  decreaseQty: (item: CartItem) => void;
+  //removeFromCart: (productID: string) => void;
+  removeFromCart: (item: CartItem) => void;
   clearCart: () => void;
 };
 
@@ -30,7 +46,10 @@ export const CartContext = React.createContext<CartContextType>({
   cartItems: [],
   checkoutInfo: null,
   setCheckoutInfo: () => {},
+  //setProducts: () => {},
   addToCart: () => {},
+  increaseQty: () => {},
+  decreaseQty: () => {},
   removeFromCart: () => {},
   clearCart: () => {},
 });
@@ -45,6 +64,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     null,
   );
 
+
   const addToCart = (item: CartItem) => {
     setCartItems((prevItems) => {
       const existingItem = prevItems.find(
@@ -56,20 +76,73 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
             ? { ...i, quantity: i.quantity + item.quantity }
             : i,
         );
+        //, updateQuantity(item, item, item.quantity);
       }
       return [...prevItems, item];
     });
+
+
   };
 
-  const removeFromCart = (productID: string) => {
-    setCartItems((prevItems) =>
-      prevItems.filter((i) => i.productID !== productID),
-    );
+  const updateQuantity = (
+    currentProduct: CartItem,
+    targetProduct: CartItem,
+    quantity: number
+  ): CartItem => {
+    if (currentProduct.productID === targetProduct.productID) {
+      return Object.assign({
+        ...currentProduct,
+        quantity: currentProduct.quantity + quantity,
+      });
+    } else {
+      return currentProduct;
+    }
   };
+
+  const increaseProductQty = (productToIncrease: CartItem) => {
+    const updatedProducts = cartItems.map((product: CartItem) => {
+      return updateQuantity(product, productToIncrease, +1);
+    });
+
+    setCartItems(updatedProducts);
+    //updateCartTotal(updatedProducts);
+  };
+
+  const decreaseProductQty = (productToDecrease: CartItem) => {
+    const updatedProducts = cartItems.map((product: CartItem) => {
+      return updateQuantity(product, productToDecrease, -1);
+    });
+
+    setCartItems(updatedProducts);
+    //updateCartTotal(updatedProducts);
+  };
+
+/*
+  const removeFromCart = (item: CartItem) => {
+    setCartItems((prevItems) =>
+      prevItems.filter((i) => i.item !== item),
+    );
+
+    
+  };
+*/
+  const removeFromCart = (productToRemove: CartItem) => {
+    const updatedProducts = cartItems.filter(
+      (product: CartItem) => product.productID !== productToRemove.productID
+    );
+
+    setCartItems(updatedProducts);
+    //updateCartTotal(updatedProducts);
+  };
+
+
+
 
   const clearCart = () => {
     setCartItems([]);
   };
+
+
 
   return (
     <CartContext.Provider
@@ -79,6 +152,8 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         setCheckoutInfo,
         addToCart,
         removeFromCart,
+        increaseQty(item){},
+        decreaseQty(item) {},
         clearCart,
       }}
     >

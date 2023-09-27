@@ -1,6 +1,6 @@
 import React from 'react';
 import { createContext, useContext, useState } from "react";
-//import { useShoppingCart } from '../context/ShoppingCartContext';
+import  useCart from './useCart';
 //import { CartProduct } from './CartProduct';
 import {Box, Button, Heading, IconButton, Image, VStack} from '@chakra-ui/react';
 
@@ -8,7 +8,7 @@ import {Box, Button, Heading, IconButton, Image, VStack} from '@chakra-ui/react'
 //import storeProducts from '../shop/Products';
 const ShoppingCart: React.FC = () => {
 
-    //const { products, total, isOpen, openCart, closeCart } = useState([]);
+    const { cartItems, checkoutInfo } = useCart();
 
     return (
         <IconButton 

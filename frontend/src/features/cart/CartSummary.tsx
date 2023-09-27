@@ -1,4 +1,5 @@
-import React from 'react';
+import React,  { useContext } from 'react';
+
 import {LABEL, PATH} from "../../language";
 import {useNavigate} from "react-router-dom";
 import {
@@ -11,6 +12,7 @@ import {
     DrawerOverlay, 
     Heading, 
     IconButton, 
+    Container,
     ButtonGroup,
     Box, 
     Image,
@@ -26,14 +28,19 @@ import {
 } from '@chakra-ui/react';
 import MinusQty from './minus.png';
 import PlusQty from './plus.png';
+import { CartContext, CartItem, CartContextType, CartProvider } from '../../context/CartContext';
 
 import CartProducts from './CartProducts';
 
 import useCart from './useCart';
 
-
+//const { cartItems, removeFromCart } = useContext(CartContext);
 
 export const CartSummary = () => {
+    //const { cartItems } = useContext(CartContext);
+    //const { cartItems, checkoutInfo, addToCart, increaseQty, decreaseQty, removeFromCart, clearCart } = useCart();
+    const { cartItems } = useContext(CartContext);
+
     const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
     useNumberInput({
       step: 1,
@@ -41,14 +48,20 @@ export const CartSummary = () => {
       min: 0,
       max: 100
     })
+
     
     const inc = getIncrementButtonProps()
     const dec = getDecrementButtonProps()
     const input = getInputProps()
 
     return (
+        
         <Box>
+        
         <Flex align='center' w='100%' justifyContent='space-between'>
+
+
+
             <Flex align="flex-end">
                 <Text mr='25px'>Product 1</Text> 
             </Flex>

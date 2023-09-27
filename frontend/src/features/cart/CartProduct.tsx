@@ -22,19 +22,21 @@ import {
     useColorModeValue,
     Container
 } from '@chakra-ui/react';
+import { useContext } from 'react';
 
 import MinusQty from './minus.png';
 import PlusQty from './plus.png';
 
-import { ICartProduct } from '../../context/cart-context/CartProdContext'
+//import { ICartProduct } from '../../context/cart-context/CartProdContext'
+import { CartContext, CartContextType, CartItem } from '../../context/CartContext';
+import useCart from './useCart'
 
-import useCart from '../cart/useCart'
+const { cartItems } = useContext(CartContext);
 
-/*
-export interface ICartProduct extends IProduct {
+export interface ICartProduct extends CartItem {
   quantity: number;
 }
-
+/*
 export interface ICartTotal {
   productQuantity: number;
   installments: number;
@@ -45,15 +47,12 @@ export interface ICartTotal {
 
 export interface IGetProductsResponse {
   data: {
-    products: IProduct[];
+    product: CartItem[];
   };
 }
-*/
-interface IProps {
-  product: ICartProduct;
-}
 
-/*type CartProductProps = {
+
+type CartProductProps = {
     name: string
     description: string
     quantity: number
@@ -62,29 +61,38 @@ interface IProps {
     onClickDelete?: () => void
 }
 */
+interface IProps {
+  product: CartItem;
+}
+
 
 //export const CartProduct = (props: CartProductProps) => {
-const CartProduct = ({ product }: IProps) => {
+//const { cartItems } = useContext(CartContext);
+
+const CartProduct = ({ product}: IProps) => {
   
-  const { removeProduct, increaseProductQty, decreaseProductQty } = useCart();
+  //const { removeFromCart, increaseQty, decreaseQty } = useCart();
+  const { removeFromCart, increaseQty, decreaseQty } = useContext(CartContext);
+
 
   const {
+    productID,
     name,
     description,
     weight,
     imageURL,
-    supermarketPrices: price,
+    price,
     quantity,
   } = product
 
-    const handleRemoveProduct = () => removeProduct(product);
-    const handleIncreaseProductQuantity = () => increaseProductQty(product);
-    const handleDecreaseProductQuantity = () => decreaseProductQty(product);
+    const handleRemoveFromCart = () => removeFromCart(product);
+    const handleIncreaseProductQuantity = () => increaseQty(product);
+    const handleDecreaseProductQuantity = () => decreaseQty(product);
   
     return (
       <Box>
         <Button 
-          onClick={handleRemoveProduct}
+          onClick={handleRemoveFromCart}
           title='remove from cart'>
           x
         </Button>
@@ -101,7 +109,7 @@ const CartProduct = ({ product }: IProps) => {
             {weight}
             Quantity: {quantity}
         </Container>
-        {product.supermarketPrices[0].price}
+        {price}
         <Box>
         <IconButton
           {...handleDecreaseProductQuantity}
@@ -130,3 +138,4 @@ const CartProduct = ({ product }: IProps) => {
   };
 
   export default CartProduct;
+  
