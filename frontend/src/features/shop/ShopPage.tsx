@@ -79,7 +79,7 @@ const ShopPage: React.FC = () => {
             </Box>
           </Box>
 
-          <Gallery products={products} />
+          <Gallery products={products} filterState={filterState} />
         </HStack>
       </VStack>
     </PageContainer>
