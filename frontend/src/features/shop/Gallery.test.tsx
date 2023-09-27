@@ -1,7 +1,9 @@
 import React from "react";
-import { render, screen, act } from "@testing-library/react";
+import { act, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import Gallery from "./Gallery";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 const mockProducts = [
   {
     productId: 1,
@@ -54,10 +56,20 @@ jest.mock("@chakra-ui/react", () => {
   };
 });
 
+const renderWithRouter = (ui: React.ReactElement) => {
+  return render(
+    <BrowserRouter>
+      <Routes>
+        <Route path={"/"} element={ui} />
+      </Routes>
+    </BrowserRouter>,
+  );
+};
+
 describe("<Gallery />", () => {
   test("it renders a list of products", async () => {
     await act(async () => {
-      render(<Gallery products={mockProducts} />);
+      renderWithRouter(<Gallery products={mockProducts} />);
     });
 
     expect(screen.getByText("Apple 150g")).toBeInTheDocument();
@@ -67,7 +79,7 @@ describe("<Gallery />", () => {
 
   test("it displays the PRODUCTS heading", async () => {
     await act(async () => {
-      render(<Gallery products={mockProducts} />);
+      renderWithRouter(<Gallery products={mockProducts} />);
     });
 
     // Uncomment the line below if the "PRODUCTS" heading should be displayed.
