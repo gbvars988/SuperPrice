@@ -34,7 +34,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <Box maxW="md" mx="auto">
+    <Box display="flex" justifyContent="center">
       <form onSubmit={handleSubmit}>
         <Stack spacing={4}>
           <FormControl id="name" isRequired>
