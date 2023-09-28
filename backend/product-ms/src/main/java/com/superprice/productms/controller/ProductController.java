@@ -96,7 +96,7 @@ public class ProductController {
      */
     @PostMapping("/updateprice")
     public ResponseEntity<?> updateProductPrice(@RequestBody PriceUpdateRequest request) {
-
+        double prevPrice = productService.getSupermarketProductInfo(request.getProductID(), request.getSupermarketID()).getPrice();
         boolean success = productService.updateProductPrice(request.getProductID(), request.getSupermarketID(), request.getNewPrice());
 
         if (success) {
@@ -115,7 +115,7 @@ public class ProductController {
 
             List<UserDto> users = responseEntity.getBody();
             NotificationDto notificationDto = new NotificationDto();
-            notificationDto.setPrevPrice(productService.getSupermarketProductInfo(request.getProductID(), request.getSupermarketID()).getPrice());
+            notificationDto.setPrevPrice(prevPrice);
             notificationDto.setSupermarket(productService.getSupermarketProductInfo(request.getProductID(), request.getSupermarketID()).getSupermarketName());
             notificationDto.setNewPrice(request.getNewPrice());
             notificationDto.setProductName(productDto.getName());
