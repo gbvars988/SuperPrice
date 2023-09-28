@@ -5,11 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8246521-ea13-4813-b56a-fd31fca3eaea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/start-productms.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notifications-ms/src/main/java/com/superprice/notificationsms/dto/NotificationDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product-ms/src/main/java/com/superprice/productms/dto/NotificationDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/product-ms/src/main/java/com/superprice/productms/dto/UserDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/delivery-ms/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/delivery-ms/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notifications-ms/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/notifications-ms/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notifications-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/notifications-ms/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notifications-ms/src/main/java/com/superprice/notificationsms/controller/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/notifications-ms/src/main/java/com/superprice/notificationsms/controller/NotificationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notifications-ms/src/main/java/com/superprice/notificationsms/model/Notification.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notifications-ms/src/main/java/com/superprice/notificationsms/service/NotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/notifications-ms/src/main/java/com/superprice/notificationsms/service/NotificationService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notifications-ms/src/main/java/com/superprice/notificationsms/service/NotificationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/notifications-ms/src/main/java/com/superprice/notificationsms/service/NotificationServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-ms/src/main/java/com/superprice/productms/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-ms/src/main/java/com/superprice/productms/controller/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-ms/src/main/java/com/superprice/productms/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-ms/src/main/java/com/superprice/productms/service/ProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-ms/src/main/java/com/superprice/productms/service/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-ms/src/main/java/com/superprice/productms/service/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/product-ms/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/product-ms/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-ms/src/main/java/com/superprice/userms/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-ms/src/main/java/com/superprice/userms/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-ms/src/main/java/com/superprice/userms/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-ms/src/main/java/com/superprice/userms/repository/UserRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-ms/src/main/java/com/superprice/userms/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-ms/src/main/java/com/superprice/userms/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user-ms/src/main/java/com/superprice/userms/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-ms/src/main/java/com/superprice/userms/service/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/user-ms/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/user-ms/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,19 +40,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/ronaldho/Documents/SoftwarePT/team-project-group-p8-01/backend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/antho/Desktop/SoftwareEngProcessTools/team-project-group-p8-01/backend/product-ms/src/main/java/com/superprice/productms/dto",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\antho\Desktop\SoftwareEngProcessTools\team-project-group-p8-01\backend\product-ms\src\main\java\com\superprice\productms\dto" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -52,6 +69,7 @@
       <workItem from="1693922671464" duration="5000" />
       <workItem from="1694785447859" duration="637000" />
       <workItem from="1694786193994" duration="1122000" />
+      <workItem from="1695893195518" duration="2074000" />
     </task>
     <servers />
   </component>

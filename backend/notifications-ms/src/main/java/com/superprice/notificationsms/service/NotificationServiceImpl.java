@@ -48,7 +48,7 @@ public class NotificationServiceImpl implements NotificationService{
 
     public void sendPriceDropNotification(NotificationDto notificationDto) {
         SimpleMailMessage message = new SimpleMailMessage();
-        String text = "Hi " + notificationDto.getFirstName() + " " + notificationDto.getLastName() + ", we would like to inform that a the price of " +
+        String text = "Hi " + notificationDto.getFirstName() + " " + notificationDto.getLastName() + ", we would like to inform that the price of " +
                 notificationDto.getProductName() + " has been reduced from $"
                 + notificationDto.getPrevPrice() + " to $" + notificationDto.getNewPrice() + " at " + notificationDto.getSupermarket() + ".";
 //        message.setFrom("superprice.team01@gmail.com");

@@ -1,4 +1,4 @@
-package com.superprice.notificationsms.dto;
+package com.superprice.productms.dto;
 
 import lombok.*;
 
