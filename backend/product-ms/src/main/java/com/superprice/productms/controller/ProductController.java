@@ -1,11 +1,13 @@
 package com.superprice.productms.controller;
 
 //import com.superprice.productms.dto.ProductDto;
+import com.superprice.productms.dto.PriceUpdateRequest;
 import com.superprice.productms.dto.ProductDto;
 import com.superprice.productms.model.*;
 
 import com.superprice.productms.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -80,7 +82,32 @@ public class ProductController {
         List<Review> reviews = productService.getReviews(product_id);
         return ResponseEntity.ok(reviews);
     }
-    
+
+    /**
+     * HTTP Method: POST
+     * Endpoint: "/products/updateprice"
+     * Description: The endpoint allows a product's price at the specified supermarket to be updated
+     * @param request json with attributes:
+     *                "productID", "supermarketID", "newPrice". See PriceUpdateRequest dto.
+     * @return 200 OK for success, or 400 BAD_REQUEST if product/supermarket pair not found.
+     * e.g.: http://localhost:port/product-service/products/updateprice
+     */
+    @PostMapping("/updateprice")
+    public ResponseEntity<?> updateProductPrice(@RequestBody PriceUpdateRequest request) {
+
+        boolean success = productService.updateProductPrice(request.getProductID(), request.getSupermarketID(), request.getNewPrice());
+
+        if (success) {
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>("Product ID : " + request.getProductID() +
+                    " Supermarket ID: " + request.getSupermarketID() + " pair does not exist.", HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
+
 
 //    @PostMapping("/add")
 //    public List<ProductDto> addProducts(@RequestBody List<ProductDto> products) {

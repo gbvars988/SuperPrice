@@ -3,7 +3,14 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 import PageContainer from "../../components/common/PageContainer";
-import { Flex, Image, Skeleton, Text, useToast } from "@chakra-ui/react";
+import {
+  Flex,
+  HStack,
+  Image,
+  Skeleton,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
 import ProductInfo from "./ProductInfo";
 import QuantitySelector from "./QuantitySelector";
 import AddBtn from "./AddBtn";
@@ -11,6 +18,7 @@ import HProductCard from "../../components/product/HProductCard";
 
 import { LABEL } from "../../language/index";
 import { CartContext } from "../../context/CartContext";
+import ReviewForm from "../../components/review/ReviewForm";
 
 interface IProduct {
   productID: string;
@@ -145,7 +153,7 @@ const ProductPage = () => {
                 cheapestSupermarket={cheapestSupermarket}
               />
               <Flex flexDir="column" gap="4">
-                <Text>{product?.description}</Text>
+                <Text>{product?.description}</Text>/
                 <Text fontSize="17px">
                   {LABEL.INGREDIENTS}: {"To be implemented"}
                 </Text>
@@ -176,6 +184,9 @@ const ProductPage = () => {
           })}
         </Flex>
       </Flex>
+      <HStack align="stretch">
+        <ReviewForm onSubmit={(data: { name: string; review: string }) => {}} />
+      </HStack>
     </PageContainer>
   );
 };
