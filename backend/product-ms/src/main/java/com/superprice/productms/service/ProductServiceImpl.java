@@ -60,9 +60,6 @@ public class ProductServiceImpl implements ProductService{
                 .collect(Collectors.toList());
 
         dto.setSupermarketPrices(supermarketPrices);
-        // If you want to also populate the Supermarkets for each product
-        // List<Supermarket> supermarkets = supermarketProductRepository.findSupermarketsByProduct(product);
-        // dto.setSupermarkets(supermarkets);
 
         return dto;
     }
@@ -91,6 +88,18 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<SupermarketProduct> comparePrices(int productId) {
         return supermarketProductRepository.findByProductId(productId);
+    }
+    @Override
+    public boolean updateProductPrice(int productID, int supermarketID, double newPrice) {
+        SupermarketProduct sp = supermarketProductRepository.findByProductIdAndSupermarketId(productID, supermarketID);
+        if (sp != null) {
+            sp.setPrice(newPrice);
+            supermarketProductRepository.save(sp);
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 //    public List<ProductDto> addProduct(List<ProductDto> products) {
