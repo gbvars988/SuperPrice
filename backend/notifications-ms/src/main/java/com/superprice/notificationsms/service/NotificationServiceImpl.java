@@ -50,11 +50,12 @@ public class NotificationServiceImpl implements NotificationService{
 //        return mailSender;
 //    }
 
-    public void sendSimpleMessage(String to, String subject, String text) {
+    public void sendPriceDropNotification(String to, String productName, double prev_price, double new_price, String supermarket) {
         SimpleMailMessage message = new SimpleMailMessage();
-        message.setFrom("italiano.antzo@gmail.com");
+        String text =
+//        message.setFrom("superprice.team01@gmail.com");
         message.setTo(to);
-        message.setSubject(subject);
+        message.setSubject("Price Drop");
         message.setText(text);
         emailSender.send(message);
     }

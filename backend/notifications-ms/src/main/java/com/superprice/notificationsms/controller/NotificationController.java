@@ -27,11 +27,12 @@ public class NotificationController {
     public ResponseEntity<Notification> NotifyDelivery(@PathVariable int user_id) {
         Notification notification = notificationService.delivery(user_id);
         return ResponseEntity.ok(notification);
-    }@GetMapping("/pricedrop/{user_id}")
-    public ResponseEntity<Notification> NotifyPriceDrop(@PathVariable int user_id) {
-        Notification notification = notificationService.pricedrop(user_id);
-        return ResponseEntity.ok(notification);
     }
+//    @GetMapping("/pricedrop/{user_id}")
+//    public ResponseEntity<Notification> NotifyPriceDrop(@PathVariable int user_id) {
+//        Notification notification = notificationService.pricedrop(user_id);
+//        return ResponseEntity.ok(notification);
+//    }
 
     @GetMapping("/generic/{user_id}")
     public ResponseEntity<Notification> NotifyGeneric(@PathVariable int user_id) {
@@ -39,9 +40,9 @@ public class NotificationController {
         return ResponseEntity.ok(notification);
     }
 
-    @PostMapping("/1")
-    public ResponseEntity<Notification> NotifyMe() {
-        notificationService.sendSimpleMessage("anthony_imani@hotmail.com", "price-drop", "Bananas are now only $1.90 a kilo down from $2.10 at Coles.");
+    @PostMapping("/pricedrop/{user_id}")
+    public ResponseEntity<Notification> NotifyPriceDrop(String userEmail, String productName, double prev_price, double new_price, String supermarket) {
+        notificationService.sendPriceDropNotification(userEmail, prev_price, new_price, supermarket);
         Notification notification = notificationService.generic(1);
         return ResponseEntity.ok(notification);
     }
