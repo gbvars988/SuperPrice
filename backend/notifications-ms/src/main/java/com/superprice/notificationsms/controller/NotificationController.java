@@ -1,6 +1,7 @@
 package com.superprice.notificationsms.controller;
 
-import com.superprice.notificationsms.model.Notification;
+//import com.superprice.notificationsms.dto.Notification;
+import com.superprice.notificationsms.dto.NotificationDto;
 import com.superprice.notificationsms.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,27 +24,26 @@ public class NotificationController {
         this.notificationService = notificationService;
     }
 
-    @GetMapping("/delivery/{user_id}")
-    public ResponseEntity<Notification> NotifyDelivery(@PathVariable int user_id) {
-        Notification notification = notificationService.delivery(user_id);
-        return ResponseEntity.ok(notification);
-    }
+//    @GetMapping("/delivery/{user_id}")
+//    public ResponseEntity<Notification> NotifyDelivery(@PathVariable int user_id) {
+//        Notification notification = notificationService.delivery(user_id);
+//        return ResponseEntity.ok(notification);
+//    }
 //    @GetMapping("/pricedrop/{user_id}")
 //    public ResponseEntity<Notification> NotifyPriceDrop(@PathVariable int user_id) {
 //        Notification notification = notificationService.pricedrop(user_id);
 //        return ResponseEntity.ok(notification);
 //    }
 
-    @GetMapping("/generic/{user_id}")
-    public ResponseEntity<Notification> NotifyGeneric(@PathVariable int user_id) {
-        Notification notification = notificationService.generic(user_id);
-        return ResponseEntity.ok(notification);
-    }
+//    @GetMapping("/generic/{user_id}")
+//    public ResponseEntity<Notification> NotifyGeneric(@PathVariable int user_id) {
+//        Notification notification = notificationService.generic(user_id);
+//        return ResponseEntity.ok(notification);
+//    }
 
-    @PostMapping("/pricedrop/{user_id}")
-    public ResponseEntity<Notification> NotifyPriceDrop(String userEmail, String productName, double prev_price, double new_price, String supermarket) {
-        notificationService.sendPriceDropNotification(userEmail, prev_price, new_price, supermarket);
-        Notification notification = notificationService.generic(1);
-        return ResponseEntity.ok(notification);
+    @PostMapping("/pricedrop")
+    public ResponseEntity<?> NotifyPriceDrop(@RequestBody NotificationDto notificationDto) {
+        notificationService.sendPriceDropNotification(notificationDto);
+        return ResponseEntity.ok().build();
     }
 }
