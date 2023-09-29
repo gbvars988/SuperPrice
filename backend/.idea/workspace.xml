@@ -4,26 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8246521-ea13-4813-b56a-fd31fca3eaea" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/notifications-ms/src/main/java/com/superprice/notificationsms/dto/NotificationDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-ms/src/main/java/com/superprice/productms/dto/NotificationDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/product-ms/src/main/java/com/superprice/productms/dto/UserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notifications-ms/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/notifications-ms/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notifications-ms/src/main/java/com/superprice/notificationsms/controller/NotificationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/notifications-ms/src/main/java/com/superprice/notificationsms/controller/NotificationController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notifications-ms/src/main/java/com/superprice/notificationsms/model/Notification.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notifications-ms/src/main/java/com/superprice/notificationsms/service/NotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/notifications-ms/src/main/java/com/superprice/notificationsms/service/NotificationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notifications-ms/src/main/java/com/superprice/notificationsms/service/NotificationServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/notifications-ms/src/main/java/com/superprice/notificationsms/service/NotificationServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-ms/src/main/java/com/superprice/productms/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-ms/src/main/java/com/superprice/productms/controller/ProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-ms/src/main/java/com/superprice/productms/service/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-ms/src/main/java/com/superprice/productms/service/ProductService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-ms/src/main/java/com/superprice/productms/service/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/product-ms/src/main/java/com/superprice/productms/service/ProductServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/product-ms/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/product-ms/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-ms/src/main/java/com/superprice/userms/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-ms/src/main/java/com/superprice/userms/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-ms/src/main/java/com/superprice/userms/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-ms/src/main/java/com/superprice/userms/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-ms/src/main/java/com/superprice/userms/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-ms/src/main/java/com/superprice/userms/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-ms/src/main/java/com/superprice/userms/service/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/user-ms/src/main/java/com/superprice/userms/service/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/user-ms/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/user-ms/src/main/resources/application.properties" afterDir="false" />
-    </list>
+    <list default="true" id="f8246521-ea13-4813-b56a-fd31fca3eaea" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

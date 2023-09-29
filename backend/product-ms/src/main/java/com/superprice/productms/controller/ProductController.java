@@ -88,7 +88,8 @@ public class ProductController {
     /**
      * HTTP Method: POST
      * Endpoint: "/products/updateprice"
-     * Description: The endpoint allows a product's price at the specified supermarket to be updated
+     * Description: The endpoint allows a product's price at the specified supermarket to be updated. Afterward
+     *              email notifications are sent to all users about the updated product.
      * @param request json with attributes:
      *                "productID", "supermarketID", "newPrice". See PriceUpdateRequest dto.
      * @return 200 OK for success, or 400 BAD_REQUEST if product/supermarket pair not found.

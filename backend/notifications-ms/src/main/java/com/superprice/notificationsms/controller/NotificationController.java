@@ -11,13 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("notifications")
 public class NotificationController {
-    /**HTTP Method: GET
-     * Endpoint: "/notifications/{type}/{user_id}
-     * Description: The endpoint sends the user a notification to update them on changes to prices or when
-     * a delivery has arrived.
-     * @param userId
-     * @return A notification of type generic (title, message)
-     */
+
     private final NotificationService notificationService;
     @Autowired
     public NotificationController(NotificationService notificationService) {
@@ -40,7 +34,12 @@ public class NotificationController {
 //        Notification notification = notificationService.generic(user_id);
 //        return ResponseEntity.ok(notification);
 //    }
-
+    /**HTTP Method: Post
+     * Endpoint: "/notifications/pricedrop
+     * Description: The endpoint sends the user a notification informing them of a product's new price.
+     * @param request json with attributes regarding product and user details. See Notification dto.
+     * @return to do
+     */
     @PostMapping("/pricedrop")
     public ResponseEntity<?> NotifyPriceDrop(@RequestBody NotificationDto notificationDto) {
         notificationService.sendPriceDropNotification(notificationDto);

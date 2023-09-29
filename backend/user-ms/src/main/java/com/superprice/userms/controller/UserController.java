@@ -71,6 +71,13 @@ public class UserController {
         }
     }
 
+    /**
+     * HTTP Method: GET
+     * Endpoint: "/user/getUsers"
+     * Description: Retrieve a list of all registered users.
+     *
+     * @return HTTP 200 OK with a list of user objects if retrieval is successful.
+     */
     @GetMapping("/getUsers")
     public List<UserDto> getUsers () {
         List<UserDto> userDtos = userService.getUsers();
