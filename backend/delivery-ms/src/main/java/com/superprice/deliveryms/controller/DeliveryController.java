@@ -1,6 +1,7 @@
 package com.superprice.deliveryms.controller;
 
 import com.superprice.deliveryms.dto.OrderRequest;
+import com.superprice.deliveryms.dto.TimeSlotDTO;
 import com.superprice.deliveryms.model.Delivery;
 import com.superprice.deliveryms.model.Order;
 import com.superprice.deliveryms.service.DeliveryService;
@@ -10,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -31,8 +34,8 @@ public class DeliveryController {
     }
 
     @GetMapping("/timeslots")
-    public ResponseEntity<?> getTimeSlots() {
-
+    public ResponseEntity<List<TimeSlotDTO>> getTimeSlots() {
+        return new ResponseEntity<>(deliveryService.getTimeSlots(), HttpStatus.OK);
     }
 //    @PostMapping("")
 //    public ResponseEntity<String> orderDelivery(@RequestBody Delivery orderDetails){

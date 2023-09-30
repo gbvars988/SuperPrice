@@ -2,6 +2,7 @@ package com.superprice.deliveryms.service;
 
 
 import com.superprice.deliveryms.dto.OrderRequest;
+import com.superprice.deliveryms.dto.TimeSlotDTO;
 import com.superprice.deliveryms.model.Delivery;
 import com.superprice.deliveryms.model.Order;
 
@@ -18,4 +19,6 @@ public interface DeliveryService {
 //    Optional<Delivery> deliveryInfo (int orderNo);
 
     Order createOrder(OrderRequest orderRequest);
+
+    List<TimeSlotDTO> getTimeSlots();
 }

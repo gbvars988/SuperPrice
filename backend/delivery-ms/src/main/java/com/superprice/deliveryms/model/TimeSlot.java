@@ -12,16 +12,17 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @Data
 @Builder
+@Table(name = "timeslot")
 public class TimeSlot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "TimeSlotID")
+    @Column(name = "TimeslotID")
     private int timeSlotID;
 
-    @Column(name = "StartTime")
+    @Column(name = "Starttime")
     private LocalTime startTime;
 
-    @Column(name = "EndTime")
+    @Column(name = "Endtime")
     private LocalTime endTime;
 
 }
