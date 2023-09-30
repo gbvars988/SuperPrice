@@ -58,7 +58,7 @@ const NavBar: React.FC = () => {
             </HStack>
           </HStack>
           <HStack spacing={8} alignItems={"center"}>
-                        <CartDrawer></CartDrawer>
+            
             <ColorModeSwitcher justifySelf="flex-end" />
             <Link as={RouterLink} to={PATH.CHECKOUT} mr={4} fontSize={20}>
               {LABEL.CHECKOUT}
@@ -72,7 +72,9 @@ const NavBar: React.FC = () => {
                 Login
               </Link>
             )}
+            <CartDrawer/>
           </HStack>
+          
         </Flex>
       </Container>
     </Box>

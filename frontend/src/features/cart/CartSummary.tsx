@@ -23,8 +23,13 @@ export const CartSummary = () => {
         return cartItems
           .reduce((sum: number, item: CartItem) => sum + item.price * item.quantity, 0)
           .toFixed(2);
-      
       };
+
+      const totalItems = () => {
+        return cartItems
+            .reduce((ttl: number, item: CartItem) => ttl + item.quantity, 0)
+            .toFixed(0);
+    }
 
     const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
     useNumberInput({
@@ -46,14 +51,16 @@ export const CartSummary = () => {
             <React.Fragment>
             
         
-            <Flex align='center' w='100%' justifyContent='space-between' marginBottom={'10px'}>
-                <Flex align="flex-end">
-                    <Image src={item.imageURL} alt={item.name} boxSize='35px' className="rounded-md h-24" borderRadius='10px' marginRight={'8px'}/>
-                    <Text fontSize='lg' paddingBottom={'10px'} mr='25px'>{item.name}</Text>
+            <Flex align='center' w='100%' justifyContent='space-between' marginBottom={'10px'} mt='4px' borderBottom='1px' borderColor='blackAlpha.300'>
+                
+                <Flex align="flex-end" alignItems='center' width='100px'>
+                    <Image src={item.imageURL} alt={item.name} boxSize='20px' className="rounded-md h-24" borderRadius='10px' marginRight={'8px'} align='center'/>
+                    <Text fontSize='15px'  mr='25px'>{item.name}</Text>
                 </Flex>
                 
                 <Flex w='80px' align='left' justify="center"  key={item.productID}>
-                
+
+                        {item.quantity > 0 &&
                         <IconButton
                             {...dec}
                             w='12px'
@@ -64,6 +71,7 @@ export const CartSummary = () => {
                                 decreaseProductQty(item);}}
                             icon={<Image src={MinusQty}
                             boxSize='10px'/>}/>
+                        }
                         <Input m='2px'{...input} size='xs' border='none' w='25px' justifyContent={'left'} value={item.quantity}></Input> 
                         <IconButton
                             {...inc}
@@ -82,35 +90,37 @@ export const CartSummary = () => {
                         
                     </Flex>
                     <Flex>
-                        <Text ml='10px'>${item.price}</Text> 
-                        </Flex>
-                        <Button 
+                        <Text ml='8px' fontSize='12px'>${item.price}</Text> 
+                    </Flex>
+                    <Button 
+                            justifyContent='center'
                             colorScheme='whiteAlpha' 
-                            
-                            ml='8px'
-                            size='xs'
+                            ml='20px'
+                            size='xxs'
+                            width='19px'
+                            height='19px'
+                            fontWeight='bold'
                             variant={'outline'}
                             aria-label='Remove from Cart'
+                            _focus={{bg: 'white'}}
                             onClick={() => {
+                                
                                 removeFromCart(item);}}>
                             X
-                        </Button>
-                                
-                    
+                        </Button>    
                 </Flex>
 
             
                 </React.Fragment>
             ))}
-            <Text align={"center"}>
-                    <Heading 
+            <Flex align='center' justifyContent='center'>
+                    <Heading  alignSelf='center' 
                         as='h1'
                         size="md"
                         mt='25px'>
                         Total: ${calculateTotal()}
                         </Heading>
-                    
-                </Text>  
+            </Flex>
                 </Box>
 
                 

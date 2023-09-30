@@ -3,10 +3,11 @@ import {Box,
     Button, 
     Heading, 
     VStack, 
+    Text,
     Center} from '@chakra-ui/react';
 
 import {LABEL, PATH} from "../../language";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import PageContainer from "../../components/common/PageContainer";
 import { CartSummary } from './CartSummary';
 
@@ -17,7 +18,7 @@ const EditCart: React.FC = () => {
     return (
         
         <PageContainer>
-            
+            <Button onClick={() => {navigate(PATH.SHOP);}}>Keep Shopping</Button>
             <VStack spacing={8} align={"center"}>
                 <Box>
                     <Heading as="h1" size="xl" textAlign={"center"} lineHeight={"40px"}>
