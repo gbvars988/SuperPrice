@@ -1,14 +1,14 @@
-DROP TABLE IF EXISTS `Order`;
 DROP TABLE IF EXISTS OrderItem;
 DROP TABLE IF EXISTS Delivery;
+DROP TABLE IF EXISTS `Order`;
 DROP TABLE IF EXISTS TimeSlot;
 
 
 CREATE TABLE IF NOT EXISTS `Order` (
     OrderID INT PRIMARY KEY AUTO_INCREMENT,
     UserID INT, -- Currently nullable assuming user does not need to be registered to request delivery. Otherwise references the UserID from user-ms but without FK constraints due to microservices architecture
-    DateCreated DATETIME DEFAULT CURRENT_TIMESTAMP,
-    Status VARCHAR(255) DEFAULT 'Pending'
+    DateCreated DATETIME DEFAULT CURRENT_TIMESTAMP
+--     Status VARCHAR(255) DEFAULT 'Pending'
     );
 
 CREATE TABLE IF NOT EXISTS OrderItem (

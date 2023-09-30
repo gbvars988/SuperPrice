@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Data
 @Builder
+@Table(name = "`Order`")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,9 +24,10 @@ public class Order {
     @Column(name = "UserID")
     private int userId;
 
-    @Column(name = "DateCreated")
+    @CreationTimestamp
+    @Column(name = "Datecreated")
     private LocalDateTime dateCreated;
 
-    @Column(name = "Status")
-    private String status;
+//    @Column(name = "Status")
+//    private String status;
 }

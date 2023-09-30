@@ -1,8 +1,11 @@
 package com.superprice.deliveryms.controller;
 
+import com.superprice.deliveryms.dto.OrderRequest;
 import com.superprice.deliveryms.model.Delivery;
+import com.superprice.deliveryms.model.Order;
 import com.superprice.deliveryms.service.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +21,18 @@ public class DeliveryController {
     @Autowired
     public DeliveryController(DeliveryService deliveryService) {
         this.deliveryService = deliveryService;
+    }
+
+    @PostMapping("/createorder")
+    public ResponseEntity<?> createOrder(@RequestBody OrderRequest orderRequest) {
+        Order savedOrder = deliveryService.createOrder(orderRequest);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedOrder);
+    }
+
+    @GetMapping("/timeslots")
+    public ResponseEntity<?> getTimeSlots() {
+
     }
 //    @PostMapping("")
 //    public ResponseEntity<String> orderDelivery(@RequestBody Delivery orderDetails){
