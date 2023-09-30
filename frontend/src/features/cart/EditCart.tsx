@@ -18,7 +18,7 @@ const EditCart: React.FC = () => {
     return (
         
         <PageContainer>
-            <Button onClick={() => {navigate(PATH.SHOP);}}>Keep Shopping</Button>
+            <Button ml='50px' mb='30px' onClick={() => {navigate(PATH.SHOP);}}>Keep Shopping</Button>
             <VStack spacing={8} align={"center"}>
                 <Box>
                     <Heading as="h1" size="xl" textAlign={"center"} lineHeight={"40px"}>
@@ -28,7 +28,7 @@ const EditCart: React.FC = () => {
                 <Box>
 
                 </Box>
-                <Box>
+                <Box maxW={"8xl"} px={7}>
                     <CartSummary/>
                 </Box>
                 <Center>

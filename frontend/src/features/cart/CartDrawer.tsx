@@ -54,15 +54,15 @@ function CartDrawer() {
                     {totalItems() != '0' &&
                     <Box 
                         as="button"
-                        width="15px"
+                        width="16px"
                         height="14px"
                         borderRadius="50%"
                         bg="#2A7061"
                         position="absolute"
                         marginBottom="15px"
-                        marginLeft='px'
+                        marginLeft='10px'
                         fontWeight="bold"
-                        fontSize="10px">
+                        fontSize="11px">
                     {totalItems()}
                     </Box>
                     }
