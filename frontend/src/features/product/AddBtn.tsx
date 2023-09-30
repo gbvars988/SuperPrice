@@ -15,6 +15,7 @@ const AddBtn = (props: Props) => {
       bg={useColorModeValue("black", "white")}
       h="50px"
       w="198px"
+      borderRadius="10px"
     >
       {LABEL.ADD_TO_TROLLEY}
     </Button>

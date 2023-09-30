@@ -74,6 +74,7 @@ const VProductCard = (props: VProductCardProps) => {
             boxSize={{ base: "132.5px", lg: "265px" }}
             objectFit="cover"
             userSelect={"none"}
+            borderRadius="10px"
             onLoad={() => setImgLoaded(true)}
           ></Image>
         </Skeleton>
