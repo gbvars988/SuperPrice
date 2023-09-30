@@ -46,4 +46,12 @@ public class DeliveryController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedDelivery);
     }
 
+    @GetMapping("/getdeliveriesbyemail/{email}")
+    public ResponseEntity<List<DeliveryRequest>> getDeliveriesByEmail(@RequestParam String email) {
+        List<DeliveryRequest> deliveryRequests = deliveryService.getDeliveriesByEmail(email);
+        return ResponseEntity.ok(deliveryRequests);
+    }
+
+    // getdeliverydetailsbydeliveryID
+
 }

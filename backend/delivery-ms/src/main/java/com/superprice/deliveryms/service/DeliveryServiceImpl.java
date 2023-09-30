@@ -80,11 +80,32 @@ public class DeliveryServiceImpl implements DeliveryService{
         return deliveryRepository.save(delivery);
     }
 
+    public List<DeliveryRequest> getDeliveriesByEmail(String email) {
+        List<Delivery> deliveries = deliveryRepository.findByEmail(email);
+        return deliveries.stream()
+                .map(this::convertToDeliveryRequest)
+                .collect(Collectors.toList());
+    }
+
     private TimeSlotDTO convertToTimeSlotDto(TimeSlot timeSlot) {
         TimeSlotDTO dto = new TimeSlotDTO();
         dto.setTimeSlotId(timeSlot.getTimeSlotID());
         dto.setStartTime(timeSlot.getStartTime());
         dto.setEndTime(timeSlot.getEndTime());
+        return dto;
+    }
+
+    private DeliveryRequest convertToDeliveryRequest(Delivery delivery) {
+        DeliveryRequest dto = new DeliveryRequest();
+        dto.setDeliveryStatus(delivery.getDeliveryStatus());
+        dto.setEmail(delivery.getEmail());
+        dto.setAddress(delivery.getAddress());
+
+        Order order = orderRepository.findById(delivery.getOrder().getOrderId()).orElse(null);
+        TimeSlot timeSlot = timeSlotRepository.findById(delivery.getTimeSlot().getTimeSlotID()).orElse(null);
+        dto.setOrderId(order.getOrderId());
+        dto.setTimeSlotId(timeSlot.getTimeSlotID());
+
         return dto;
     }
 
