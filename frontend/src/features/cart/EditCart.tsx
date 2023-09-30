@@ -3,6 +3,7 @@ import {Box,
     Button, 
     Heading, 
     VStack, 
+    Flex,
     Text,
     Center} from '@chakra-ui/react';
 
@@ -35,8 +36,16 @@ const EditCart: React.FC = () => {
                 </Box>
                 <Box>
                 </Box>
-                <Box maxW={"8xl"} px={7}>
+                <Box maxW={"8xl"} 
+                    px={7}>
+                <Flex align='center' 
+                    w='98%' 
+                    justifyContent='space-between' 
+                    marginBottom={'10px'} 
+                    mt='4px'>
+                
                     <CartSummary/>
+                    </Flex>
                 </Box>
                 <Center>
                     <Box mt='50px'>

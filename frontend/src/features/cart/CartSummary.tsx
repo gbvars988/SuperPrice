@@ -17,7 +17,7 @@ import { CartTotal, TotalCartItems } from './cartTotal';
 
 
 export const CartSummary = () => {
-    const { cartItems, checkoutInfo, addToCart, increaseProductQty, decreaseProductQty, removeFromCart, clearCart } = useContext(CartContext);
+    const { cartItems, increaseProductQty, decreaseProductQty, removeFromCart } = useContext(CartContext);
 
     const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
     useNumberInput({
@@ -37,27 +37,48 @@ export const CartSummary = () => {
                 
                 <React.Fragment>
         
-                    <Flex align='center' w='98%' justifyContent='space-between' marginBottom={'10px'} mt='4px' borderBottom='1px' borderColor='blackAlpha.300'>
+                    <Flex align='center' 
+                        w='98%' 
+                        justifyContent='space-between' 
+                        marginBottom={'10px'} 
+                        mt='4px' 
+                        borderBottom='1px' 
+                        borderColor='blackAlpha.300'>
                 
-                        <Flex align="flex-end" alignItems='center' width='100px'>
-                            <Image src={item.imageURL} alt={item.name} boxSize='20px' className="rounded-md h-24" borderRadius='10px' marginRight={'8px'} align='center'/>
-                            <Text fontSize='15px'  mr='25px'>{item.name}</Text>
+                        <Flex align="flex-end" 
+                            alignItems='center' 
+                            width='100px'>
+                            <Image src={item.imageURL} 
+                                alt={item.name} 
+                                boxSize='20px' 
+                                className="rounded-md h-24" 
+                                borderRadius='10px' 
+                                marginRight={'8px'} 
+                                align='center'/>
+                            <Text fontSize='15px' 
+                                mr='25px'>
+                                {item.name}
+                            </Text>
                         </Flex>
                 
-                        <Flex w='80px' align='left' justify="center"  key={item.productID}>
+                        <Flex w='80px' 
+                            align='left' 
+                            justify="center"  
+                            key={item.productID}>
 
                             {item.quantity > 0 &&
                                 <IconButton
                                     {...dec}
                                     w='12px'
                                     m='2px'
+                                    marginRight='4px'
                                     size='sml'
                                     aria-label='Decrease Qty' 
                                     onClick={() => {decreaseProductQty(item);}}
                                     icon={<Image src={MinusQty}
                                     boxSize='10px'/>}/>
                             }
-                            <Input m='2px'{...input} size='xs' border='none' w='25px' justifyContent={'left'} value={item.quantity}></Input> 
+                            <Input m='2px'{...input} size='sml' border='none' w='20px' justifyContent={'left'} value={item.quantity}></Input> 
                             <IconButton
                                 {...inc}
                                 w='12px'
@@ -69,12 +90,16 @@ export const CartSummary = () => {
                                 boxSize='10px'/>}/>
                         </Flex>
                         <Flex>
-                            <Text ml='8px' fontSize='12px' fontWeight='bold'>${item.price.toFixed(2)}</Text> 
+                            <Text ml='6px' 
+                                fontSize='14px' 
+                                fontWeight='bold'>
+                                    ${item.price.toFixed(2)}
+                            </Text> 
                         </Flex>
 
                         <Button justifyContent='center'
                                 colorScheme='whiteAlpha' 
-                                ml='20px'
+                                ml='15px'
                                 size='xxs'
                                 width='19px'
                                 height='19px'

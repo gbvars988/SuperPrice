@@ -6,6 +6,7 @@ export type FormatPriceOptions = {
   currency?: string 
 };
 
+// this is the total cost of all of the combined items in the cart
 export const CartTotal = () => {
   const { cartItems } = useContext(CartContext);
 
@@ -14,7 +15,8 @@ export const CartTotal = () => {
     .toFixed(2);
 };
 
-
+// this is the total quantity of all of the items in the cart combined
+// it's used for the number that displays over the cart icon
 export const TotalCartItems = () => {
   const { cartItems } = useContext(CartContext);
 
@@ -22,3 +24,5 @@ export const TotalCartItems = () => {
       .reduce((ttl: number, item: CartItem) => ttl + item.quantity, 0)
       .toFixed(0);
 };
+
+// this is the total price for the quantity of each individual item in the cart

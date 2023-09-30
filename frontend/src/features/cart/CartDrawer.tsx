@@ -8,6 +8,7 @@ import {
     DrawerHeader, 
     DrawerOverlay, 
     Flex,
+    Badge,
     ButtonGroup,
     Box, 
     Image,
@@ -28,7 +29,7 @@ import { CartTotal, TotalCartItems } from './cartTotal';
 function CartDrawer() {
     const { isOpen, onOpen,  onClose } = useDisclosure()
     const navigate = useNavigate();
-    const { cartItems } = useContext(CartContext);
+    const { cartItems, clearCart } = useContext(CartContext);
  
     return (
         <>
@@ -59,6 +60,7 @@ function CartDrawer() {
                 <DrawerOverlay/>
                 <DrawerContent>
                     <DrawerCloseButton/>
+                    
                     <Box alignItems='center'
                         justifyContent='center'>
                         <Text align={"center"}>
@@ -73,8 +75,12 @@ function CartDrawer() {
                                 justifyContent='space-between' 
                                 marginBottom={'10px'} 
                                 mt='4px'>
-                                {TotalCartItems() != '0' &&     
+                                {TotalCartItems() != '0' && 
+                                
+                                
                                     <CartSummary/>
+
+
                                 }
                             </Flex>
                         </DrawerBody>
@@ -85,9 +91,24 @@ function CartDrawer() {
                             justifyContent='center'
                             width='98%'
                             height='15%'>
+                            <Box as='button'
+                                bg='tomato'
+                                opacity='55%'
+                                lineHeight='16px'
+                                borderRadius='5px'
+                                padding='3px'
+                                borderBottom='1px'
+                                mb='20px'
+                                ml='80px'
+                                onClick={() => {clearCart();}}
+                                >
+                                Clear Cart
+                            </Box>
+
                             <ButtonGroup variant='outline' spacing='6'>
                                 <Button aria-label='Edit Cart'
                                     size='md'
+                                    borderBottom='1px'
                                     leftIcon={<Image src={cartImage}
                                         boxSize='15px'/>}
                                     onClick={() => {navigate(PATH.CART);
