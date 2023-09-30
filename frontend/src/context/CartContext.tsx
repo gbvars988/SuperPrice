@@ -1,8 +1,8 @@
 import React from "react";
 import { IProduct } from '../features/product/ProductInfo';
 
-
-export interface CartItem extends IProduct {
+//export interface CartItem extends IProduct {
+export type CartItem = {
   productID: string;
   name: string;
   description: string;

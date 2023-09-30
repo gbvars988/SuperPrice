@@ -112,8 +112,8 @@ const ProductPage = () => {
         price: cheapestSupermarket.price,
         supermarketName: cheapestSupermarket.supermarketName,
         imageURL: product.imageURL,
-        supermarketPrices: [],
-        category: ""
+        //supermarketPrices: [],
+        //category: ""
       });
 
       toast({

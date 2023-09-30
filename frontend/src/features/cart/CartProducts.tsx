@@ -29,7 +29,7 @@ const CartProducts = ({ cartItems }: CartContextType) => {
   return (
     <Container>
       {cartItems?.length ? (
-        cartItems.map((p) => <CartProduct  product={p} key={p.name} />)
+        cartItems.map((p) => <CartProduct  product={p} key={p.productID} />)
       ) : (
         <Box>
           

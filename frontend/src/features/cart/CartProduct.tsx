@@ -72,8 +72,10 @@ interface IProps {
 const CartProduct = ({ product}: IProps) => {
   
   //const { removeFromCart, increaseQty, decreaseQty } = useCart();
-  const { removeFromCart, increaseQty, decreaseQty } = useContext(CartContext);
+  const { cartItems, removeFromCart, increaseQty, decreaseQty } = useContext(CartContext);
 
+
+    
 
   const {
     productID,
@@ -134,6 +136,7 @@ const CartProduct = ({ product}: IProps) => {
         
 
       </Box>
+      
     )
   };
 
