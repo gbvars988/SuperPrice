@@ -7,6 +7,7 @@ export const LABEL = {
   CONFIRM_PASSWORD: "Confirm password",
   CONFIRM_YOUR_PASSWORD: "Confirm your password",
   DELIVERY_OPTIONS: "Delivery options",
+  DELIVERY_TIME_SLOT: "Delivery time slot",
   EMAIL: "Email",
   ENTER_YOUR_EMAIL: "Enter your email",
   ENTER_YOUR_FIRST_NAME: "Enter your first name",
