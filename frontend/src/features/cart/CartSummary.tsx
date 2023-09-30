@@ -1,45 +1,30 @@
 import React,  { useContext } from 'react';
-
-import {LABEL, PATH} from "../../language";
-import {useNavigate} from "react-router-dom";
 import {
-    Drawer, 
-    DrawerBody, 
-    DrawerCloseButton, 
-    DrawerContent, 
-    DrawerFooter, 
-    DrawerHeader, 
-    DrawerOverlay, 
     Heading, 
     IconButton, 
-    Container,
-    ButtonGroup,
     Box, 
     Image,
-    Button, 
-    useDisclosure,
-    Center,
-    VStack,
     Text,
     Flex,
-    NumberInput,
     Input,
-    useNumberInput
+    useNumberInput,
+    Button
 } from '@chakra-ui/react';
 import MinusQty from './minus.png';
 import PlusQty from './plus.png';
-import { CartContext, CartItem, CartContextType, CartProvider } from '../../context/CartContext';
+import { CartContext, CartItem } from '../../context/CartContext';
 
-import CartProducts from './CartProducts';
-
-import useCart from './useCart';
-
-//const { cartItems, removeFromCart } = useContext(CartContext);
 
 export const CartSummary = () => {
     //const { cartItems } = useContext(CartContext);
-    const { cartItems, checkoutInfo, addToCart, increaseQty, decreaseQty, removeFromCart, clearCart } = useContext(CartContext);
-    //const { cartItems } = useContext(CartContext);
+    const { cartItems, checkoutInfo, addToCart, increaseProductQty, decreaseProductQty, removeFromCart, clearCart } = useContext(CartContext);
+
+    const calculateTotal = () => {
+        return cartItems
+          .reduce((sum: number, item: CartItem) => sum + item.price * item.quantity, 0)
+          .toFixed(2);
+      
+      };
 
     const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
     useNumberInput({
@@ -55,69 +40,86 @@ export const CartSummary = () => {
     const input = getInputProps()
 
     return (
-        
         <Box>
+        {cartItems.map((item) => (
         
-        <Flex align='center' w='100%' justifyContent='space-between'>
-
-            {cartItems.map((item) => (
-                <React.Fragment>
+            <React.Fragment>
+            
+        
+            <Flex align='center' w='100%' justifyContent='space-between' marginBottom={'10px'}>
                 <Flex align="flex-end">
-                    <Image src={item.imageURL} alt={item.name} boxSize='40px' className="rounded-md h-24" />
-                    <Text mr='25px'>{item.name}</Text>
+                    <Image src={item.imageURL} alt={item.name} boxSize='35px' className="rounded-md h-24" borderRadius='10px' marginRight={'8px'}/>
+                    <Text fontSize='lg' paddingBottom={'10px'} mr='25px'>{item.name}</Text>
                 </Flex>
+                
                 <Flex w='80px' align='left' justify="center"  key={item.productID}>
-                    <Box>
+                
                         <IconButton
                             {...dec}
-                            w='15px'
-                            m='5px'
+                            w='12px'
+                            m='2px'
                             size='sml'
                             aria-label='Decrease Qty' 
                             onClick={() => {
-                                removeFromCart(item);}}
+                                decreaseProductQty(item);}}
                             icon={<Image src={MinusQty}
                             boxSize='10px'/>}/>
-                        <Input m='2px'{...input} size='xs' border='none' w='25px' justifyContent={'left'}>{item.quantity}</Input> 
+                        <Input m='2px'{...input} size='xs' border='none' w='25px' justifyContent={'left'} value={item.quantity}></Input> 
                         <IconButton
                             {...inc}
-                            w='15px'
-                            mt='5px'
-                            mb='5px'
+                            w='12px'
+        
+                            mt='2px'
+                            mb='2px'
                             ml='2px'
                             size='sml'
                             aria-label='Increase Qty'
                             onClick={() => {
-                                addToCart(item);}}  
+                                increaseProductQty(item);}}  
                             icon={<Image src={PlusQty}
                             boxSize='10px'/>}/>
-                    </Box>
+                    
+                        
+                    </Flex>
+                    <Flex>
+                        <Text ml='10px'>${item.price}</Text> 
+                        </Flex>
+                        <Button 
+                            colorScheme='whiteAlpha' 
+                            
+                            ml='8px'
+                            size='xs'
+                            variant={'outline'}
+                            aria-label='Remove from Cart'
+                            onClick={() => {
+                                removeFromCart(item);}}>
+                            X
+                        </Button>
+                                
+                    
                 </Flex>
+
+            
                 </React.Fragment>
             ))}
-                
-                
+            <Text align={"center"}>
+                    <Heading 
+                        as='h1'
+                        size="md"
+                        mt='25px'>
+                        Total: ${calculateTotal()}
+                        </Heading>
+                    
+                </Text>  
+                </Box>
+
                 
                 
                   
                   
             
 
-        </Flex>
-
         
-
-        <Text align={"center"}>
-            <Heading 
-                as='h1'
-                size="md"
-                mt='25px'>
-                {LABEL.TOTAL_PRICE}0.00
-            </Heading>
-        </Text>  
-
-       
-        </Box>
     )
 
 

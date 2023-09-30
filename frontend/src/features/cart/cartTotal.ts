@@ -1,38 +1,17 @@
-import { CartContext } from "../../context/CartContext";
-/*
-const cartTotal = () => {
-  const { total, setTotal } = car();
-
-  const updateCartTotal = (products: ICartProduct[]) => {
-    const productQuantity = products.reduce(
-      (sum: number, product: ICartProduct) => {
-        sum += product.quantity;
-        return sum;
-      },
-      0
-    );
-
-    const totalPrice = products.reduce((sum: number, product: ICartProduct) => {
-      sum += product.supermarketPrices[0].price * product.quantity;
-      return sum;
-    }, 0);
+import React,  { useContext } from 'react';
 
 
-    const total = {
-      productQuantity,
-      totalPrice,
-      currencyId: 'AUD',
-      currencyFormat: '$',
-    };
+import { CartContext, CartItem } from "../../context/CartContext";
 
-    setTotal(total);
-  };
+export type FormatPriceOptions = { locale?: string; currency?: string }
 
-  return {
-    total,
-    updateCartTotal,
-  };
+export const CartTotal = () => {
+
+  const { cartItems } = useContext(CartContext);
+
+  //const calculateTotal = () => {
+  return cartItems
+    .reduce((sum: number, item: CartItem) => sum + item.price * item.quantity, 0)
+    .toFixed(2);
+
 };
-
-export default cartTotal;
-*/

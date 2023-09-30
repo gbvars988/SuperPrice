@@ -35,8 +35,8 @@ export type CartContextType = {
   setCheckoutInfo: (info: CheckoutInfo) => void;
   //setProducts(cartItems: CartItem[]): void;
   addToCart: (item: CartItem) => void;
-  increaseQty: (item: CartItem) => void;
-  decreaseQty: (item: CartItem) => void;
+  increaseProductQty: (item: CartItem) => void;
+  decreaseProductQty: (item: CartItem) => void;
   //removeFromCart: (productID: string) => void;
   removeFromCart: (item: CartItem) => void;
   clearCart: () => void;
@@ -48,8 +48,8 @@ export const CartContext = React.createContext<CartContextType>({
   setCheckoutInfo: () => {},
   //setProducts: () => {},
   addToCart: () => {},
-  increaseQty: () => {},
-  decreaseQty: () => {},
+  increaseProductQty: () => {},
+  decreaseProductQty: () => {},
   removeFromCart: () => {},
   clearCart: () => {},
 });
@@ -152,8 +152,8 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         setCheckoutInfo,
         addToCart,
         removeFromCart,
-        increaseQty(item){},
-        decreaseQty(item) {},
+        increaseProductQty,
+        decreaseProductQty,
         clearCart,
       }}
     >

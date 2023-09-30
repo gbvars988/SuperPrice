@@ -8,37 +8,21 @@ import {
     DrawerFooter, 
     DrawerHeader, 
     DrawerOverlay, 
-    Heading, 
     IconButton, 
     ButtonGroup,
     Box, 
     Image,
     Button, 
     useDisclosure,
-    Center,
-    VStack,
     Text,
-    Flex
 } from '@chakra-ui/react';
-import { 
-    AddIcon, 
-    MinusIcon 
-} from '@chakra-ui/icons';
+
 import cartImage from './cart.png'
 import {LABEL, PATH} from "../../language";
 import {useNavigate} from "react-router-dom";
 import { CartSummary } from './CartSummary';
-import { CartContext } from '../../context/CartContext';
 
 
-// CHANGE THIS TO CORRECT PATH ONCE PRODUCTS IS COMPLETE //
-//import cartProducts from '../cart/CartProducts';
-
-//type CartDrawerButton = Omit<IconButtonProps, "aria-label">
-//function ShoppingCartDrawer() {
-
-//export const CartButton: React.FC = () => {
-//export const CartButton = () => {
 function CartDrawer() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const navigate = useNavigate();
