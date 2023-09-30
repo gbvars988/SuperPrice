@@ -21,13 +21,6 @@ export type CheckoutInfo = {
   deliveryOption: string;
 };
 
-//maybe delete this thing here
-export interface ProductsResponse {
-  data: {
-    products: IProduct[];
-  };
-}
-//above this
 
 export type CartContextType = {
   cartItems: CartItem[];

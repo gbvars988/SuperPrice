@@ -18,26 +18,33 @@ const EditCart: React.FC = () => {
     return (
         
         <PageContainer>
-            <Button ml='50px' mb='30px' onClick={() => {navigate(PATH.SHOP);}}>Keep Shopping</Button>
-            <VStack spacing={8} align={"center"}>
+            <Button ml='50px' 
+                mb='30px' 
+                onClick={() => {navigate(PATH.SHOP);}}>
+                Keep Shopping
+            </Button>
+            <VStack spacing={8} 
+                align="center">
                 <Box>
-                    <Heading as="h1" size="xl" textAlign={"center"} lineHeight={"40px"}>
+                    <Heading as="h1" 
+                        size="xl" 
+                        textAlign="center" 
+                        lineHeight="40px">
                         {LABEL.EDIT_CART}
                     </Heading>
                 </Box>
                 <Box>
-
                 </Box>
                 <Box maxW={"8xl"} px={7}>
                     <CartSummary/>
                 </Box>
                 <Center>
-                <Box mt='50px'>
-                    <Button colorScheme="teal" onClick={() => {
-                        
-                    }}
-                    >Proceed to Checkout</Button>
-                </Box>
+                    <Box mt='50px'>
+                        <Button colorScheme="teal"
+                            onClick={() => {navigate(PATH.CHECKOUT);}}>
+                            Proceed to Checkout
+                        </Button>
+                    </Box>
                 </Center>
             </VStack>
         </PageContainer>
