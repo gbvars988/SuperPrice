@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -60,9 +61,6 @@ public class ProductServiceImpl implements ProductService{
                 .collect(Collectors.toList());
 
         dto.setSupermarketPrices(supermarketPrices);
-        // If you want to also populate the Supermarkets for each product
-        // List<Supermarket> supermarkets = supermarketProductRepository.findSupermarketsByProduct(product);
-        // dto.setSupermarkets(supermarkets);
 
         return dto;
     }
@@ -92,7 +90,37 @@ public class ProductServiceImpl implements ProductService{
     public List<SupermarketProduct> comparePrices(int productId) {
         return supermarketProductRepository.findByProductId(productId);
     }
+    @Override
+    public boolean updateProductPrice(int productID, int supermarketID, double newPrice) {
+        SupermarketProduct sp = supermarketProductRepository.findByProductIdAndSupermarketId(productID, supermarketID);
+        if (sp != null) {
+            sp.setPrice(newPrice);
+            supermarketProductRepository.save(sp);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    @Override
+    public ProductDto getProductById(int productId) {
+        Optional<Product> productOptional = productRepository.findById(productId);
+        if (productOptional.isPresent()) {
+            Product product = productOptional.get();
+            return convertToDto(product);
+        } else {
+            return null; // Product not found
+        }
+    }
 
+    @Override
+    public SupermarketPriceDto getSupermarketProductInfo(int productID, int supermarketID) {
+        SupermarketProduct sp = supermarketProductRepository.findByProductIdAndSupermarketId(productID, supermarketID);
+        SupermarketPriceDto supermarketPriceDto = new SupermarketPriceDto();
+        supermarketPriceDto.setSupermarketName(sp.getSupermarket().getName());
+        supermarketPriceDto.setPrice(sp.getPrice());
+        return supermarketPriceDto;
+    }
 //    public List<ProductDto> addProduct(List<ProductDto> products) {
 //        List<ProductDto> savedProducts = new ArrayList<>();
 //        for (ProductDto productDto : products) {

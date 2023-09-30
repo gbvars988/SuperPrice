@@ -14,14 +14,17 @@ import Filter from "./Filter";
 import Gallery from "./Gallery";
 import SortButton from "../../components/sort/SortButton";
 import SearchBar from "../../components/search/SearchBar";
+import SortOptions from "./SortOptions";
 
 const ShopPage: React.FC = () => {
   const initialFilterState = Object.fromEntries(
-    Object.values(Categories).map((category) => [category, false])
+    Object.values(Categories).map((category) => [category, false]),
   ) as Record<string, boolean>;
 
   const [filterState, setFilterState] =
     useState<Record<string, boolean>>(initialFilterState);
+
+  const [sortState, setSortState] = useState(SortOptions.NAME_ASC);
 
   const [products, setProducts] = useState([]);
 
@@ -41,7 +44,7 @@ const ShopPage: React.FC = () => {
   const updateKeyword = (keyword: string) => {
     axios
       .get(
-        `http://localhost:8080/product-service/products/search?query=${keyword.toLowerCase()}`
+        `http://localhost:8080/product-service/products/search?query=${keyword.toLowerCase()}`,
       )
       .then((res) => {
         console.log(res.data);
@@ -65,7 +68,10 @@ const ShopPage: React.FC = () => {
               {LABEL.SHOP}
             </Heading>
             <SearchBar keyword={keyword} onChange={updateKeyword} />
-            <SortButton></SortButton>
+            <SortButton
+              sortState={sortState}
+              setSortState={setSortState}
+            ></SortButton>
           </HStack>
         </Box>
 
@@ -79,7 +85,11 @@ const ShopPage: React.FC = () => {
             </Box>
           </Box>
 
-          <Gallery products={products} />
+          <Gallery
+            products={products}
+            filterState={filterState}
+            sortState={sortState}
+          />
         </HStack>
       </VStack>
     </PageContainer>

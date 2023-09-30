@@ -1,22 +1,24 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Flex, Image, Link, Skeleton, Text } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 
 interface VProductCardProps {
-  product: {
-    productID: string;
-    name: string;
-    weight: number;
-    imageURL: string;
-    supermarketPrices: {
-      supermarketId: number;
-      supermarketName: string;
-      price: number;
-    }[];
-    category: string;
-    description: string;
-  };
+  product: product;
 }
+
+type product = {
+  productID: string;
+  name: string;
+  weight: number;
+  imageURL: string;
+  supermarketPrices: {
+    supermarketId: number;
+    supermarketName: string;
+    price: number;
+  }[];
+  category: string;
+  description: string;
+};
 
 const VProductCard = (props: VProductCardProps) => {
   const [cheapeastSupermarket, setCheapestSupermarket] = useState({
@@ -28,6 +30,7 @@ const VProductCard = (props: VProductCardProps) => {
 
   useEffect(() => {
     // Find the cheapest supermarket
+    console.log(props.product);
     let cheapestSupermarket = {
       supermarketId: 0,
       supermarketName: "",
@@ -41,7 +44,7 @@ const VProductCard = (props: VProductCardProps) => {
       }
     });
     setCheapestSupermarket(cheapestSupermarket);
-  }, []);
+  });
 
   return (
     <Link
@@ -50,6 +53,7 @@ const VProductCard = (props: VProductCardProps) => {
       _hover={{ textDecoration: "none" }}
       _focus={{ textDecoration: "none" }}
       _active={{ textDecoration: "none" }}
+      role="article"
     >
       <Flex
         flexDir="column"

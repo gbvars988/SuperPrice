@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.mindrot.jbcrypt.BCrypt;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class UserServiceImpl implements UserService{
     private UserRepository userRepository;
@@ -52,5 +55,21 @@ public class UserServiceImpl implements UserService{
                     .build();
         }
         return null;
+    }
+
+    @Override
+    public List<UserDto> getUsers() {
+        List<User> users = userRepository.findAll();
+        return users.stream()
+                .map(this::convertToUserDto)
+                .collect(Collectors.toList());
+    }
+
+    private UserDto convertToUserDto(User user) {
+        return UserDto.builder()
+                .FirstName(user.getFirstName())
+                .LastName(user.getLastName())
+                .Email(user.getEmail())
+                .build();
     }
 }
