@@ -1,1 +1,0 @@
-INSERT INTO deliveries (address, items, timeSlot, userId) VALUES ('20 Paperbark Av Springfield 3121', 'Lettuce(1), Zappos(2)','2023-09-13T14:38:00', 2231);

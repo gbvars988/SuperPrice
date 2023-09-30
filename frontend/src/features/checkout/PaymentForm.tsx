@@ -87,6 +87,9 @@ const PaymentForm: React.FC = () => {
 
     console.log("submitting payment form to backend");
 
+    console.log("Payment info is: ");
+    console.table(state);
+
     setSubmitted(true);
 
     setTimeout(() => {
