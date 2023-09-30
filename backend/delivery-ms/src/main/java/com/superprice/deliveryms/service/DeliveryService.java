@@ -24,4 +24,12 @@ public interface DeliveryService {
     List<TimeSlotDTO> getTimeSlots();
 
     Delivery createDelivery(DeliveryRequest deliveryRequest);
+
+//    List<DeliveryRequest> getDeliveriesByEmail(String email); returns the entire delivery
+
+    List<Integer> getDeliveriesByEmail(String email);
+
+    TimeSlotDTO getTimeslotById(int id);
+
+    DeliveryRequest getDeliveryById(int deliveryId);
 }
