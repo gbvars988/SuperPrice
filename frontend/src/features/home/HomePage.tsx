@@ -17,7 +17,7 @@ const HomePage: React.FC = () => {
                     </Heading>
                 </Box>
                 <Box>
-                    <Button colorScheme="blue" onClick={() => {
+                    <Button colorScheme="teal" onClick={() => {
                         navigate(PATH.SHOP);
                     }}
                     >{LABEL.SHOP_ALL}</Button>

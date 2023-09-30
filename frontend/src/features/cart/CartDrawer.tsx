@@ -25,22 +25,14 @@ import {LABEL, PATH} from "../../language";
 import {useNavigate} from "react-router-dom";
 import { CartSummary } from './CartSummary';
 import { CartContext, CartItem } from '../../context/CartContext';
+import { CartTotal, TotalCartItems } from './cartTotal';
 
 
 function CartDrawer() {
     const { isOpen, onOpen,  onClose } = useDisclosure()
     const navigate = useNavigate();
     const { cartItems } = useContext(CartContext);
-    
-    const totalItems = () => {
-        return cartItems
-            .reduce((ttl: number, item: CartItem) => ttl + item.quantity, 0)
-            .toFixed(0);
-    }
-
-    
-
-
+ 
     return (
         <>
             <Button 
@@ -51,7 +43,7 @@ function CartDrawer() {
                 leftIcon={<Image src={cartImage}
                 boxSize='28px'
                 />}>
-                    {totalItems() != '0' &&
+                    {TotalCartItems() != '0' &&
                     <Box 
                         as="button"
                         width="16px"
@@ -63,7 +55,7 @@ function CartDrawer() {
                         marginLeft='10px'
                         fontWeight="bold"
                         fontSize="11px">
-                    {totalItems()}
+                    {TotalCartItems()}
                     </Box>
                     }
             </Button>
@@ -87,15 +79,15 @@ function CartDrawer() {
                             </DrawerHeader>
                         </Text>
                         <DrawerBody border='10px'>
-                        <Flex align='center' w='100%' justifyContent='space-between' marginBottom={'10px'} mt='4px'>
-                        {totalItems() != '0' &&    
+                        <Flex align='center' w='99%' justifyContent='space-between' marginBottom={'10px'} mt='4px'>
+                        {TotalCartItems() != '0' &&    
                             <CartSummary/>
                 }
                         </Flex>
                         </DrawerBody>
                     </Box>
                     <DrawerFooter>
-                    {totalItems() != '0' &&
+                    {TotalCartItems() != '0' &&
                         <Box
                             alignItems='center'
                             justifyContent='center'
@@ -121,7 +113,7 @@ function CartDrawer() {
                             </ButtonGroup>
                         </Box>
                     }
-                    {totalItems() == '0' &&
+                    {TotalCartItems() == '0' &&
 
                     
                         <Box alignItems='center'

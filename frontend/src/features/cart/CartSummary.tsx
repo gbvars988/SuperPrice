@@ -13,23 +13,12 @@ import {
 import MinusQty from './minus.png';
 import PlusQty from './plus.png';
 import { CartContext, CartItem } from '../../context/CartContext';
+import { CartTotal, TotalCartItems } from './cartTotal';
 
 
 export const CartSummary = () => {
     //const { cartItems } = useContext(CartContext);
     const { cartItems, checkoutInfo, addToCart, increaseProductQty, decreaseProductQty, removeFromCart, clearCart } = useContext(CartContext);
-
-    const calculateTotal = () => {
-        return cartItems
-          .reduce((sum: number, item: CartItem) => sum + item.price * item.quantity, 0)
-          .toFixed(2);
-      };
-
-      const totalItems = () => {
-        return cartItems
-            .reduce((ttl: number, item: CartItem) => ttl + item.quantity, 0)
-            .toFixed(0);
-    }
 
     const { getInputProps, getIncrementButtonProps, getDecrementButtonProps } =
     useNumberInput({
@@ -90,7 +79,7 @@ export const CartSummary = () => {
                         
                     </Flex>
                     <Flex>
-                        <Text ml='8px' fontSize='12px'>${item.price}</Text> 
+                        <Text ml='8px' fontSize='12px' fontWeight='bold'>${item.price.toFixed(2)}</Text> 
                     </Flex>
                     <Button 
                             justifyContent='center'
@@ -118,7 +107,7 @@ export const CartSummary = () => {
                         as='h1'
                         size="md"
                         mt='25px'>
-                        Total: ${calculateTotal()}
+                        Total: ${CartTotal()}
                         </Heading>
             </Flex>
                 </Box>
