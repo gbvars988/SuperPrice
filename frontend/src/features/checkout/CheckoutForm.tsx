@@ -9,6 +9,7 @@ import {
   Input,
   Progress,
   RadioGroup,
+  Select,
   useRadioGroup,
 } from "@chakra-ui/react";
 import { LABEL, PATH } from "../../language";
@@ -22,6 +23,8 @@ const CheckoutForm: React.FC = () => {
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
   const [deliveryOption, setDeliveryOption] = useState("");
+  const [deliveryTime, setDeliveryTime] = useState("");
+
   const [error, setError] = useState<string | null>(null);
 
   const allFieldsFilled =
@@ -81,8 +84,12 @@ const CheckoutForm: React.FC = () => {
       address,
       phone,
       deliveryOption,
+      deliveryTime,
     };
+
     setCheckoutInfo(info);
+    console.log("Checkout info is: ");
+    console.table(info);
 
     navigate(PATH.PAYMENT);
   };
@@ -144,21 +151,45 @@ const CheckoutForm: React.FC = () => {
               onChange={(e) => setPhone(e.target.value)}
             />
           </Box>
-          <Box>
-            <FormLabel>{LABEL.DELIVERY_OPTIONS}</FormLabel>
-            <RadioGroup onChange={setDeliveryOption} value={deliveryOption}>
-              <HStack {...group}>
-                {deliveryOptions.map((value) => {
-                  const radio = getRadioProps({ value });
-                  return (
-                    <RadioCard key={value} {...radio}>
-                      {value}
-                    </RadioCard>
-                  );
-                })}
-              </HStack>
-            </RadioGroup>
+          <Box display="flex" justifyContent="space-between" mb={7}>
+            <Box w="48%">
+              <FormLabel>{LABEL.DELIVERY_OPTIONS}</FormLabel>
+              <RadioGroup onChange={setDeliveryOption} value={deliveryOption}>
+                <HStack {...group}>
+                  {deliveryOptions.map((value) => {
+                    const radio = getRadioProps({ value });
+                    return (
+                      <RadioCard key={value} {...radio}>
+                        {value}
+                      </RadioCard>
+                    );
+                  })}
+                </HStack>
+              </RadioGroup>
+            </Box>
+            <Box w="48%">
+              <FormLabel>{LABEL.DELIVERY_TIME_SLOT}</FormLabel>
+              <Select
+                placeholder="Select time slot"
+                value={deliveryTime}
+                onChange={(e) => setDeliveryTime(e.target.value)}
+                h={"50px"}
+              >
+                <option value="09:00">09:00 - 10:00</option>
+                <option value="10:00">10:00 - 11:00</option>
+                <option value="11:00">11:00 - 12:00</option>
+                <option value="12:00">12:00 - 13:00</option>
+                <option value="13:00">13:00 - 14:00</option>
+                <option value="14:00">14:00 - 15:00</option>
+                <option value="15:00">15:00 - 16:00</option>
+                <option value="16:00">16:00 - 17:00</option>
+                <option value="17:00">17:00 - 18:00</option>
+                <option value="18:00">18:00 - 19:00</option>
+                <option value="19:00">19:00 - 20:00</option>
+              </Select>
+            </Box>
           </Box>
+
           {error && (
             <FormErrorMessage mt={5} mb={5}>
               {error}

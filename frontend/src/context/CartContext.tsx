@@ -15,6 +15,7 @@ export type CheckoutInfo = {
   address: string;
   phone: string;
   deliveryOption: string;
+  deliveryTime: string;
 };
 
 export type CartContextType = {
