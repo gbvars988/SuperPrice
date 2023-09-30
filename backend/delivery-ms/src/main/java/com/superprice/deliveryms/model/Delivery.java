@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @AllArgsConstructor
@@ -21,7 +22,7 @@ public class Delivery {
     private String address;
     @Column(name = "Email")
     private String email;
-    @Column(name = "DeliveryStatus")
+    @Column(name = "Deliverystatus")
     private String deliveryStatus;
 
     @ManyToOne

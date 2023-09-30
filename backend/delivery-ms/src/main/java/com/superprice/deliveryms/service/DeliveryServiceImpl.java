@@ -1,4 +1,5 @@
 package com.superprice.deliveryms.service;
+import com.superprice.deliveryms.dto.DeliveryRequest;
 import com.superprice.deliveryms.dto.OrderItemRequest;
 import com.superprice.deliveryms.dto.OrderRequest;
 import com.superprice.deliveryms.dto.TimeSlotDTO;
@@ -24,24 +25,18 @@ public class DeliveryServiceImpl implements DeliveryService{
     private OrderRepository orderRepository;
     private OrderItemRepository orderItemRepository;
     private TimeSlotRepository timeSlotRepository;
-//    private final DeliveryRepository repository;
+    private DeliveryRepository deliveryRepository;
     @Autowired
     public DeliveryServiceImpl(OrderRepository orderRepository,
                                OrderItemRepository orderItemRepository,
-                               TimeSlotRepository timeSlotRepository) {
+                               TimeSlotRepository timeSlotRepository,
+                               DeliveryRepository deliveryRepository) {
         this.orderRepository = orderRepository;
         this.orderItemRepository = orderItemRepository;
         this.timeSlotRepository = timeSlotRepository;
+        this.deliveryRepository = deliveryRepository;
     }
-//    @Override // String items may need replacing with List<Product> items
-//    public void orderDelivery(String address, String items, int userId, LocalDateTime timeslot){
-//        // save order to db
-//    }
-//
-//    @Override
-//    public Optional<Delivery> deliveryInfo (int orderNo) {
-//        return repository.findById(orderNo);
-//    }
+
     public Order createOrder(OrderRequest orderRequest) {
         Order order = new Order();
         order.setUserId(orderRequest.getUserId());
@@ -52,7 +47,7 @@ public class DeliveryServiceImpl implements DeliveryService{
             OrderItem orderItem = new OrderItem();
             orderItem.setProductId(itemRequest.getProductId());
             orderItem.setQuantity(itemRequest.getQuantity());
-            orderItem.setOrder(order); // assuming there's a setOrder method in OrderItem
+            orderItem.setOrder(order);
 
             orderItemRepository.save(orderItem);
         }
@@ -66,6 +61,23 @@ public class DeliveryServiceImpl implements DeliveryService{
         return timeslots.stream()
                 .map(this::convertToTimeSlotDto)
                 .collect(Collectors.toList());
+    }
+
+    public Delivery createDelivery(DeliveryRequest deliveryRequest) {
+        Delivery delivery = new Delivery();
+
+        delivery.setAddress(deliveryRequest.getAddress());
+        delivery.setEmail(deliveryRequest.getEmail());
+        delivery.setDeliveryStatus(deliveryRequest.getDeliveryStatus());
+
+        Order order = orderRepository.findById(deliveryRequest.getOrderId()).orElse(null);
+        TimeSlot timeSlot = timeSlotRepository.findById(deliveryRequest.getTimeSlotId()).orElse(null);
+
+        delivery.setOrder(order);
+        delivery.setTimeSlot(timeSlot);
+
+
+        return deliveryRepository.save(delivery);
     }
 
     private TimeSlotDTO convertToTimeSlotDto(TimeSlot timeSlot) {
