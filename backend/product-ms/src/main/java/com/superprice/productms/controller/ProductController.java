@@ -1,16 +1,18 @@
 package com.superprice.productms.controller;
 
 //import com.superprice.productms.dto.ProductDto;
+import com.superprice.productms.dto.NotificationDto;
 import com.superprice.productms.dto.PriceUpdateRequest;
 import com.superprice.productms.dto.ProductDto;
+import com.superprice.productms.dto.UserDto;
 import com.superprice.productms.model.*;
 
 import com.superprice.productms.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.core.ParameterizedTypeReference;
+import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.client.RestTemplate;
 import java.util.List;
 
 @RestController
@@ -18,7 +20,7 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
-
+    private final RestTemplate restTemplate = new RestTemplate();
     @Autowired
     public ProductController(ProductService productService) {
         this.productService = productService;
@@ -86,7 +88,8 @@ public class ProductController {
     /**
      * HTTP Method: POST
      * Endpoint: "/products/updateprice"
-     * Description: The endpoint allows a product's price at the specified supermarket to be updated
+     * Description: The endpoint allows a product's price at the specified supermarket to be updated. Afterward
+     *              email notifications are sent to all users about the updated product.
      * @param request json with attributes:
      *                "productID", "supermarketID", "newPrice". See PriceUpdateRequest dto.
      * @return 200 OK for success, or 400 BAD_REQUEST if product/supermarket pair not found.
@@ -94,10 +97,42 @@ public class ProductController {
      */
     @PostMapping("/updateprice")
     public ResponseEntity<?> updateProductPrice(@RequestBody PriceUpdateRequest request) {
-
+        double prevPrice = productService.getSupermarketProductInfo(request.getProductID(), request.getSupermarketID()).getPrice();
         boolean success = productService.updateProductPrice(request.getProductID(), request.getSupermarketID(), request.getNewPrice());
 
         if (success) {
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+
+            HttpEntity<String> requestEntity = new HttpEntity<>(headers);
+            ProductDto productDto = productService.getProductById(request.getProductID());
+
+            ResponseEntity<List<UserDto>> responseEntity = restTemplate.exchange(
+                    "http://localhost:8081/user-service/user/getUsers",
+                    HttpMethod.GET,
+                    requestEntity,
+                    new ParameterizedTypeReference<List<UserDto>>() {}
+            );
+
+            List<UserDto> users = responseEntity.getBody();
+            NotificationDto notificationDto = new NotificationDto();
+            notificationDto.setPrevPrice(prevPrice);
+            notificationDto.setSupermarket(productService.getSupermarketProductInfo(request.getProductID(), request.getSupermarketID()).getSupermarketName());
+            notificationDto.setNewPrice(request.getNewPrice());
+            notificationDto.setProductName(productDto.getName());
+            for (UserDto user : users) {
+
+                notificationDto.setUserEmail(user.getEmail());
+                notificationDto.setFirstName(user.getFirstName());
+                notificationDto.setLastName(user.getLastName());
+
+                restTemplate.postForObject(
+                        "http://localhost:8083/notifications/pricedrop",
+                        notificationDto,
+                        ResponseEntity.class
+                );
+            }
+
             return new ResponseEntity<>(HttpStatus.OK);
         }
         else {
