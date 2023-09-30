@@ -1,12 +1,19 @@
 package com.superprice.deliveryms.controller;
 
+import com.superprice.deliveryms.dto.DeliveryRequest;
+import com.superprice.deliveryms.dto.OrderRequest;
+import com.superprice.deliveryms.dto.TimeSlotDTO;
 import com.superprice.deliveryms.model.Delivery;
+import com.superprice.deliveryms.model.Order;
 import com.superprice.deliveryms.service.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -19,13 +26,24 @@ public class DeliveryController {
     public DeliveryController(DeliveryService deliveryService) {
         this.deliveryService = deliveryService;
     }
-    @PostMapping("")
-    public ResponseEntity<String> orderDelivery(@RequestBody Delivery orderDetails){
-        deliveryService.orderDelivery("20 Paperbark Av Springfield 3121", "Lettuce(1), Zappos(2)", 2231, LocalDateTime.now());
-        return ResponseEntity.ok("Order added successfully");
+
+    @PostMapping("/createorder")
+    public ResponseEntity<?> createOrder(@RequestBody OrderRequest orderRequest) {
+        Order savedOrder = deliveryService.createOrder(orderRequest);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedOrder);
     }
-    @GetMapping("/{orderNo}")
-    public ResponseEntity<Optional<Delivery>> getDelivery (@PathVariable int orderNo){
-        return ResponseEntity.ok(deliveryService.deliveryInfo(orderNo));
+
+    @GetMapping("/timeslots")
+    public ResponseEntity<List<TimeSlotDTO>> getTimeSlots() {
+        return new ResponseEntity<>(deliveryService.getTimeSlots(), HttpStatus.OK);
     }
+
+
+    @PostMapping("/requestdelivery")
+    public ResponseEntity<Delivery> createDelivery(@RequestBody DeliveryRequest deliveryRequest) {
+        Delivery savedDelivery = deliveryService.createDelivery(deliveryRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedDelivery);
+    }
+
 }
