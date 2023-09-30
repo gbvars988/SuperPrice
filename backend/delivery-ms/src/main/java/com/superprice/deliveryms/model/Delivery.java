@@ -26,10 +26,10 @@ public class Delivery {
     private String deliveryStatus;
 
     @ManyToOne
-    @JoinColumn(name = "TimeSlotID", referencedColumnName = "TimeSlotID", insertable = false, updatable = false)
+    @JoinColumn(name = "TimeslotID", referencedColumnName = "TimeslotID")
     private TimeSlot timeSlot;
 
     @ManyToOne
-    @JoinColumn(name = "OrderID", referencedColumnName = "OrderID", insertable = false, updatable = false)
+    @JoinColumn(name = "OrderID", referencedColumnName = "OrderID")
     private Order order;
 }

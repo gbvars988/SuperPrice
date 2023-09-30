@@ -46,12 +46,25 @@ public class DeliveryController {
         return ResponseEntity.status(HttpStatus.CREATED).body(savedDelivery);
     }
 
+//    @GetMapping("/getdeliveriesbyemail/{email}")
+//    public ResponseEntity<List<DeliveryRequest>> getDeliveriesByEmail(@PathVariable String email) {
+//        List<DeliveryRequest> deliveryRequests = deliveryService.getDeliveriesByEmail(email);
+//        return ResponseEntity.ok(deliveryRequests);
+//    }
+
     @GetMapping("/getdeliveriesbyemail/{email}")
-    public ResponseEntity<List<DeliveryRequest>> getDeliveriesByEmail(@RequestParam String email) {
-        List<DeliveryRequest> deliveryRequests = deliveryService.getDeliveriesByEmail(email);
-        return ResponseEntity.ok(deliveryRequests);
+    public ResponseEntity<List<Integer>> getDeliveriesByEmail(@PathVariable String email) {
+        List<Integer> deliveryIds = deliveryService.getDeliveriesByEmail(email);
+        return ResponseEntity.ok(deliveryIds);
+    }
+    @GetMapping("/getdeliverybyid/{delivery_id}")
+    public ResponseEntity<DeliveryRequest> getDeliveryById(@PathVariable int delivery_id) {
+        return new ResponseEntity<>(deliveryService.getDeliveryById(delivery_id), HttpStatus.OK);
     }
 
-    // getdeliverydetailsbydeliveryID
 
+    @GetMapping("/timeslots/{timeslot_id}")
+    public ResponseEntity<TimeSlotDTO> getTimeslotById(@PathVariable int timeslot_id) {
+        return new ResponseEntity<>(deliveryService.getTimeslotById(timeslot_id), HttpStatus.OK);
+    }
 }

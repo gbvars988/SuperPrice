@@ -80,11 +80,28 @@ public class DeliveryServiceImpl implements DeliveryService{
         return deliveryRepository.save(delivery);
     }
 
-    public List<DeliveryRequest> getDeliveriesByEmail(String email) {
+//    public List<DeliveryRequest> getDeliveriesByEmail(String email) {
+//        List<Delivery> deliveries = deliveryRepository.findByEmail(email);
+//        return deliveries.stream()
+//                .map(this::convertToDeliveryRequest)
+//                .collect(Collectors.toList());
+//    }
+
+    public List<Integer> getDeliveriesByEmail(String email) {
         List<Delivery> deliveries = deliveryRepository.findByEmail(email);
         return deliveries.stream()
-                .map(this::convertToDeliveryRequest)
+                .map(Delivery::getDeliveryId)
                 .collect(Collectors.toList());
+    }
+
+    public TimeSlotDTO getTimeslotById(int id) {
+        TimeSlot timeSlot = timeSlotRepository.findById(id).orElse(null);
+        return convertToTimeSlotDto(timeSlot);
+    }
+
+    public DeliveryRequest getDeliveryById(int deliveryId) {
+        Delivery delivery = deliveryRepository.findById(deliveryId).orElse(null);
+        return convertToDeliveryRequest(delivery);
     }
 
     private TimeSlotDTO convertToTimeSlotDto(TimeSlot timeSlot) {
@@ -103,8 +120,16 @@ public class DeliveryServiceImpl implements DeliveryService{
 
         Order order = orderRepository.findById(delivery.getOrder().getOrderId()).orElse(null);
         TimeSlot timeSlot = timeSlotRepository.findById(delivery.getTimeSlot().getTimeSlotID()).orElse(null);
-        dto.setOrderId(order.getOrderId());
-        dto.setTimeSlotId(timeSlot.getTimeSlotID());
+        if (order != null) {
+            dto.setOrderId(order.getOrderId());
+        }
+
+        if (timeSlot != null) {
+            dto.setTimeSlotId(timeSlot.getTimeSlotID());
+        }
+
+//        dto.setOrderId(order.getOrderId());
+//        dto.setTimeSlotId(timeSlot.getTimeSlotID());
 
         return dto;
     }
