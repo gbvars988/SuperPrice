@@ -31,9 +31,9 @@ const ReviewCard = (props: Props) => {
         <Flex gap="1">
           {[...Array(5)].map((_, i) =>
             i < props.review.rating ? (
-              <FillStar key={i} />
+              <FillStar key={i} data-testid="review-fill-star" />
             ) : (
-              <OutlineStar key={i} />
+              <OutlineStar key={i} data-testid="review-outline-star" />
             ),
           )}
         </Flex>
