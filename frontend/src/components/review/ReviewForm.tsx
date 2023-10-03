@@ -6,7 +6,7 @@ import {
   Input,
   Textarea,
   Button,
-  Stack,
+  Flex,
   useColorModeValue,
 } from "@chakra-ui/react";
 
@@ -34,9 +34,9 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <Box display="flex" justifyContent="center">
-      <form onSubmit={handleSubmit}>
-        <Stack spacing={4}>
+    <Box display="flex" w="50%">
+      <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+        <Flex gap="2" align="center" flexDirection="column" w="full">
           <FormControl id="name" isRequired>
             <FormLabel>Name</FormLabel>
             <Input
@@ -46,7 +46,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit }) => {
               onChange={handleInputChange}
             />
           </FormControl>
-          <FormControl id="review" isRequired>
+          <FormControl id="review" isRequired w="full">
             <FormLabel>Review</FormLabel>
             <Textarea
               name="review"
@@ -61,7 +61,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit }) => {
           >
             Submit Review
           </Button>
-        </Stack>
+        </Flex>
       </form>
     </Box>
   );

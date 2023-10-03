@@ -5,11 +5,12 @@ import { useParams } from "react-router-dom";
 import PageContainer from "../../components/common/PageContainer";
 import {
   Flex,
-  HStack,
   Image,
   Skeleton,
   Text,
   useToast,
+  Button,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import ProductInfo from "./ProductInfo";
 import QuantitySelector from "./QuantitySelector";
@@ -57,6 +58,7 @@ const ProductPage = () => {
   });
   const [productLoaded, setProductLoaded] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [reviewForm, setReviewForm] = useState(false);
 
   const { productID } = useParams<{ productID: string }>();
 
@@ -132,7 +134,7 @@ const ProductPage = () => {
 
   return (
     <PageContainer>
-      <Flex flexDir="column" gap="10">
+      <Flex flexDir="column" gap="10" pb="20">
         <Flex gap="24">
           <Image
             src={product?.imageURL}
@@ -153,10 +155,10 @@ const ProductPage = () => {
                 cheapestSupermarket={cheapestSupermarket}
               />
               <Flex flexDir="column" gap="4">
-                <Text>{product?.description}</Text>/
-                <Text fontSize="17px">
-                  {LABEL.INGREDIENTS}: {"To be implemented"}
-                </Text>
+                <Text>{product?.description}</Text>
+                {/* <Text fontSize="17px"> */}
+                {/* {LABEL.INGREDIENTS}: {"To be implemented"} */}
+                {/* </Text> */}
                 <QuantitySelector
                   quantity={quantity}
                   setQuantity={setQuantity}
@@ -183,10 +185,20 @@ const ProductPage = () => {
             }
           })}
         </Flex>
+        <Button
+          onClick={() => setReviewForm(!reviewForm)}
+          colorScheme={useColorModeValue("blackAlpha", "whiteAlpha")}
+          bg={useColorModeValue("black", "white")}
+          w="50%"
+        >
+          Write Review
+        </Button>
+        {reviewForm && (
+          <ReviewForm
+            onSubmit={(data: { name: string; review: string }) => {}}
+          />
+        )}
       </Flex>
-      <HStack align="stretch">
-        <ReviewForm onSubmit={(data: { name: string; review: string }) => {}} />
-      </HStack>
     </PageContainer>
   );
 };
