@@ -131,6 +131,31 @@ const ProductPage = () => {
       });
   }, []);
 
+  const postReview = (data: {
+    name: string;
+    review: string;
+    rating: number;
+  }) => {
+    axios
+      .post(
+        `http://localhost:8080/product-service/products/${productID}/reviews`,
+        {
+          username: data.name,
+          content: data.review,
+          rating: data.rating,
+        },
+      )
+      .then((res) => {
+        // add review to reviews
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    setReviewForm(false);
+  };
+
   const addToTrolley = () => {
     if (product && cheapestSupermarket) {
       addToCart({
@@ -219,7 +244,9 @@ const ProductPage = () => {
               name: string;
               review: string;
               rating: number;
-            }) => {}}
+            }) => {
+              postReview(data);
+            }}
           />
         )}
         <ReviewList reviews={reviews} />
