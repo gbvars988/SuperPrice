@@ -215,7 +215,11 @@ const ProductPage = () => {
         </Button>
         {reviewForm && (
           <ReviewForm
-            onSubmit={(data: { name: string; review: string }) => {}}
+            onSubmit={(data: {
+              name: string;
+              review: string;
+              rating: number;
+            }) => {}}
           />
         )}
         <ReviewList reviews={reviews} />
