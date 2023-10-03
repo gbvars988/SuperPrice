@@ -49,9 +49,17 @@ interface ReqISupermarket {
   };
   price: number;
 }
+interface ProductReview {
+  id: number;
+  username: string;
+  content: string;
+  timestamp: string;
+  rating: number;
+}
 
 const ProductPage = () => {
   const [product, setProduct] = useState<IProduct | null>(null);
+  const [reviews, setReviews] = useState<ProductReview[]>([]);
   const [cheapestSupermarket, setCheapestSupermarket] = useState({
     supermarketId: 0,
     supermarketName: "",
@@ -116,7 +124,7 @@ const ProductPage = () => {
         `http://localhost:8080/product-service/products/${productID}/reviews`,
       )
       .then((res) => {
-        console.log(res.data);
+        setReviews(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -210,7 +218,7 @@ const ProductPage = () => {
             onSubmit={(data: { name: string; review: string }) => {}}
           />
         )}
-        <ReviewList />
+        <ReviewList reviews={reviews} />
       </Flex>
     </PageContainer>
   );
