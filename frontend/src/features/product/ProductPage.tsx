@@ -16,6 +16,7 @@ import ProductInfo from "./ProductInfo";
 import QuantitySelector from "./QuantitySelector";
 import AddBtn from "./AddBtn";
 import HProductCard from "../../components/product/HProductCard";
+import ReviewList from "../../components/review/ReviewList";
 
 import { LABEL } from "../../language/index";
 import { CartContext } from "../../context/CartContext";
@@ -198,6 +199,7 @@ const ProductPage = () => {
             onSubmit={(data: { name: string; review: string }) => {}}
           />
         )}
+        <ReviewList />
       </Flex>
     </PageContainer>
   );
