@@ -6,16 +6,16 @@ import {
   Input,
   Textarea,
   Button,
-  Stack,
+  Flex,
   useColorModeValue,
 } from "@chakra-ui/react";
 
 interface ReviewFormProps {
-  onSubmit: (data: { name: string; review: string }) => void;
+  onSubmit: (data: { name: string; review: string; rating: number }) => void;
 }
 
 const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit }) => {
-  const [formData, setFormData] = useState({ name: "", review: "" });
+  const [formData, setFormData] = useState({ name: "", review: "", rating: 0 });
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -30,23 +30,37 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit(formData);
-    setFormData({ name: "", review: "" });
+    setFormData({ name: "", review: "", rating: 0 });
   };
 
   return (
-    <Box display="flex" justifyContent="center">
-      <form onSubmit={handleSubmit}>
-        <Stack spacing={4}>
-          <FormControl id="name" isRequired>
-            <FormLabel>Name</FormLabel>
-            <Input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-            />
-          </FormControl>
-          <FormControl id="review" isRequired>
+    <Box display="flex" w="50%">
+      <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+        <Flex gap="2" align="center" flexDirection="column" w="full">
+          <Flex w="full" gap="2">
+            <FormControl id="name" isRequired w="175%">
+              <FormLabel>Name</FormLabel>
+              <Input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+              />
+            </FormControl>
+
+            <FormControl id="rating" isRequired>
+              <FormLabel>Rating</FormLabel>
+              <Input
+                type="number"
+                name="rating"
+                value={formData.rating}
+                onChange={handleInputChange}
+                max={5}
+                min={0}
+              />
+            </FormControl>
+          </Flex>
+          <FormControl id="review" isRequired w="full">
             <FormLabel>Review</FormLabel>
             <Textarea
               name="review"
@@ -61,7 +75,7 @@ const ReviewForm: React.FC<ReviewFormProps> = ({ onSubmit }) => {
           >
             Submit Review
           </Button>
-        </Stack>
+        </Flex>
       </form>
     </Box>
   );
