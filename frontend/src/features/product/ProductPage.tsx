@@ -110,6 +110,17 @@ const ProductPage = () => {
       .catch((err) => {
         console.log(err);
       });
+
+    axios
+      .get(
+        `http://localhost:8080/product-service/products/${productID}/reviews`,
+      )
+      .then((res) => {
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   const addToTrolley = () => {
