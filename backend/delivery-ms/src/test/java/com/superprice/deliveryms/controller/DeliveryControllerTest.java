@@ -151,6 +151,19 @@ public class DeliveryControllerTest {
         assertEquals("delivered", response.getBody().getDeliveryStatus());
     }
 
+    @Test
+    void getTimeSlotsById() {
+        TimeSlotDTO mockTimeSlotDTO = new TimeSlotDTO(1, LocalTime.of(15, 0), LocalTime.of(16, 0));
+
+        when(this.deliveryService.getTimeslotById(1)).thenReturn(mockTimeSlotDTO);
+        ResponseEntity<TimeSlotDTO> response = deliveryController.getTimeslotById(1);
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(1, response.getBody().getTimeSlotId());
+        assertEquals(LocalTime.of(15,0), response.getBody().getStartTime());
+        assertEquals(LocalTime.of(16,0), response.getBody().getEndTime());
+    }
+
     // Test for not found? write exception for not found-able apis (gets, besides 'getAll' types, which should return size = 0).
-    
+
 }
