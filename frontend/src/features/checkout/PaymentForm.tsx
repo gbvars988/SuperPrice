@@ -90,6 +90,8 @@ const PaymentForm: React.FC = () => {
     }
   }, [checkoutInfo]);
 
+  const { clearCart } = useContext(CartContext);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -139,6 +141,7 @@ const PaymentForm: React.FC = () => {
             duration: 5000,
             isClosable: true,
           });
+          clearCart();
           navigate("/");
         } else {
           throw new Error("Failed to request delivery");
