@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -16,6 +16,13 @@ import { LABEL, PATH } from "../../language";
 import { CartContext } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import RadioCard from "../../components/common/RadioCard";
+import axios from "axios";
+
+interface TimeSlot {
+  timeSlotId: number;
+  startTime: string;
+  endTime: string;
+}
 
 const CheckoutForm: React.FC = () => {
   const [fullName, setFullName] = useState("");
@@ -24,8 +31,24 @@ const CheckoutForm: React.FC = () => {
   const [phone, setPhone] = useState("");
   const [deliveryOption, setDeliveryOption] = useState("");
   const [deliveryTime, setDeliveryTime] = useState("");
+  const [timeSlots, setTimeSlots] = useState<TimeSlot[]>([]);
 
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetchTimeSlots();
+  }, []);
+
+  const fetchTimeSlots = async () => {
+    try {
+      const response = await axios.get<TimeSlot[]>(
+        "http://localhost:8082/delivery-service/delivery/timeslots",
+      );
+      setTimeSlots(response.data);
+    } catch (error) {
+      console.error("An error occurred while fetching time slots:", error);
+    }
+  };
 
   const allFieldsFilled =
     fullName && email && address && phone && deliveryOption;
@@ -175,17 +198,11 @@ const CheckoutForm: React.FC = () => {
                 onChange={(e) => setDeliveryTime(e.target.value)}
                 h={"50px"}
               >
-                <option value="09:00">09:00 - 10:00</option>
-                <option value="10:00">10:00 - 11:00</option>
-                <option value="11:00">11:00 - 12:00</option>
-                <option value="12:00">12:00 - 13:00</option>
-                <option value="13:00">13:00 - 14:00</option>
-                <option value="14:00">14:00 - 15:00</option>
-                <option value="15:00">15:00 - 16:00</option>
-                <option value="16:00">16:00 - 17:00</option>
-                <option value="17:00">17:00 - 18:00</option>
-                <option value="18:00">18:00 - 19:00</option>
-                <option value="19:00">19:00 - 20:00</option>
+                {timeSlots.map((slot) => (
+                  <option key={slot.timeSlotId} value={slot.timeSlotId}>
+                    {slot.startTime} - {slot.endTime}
+                  </option>
+                ))}
               </Select>
             </Box>
           </Box>

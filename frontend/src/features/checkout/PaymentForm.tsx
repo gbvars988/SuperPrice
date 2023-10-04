@@ -117,7 +117,7 @@ const PaymentForm: React.FC = () => {
             orderId: orderResponse.data.orderId,
             address: checkoutInfo!.address,
             email: checkoutInfo!.email,
-            timeSlotId: 2, // TODO: grab this from checkout context
+            timeSlotId: checkoutInfo?.deliveryTime,
             deliveryStatus: "Scheduled",
           },
         );
