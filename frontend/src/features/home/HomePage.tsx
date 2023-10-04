@@ -30,7 +30,6 @@ const HomePage: React.FC = () => {
           <Image
             borderRadius="20px"
             src="https://images.pexels.com/photos/128402/pexels-photo-128402.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            borderRadius="10px"
             w={"100%"}
           />
         </Box>
