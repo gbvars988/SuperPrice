@@ -11,6 +11,7 @@ import {
   RadioGroup,
   Select,
   useRadioGroup,
+  useToast,
 } from "@chakra-ui/react";
 import { LABEL, PATH } from "../../language";
 import { CartContext } from "../../context/CartContext";
@@ -39,6 +40,8 @@ const CheckoutForm: React.FC = () => {
     fetchTimeSlots();
   }, []);
 
+  const toast = useToast();
+
   const fetchTimeSlots = async () => {
     try {
       const response = await axios.get<TimeSlot[]>(
@@ -47,6 +50,14 @@ const CheckoutForm: React.FC = () => {
       setTimeSlots(response.data);
     } catch (error) {
       console.error("An error occurred while fetching time slots:", error);
+      toast({
+        title: "An error occurred.",
+        description:
+          "Unable to fetch time slots, please make sure delivery-ms is responsive.",
+        status: "error",
+        duration: 5000,
+        isClosable: true,
+      });
     }
   };
 
