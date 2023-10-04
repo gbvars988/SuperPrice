@@ -41,10 +41,10 @@ export const LABEL = {
   NO_PRODUCTS: "No products found",
   INGREDIENTS: "Ingredients",
   ADD_TO_TROLLEY: "Add to trolley",
-    EDIT_CART: 'Edit Your Shopping Cart',
-    YOUR_CART: 'Your Shopping Cart:',
-    TOTAL_PRICE: 'Total Price: $',
-    ORDER_SUMMARRY: 'Your Order Summary',
+  EDIT_CART: 'Edit Your Shopping Cart',
+  YOUR_CART: 'Your Shopping Cart:',
+  TOTAL_PRICE: 'Total Price: $',
+  ORDER_SUMMARRY: 'Your Order Summary',
 };
 
 export const PATH = {

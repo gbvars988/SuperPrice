@@ -8,7 +8,6 @@ import {
     DrawerHeader, 
     DrawerOverlay, 
     Flex,
-    Badge,
     ButtonGroup,
     Box, 
     Image,
@@ -22,8 +21,8 @@ import cartImage from './cart.png'
 import {LABEL, PATH} from "../../language";
 import {useNavigate} from "react-router-dom";
 import { CartSummary } from './CartSummary';
-import { CartContext, CartItem } from '../../context/CartContext';
-import { CartTotal, TotalCartItems } from './cartTotal';
+import { CartContext } from '../../context/CartContext';
+import { TotalCartItems } from './cartTotal';
 
 
 function CartDrawer() {
