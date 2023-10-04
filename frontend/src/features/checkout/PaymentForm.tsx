@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -19,6 +19,8 @@ import Cards, { Focused } from "react-credit-cards-2";
 import "react-credit-cards-2/dist/es/styles-compiled.css";
 import { CartContext } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { PATH } from "../../language";
 
 const PaymentForm: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
@@ -78,7 +80,17 @@ const PaymentForm: React.FC = () => {
     return true;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // get checkout info
+  const { checkoutInfo } = useContext(CartContext);
+
+  // navigate to checkout if any of the checkout info is missing
+  useEffect(() => {
+    if (!checkoutInfo) {
+      navigate(PATH.CHECKOUT);
+    }
+  }, [checkoutInfo]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!validateInputs()) {
@@ -89,21 +101,64 @@ const PaymentForm: React.FC = () => {
 
     console.log("Payment info is: ");
     console.table(state);
+    console.log("Checkout info is: ");
+    console.table(checkoutInfo);
 
     setSubmitted(true);
 
-    setTimeout(() => {
-      toast({
-        title: "Payment Successful",
-        description:
-          "Your payment has been processed successfully and your delivery will soon be on its way!",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-      });
+    try {
+      const orderResponse = await axios.post(
+        "http://localhost:8082/delivery-service/delivery/createorder",
+        {
+          userId: null,
+          orderItems: cartItems.map((item) => ({
+            productId: item.productID,
+            quantity: item.quantity,
+          })),
+        },
+      );
 
-      navigate("/");
-    }, 3000);
+      if (orderResponse.status === 201) {
+        const deliveryResponse = await axios.post(
+          "http://localhost:8082/delivery-service/delivery/requestdelivery",
+          {
+            orderId: orderResponse.data.orderId,
+            address: checkoutInfo!.address,
+            email: checkoutInfo!.email,
+            timeSlotId: checkoutInfo?.deliveryTime,
+            deliveryStatus: "Scheduled",
+          },
+        );
+
+        if (deliveryResponse.status === 201) {
+          toast({
+            title: "Payment Successful",
+            description:
+              "Your payment has been processed successfully and your delivery will soon be on its way!",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+          });
+          navigate("/");
+        } else {
+          throw new Error("Failed to request delivery");
+        }
+      } else {
+        throw new Error("Failed to create order");
+      }
+    } catch (error) {
+      if (error instanceof Error) {
+        toast({
+          title: "Error",
+          description: error.message || "An error occurred. Please try again.",
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        });
+      } else {
+        console.log("An error occurred.");
+      }
+    }
   };
 
   const allFieldsFilled =

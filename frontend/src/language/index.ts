@@ -41,6 +41,8 @@ export const LABEL = {
   NO_PRODUCTS: "No products found",
   INGREDIENTS: "Ingredients",
   ADD_TO_TROLLEY: "Add to trolley",
+  REVIEWS: "Reviews",
+  NO_REVIEWS: "There are no reviews yet, be the first to review this product.",
   EDIT_CART: 'Edit Your Shopping Cart',
   YOUR_CART: 'Your Shopping Cart:',
   TOTAL_PRICE: 'Total Price: $',

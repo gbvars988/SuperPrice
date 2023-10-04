@@ -2,12 +2,16 @@ package com.superprice.productms.controller;
 
 import com.superprice.productms.dto.ProductDto;
 import com.superprice.productms.dto.SupermarketPriceDto;
+import com.superprice.productms.model.Review;
 import com.superprice.productms.model.SupermarketProduct;
 import com.superprice.productms.service.ProductService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -75,4 +79,26 @@ public class ProductControllerTest {
         assertEquals(expectedSupermarketProducts.size(), actualSupermarketProducts.size());
 
     }
+
+    @Test
+    void should_returnReviews_when_reviewsArePresent() {
+        // Arrange
+        int productId = 1;
+
+        // Create a list of reviews to be returned by the mock
+        List<Review> expectedReviews = new ArrayList<>();
+        expectedReviews.add(new Review(1, "Good product", "User1", 5, LocalDateTime.now()));
+        expectedReviews.add(new Review(2, "Average product", "User2", 3, LocalDateTime.now()));
+
+        when(this.service.getReviews(productId)).thenReturn(expectedReviews);
+
+        // Act
+        ResponseEntity<List<Review>> responseEntity = this.controller.readReviews(productId);
+
+        // Assert
+        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+        assertEquals(expectedReviews, responseEntity.getBody());
+    }
+
+
 }

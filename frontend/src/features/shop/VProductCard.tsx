@@ -30,7 +30,7 @@ const VProductCard = (props: VProductCardProps) => {
 
   useEffect(() => {
     // Find the cheapest supermarket
-    console.log(props.product);
+    // console.log(props.product);
     let cheapestSupermarket = {
       supermarketId: 0,
       supermarketName: "",

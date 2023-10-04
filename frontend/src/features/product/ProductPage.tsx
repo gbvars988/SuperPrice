@@ -5,16 +5,18 @@ import { useParams } from "react-router-dom";
 import PageContainer from "../../components/common/PageContainer";
 import {
   Flex,
-  HStack,
   Image,
   Skeleton,
   Text,
   useToast,
+  Button,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import ProductInfo from "./ProductInfo";
 import QuantitySelector from "./QuantitySelector";
 import AddBtn from "./AddBtn";
 import HProductCard from "../../components/product/HProductCard";
+import ReviewList from "../../components/review/ReviewList";
 
 import { LABEL } from "../../language/index";
 import { CartContext } from "../../context/CartContext";
@@ -47,9 +49,17 @@ interface ReqISupermarket {
   };
   price: number;
 }
+interface ProductReview {
+  id: number;
+  username: string;
+  content: string;
+  timestamp: string;
+  rating: number;
+}
 
 const ProductPage = () => {
   const [product, setProduct] = useState<IProduct | null>(null);
+  const [reviews, setReviews] = useState<ProductReview[]>([]);
   const [cheapestSupermarket, setCheapestSupermarket] = useState({
     supermarketId: 0,
     supermarketName: "",
@@ -57,6 +67,7 @@ const ProductPage = () => {
   });
   const [productLoaded, setProductLoaded] = useState(false);
   const [quantity, setQuantity] = useState(1);
+  const [reviewForm, setReviewForm] = useState(false);
 
   const { productID } = useParams<{ productID: string }>();
 
@@ -107,7 +118,43 @@ const ProductPage = () => {
       .catch((err) => {
         console.log(err);
       });
+
+    axios
+      .get(
+        `http://localhost:8080/product-service/products/${productID}/reviews`,
+      )
+      .then((res) => {
+        setReviews(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
+
+  const postReview = (data: {
+    name: string;
+    review: string;
+    rating: number;
+  }) => {
+    axios
+      .post(
+        `http://localhost:8080/product-service/products/${productID}/reviews`,
+        {
+          username: data.name,
+          content: data.review,
+          rating: data.rating,
+        },
+      )
+      .then((res) => {
+        // add review to reviews
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    setReviewForm(false);
+  };
 
   const addToTrolley = () => {
     if (product && cheapestSupermarket) {
@@ -136,7 +183,7 @@ const ProductPage = () => {
 
   return (
     <PageContainer>
-      <Flex flexDir="column" gap="10">
+      <Flex flexDir="column" gap="10" pb="20">
         <Flex gap="24">
           <Image
             src={product?.imageURL}
@@ -158,10 +205,10 @@ const ProductPage = () => {
                 cheapestSupermarket={cheapestSupermarket}
               />
               <Flex flexDir="column" gap="4">
-                <Text>{product?.description}</Text>/
-                <Text fontSize="17px">
-                  {LABEL.INGREDIENTS}: {"To be implemented"}
-                </Text>
+                <Text>{product?.description}</Text>
+                {/* <Text fontSize="17px"> */}
+                {/* {LABEL.INGREDIENTS}: {"To be implemented"} */}
+                {/* </Text> */}
                 <QuantitySelector
                   quantity={quantity}
                   setQuantity={setQuantity}
@@ -188,10 +235,27 @@ const ProductPage = () => {
             }
           })}
         </Flex>
+        <Button
+          onClick={() => setReviewForm(!reviewForm)}
+          colorScheme={useColorModeValue("blackAlpha", "whiteAlpha")}
+          bg={useColorModeValue("black", "white")}
+          w="50%"
+        >
+          Write Review
+        </Button>
+        {reviewForm && (
+          <ReviewForm
+            onSubmit={(data: {
+              name: string;
+              review: string;
+              rating: number;
+            }) => {
+              postReview(data);
+            }}
+          />
+        )}
+        <ReviewList reviews={reviews} />
       </Flex>
-      <HStack align="stretch">
-        <ReviewForm onSubmit={(data: { name: string; review: string }) => {}} />
-      </HStack>
     </PageContainer>
   );
 };
