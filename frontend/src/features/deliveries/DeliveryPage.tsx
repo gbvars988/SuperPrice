@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { Heading, VStack } from "@chakra-ui/react";
+import { Box, Heading, Text, VStack } from "@chakra-ui/react";
 import PageContainer from "../../components/common/PageContainer";
 import DeliveryCard from "./DeliveryCard";
 import { LABEL } from "../../language";
@@ -33,10 +33,22 @@ const DeliveriesPage: React.FC = () => {
         <Heading size="xl" fontWeight={600}>
           {LABEL.DELIVERIES}
         </Heading>
-        <VStack spacing={6} w="70%" mt={6}>
-          {deliveryIds.map((id, idx) => (
-            <DeliveryCard key={idx} orderId={id} />
-          ))}
+        <VStack spacing={6} w="60%" mt={6}>
+          {deliveryIds.length > 0 ? (
+            deliveryIds.map((id, idx) => (
+              <DeliveryCard key={idx} orderId={id} />
+            ))
+          ) : (
+            <Box
+              borderWidth="1px"
+              borderRadius="lg"
+              padding="6"
+              width="full"
+              textAlign="center"
+            >
+              <Text>You have no pending deliveries.</Text>
+            </Box>
+          )}
         </VStack>
       </VStack>
     </PageContainer>
