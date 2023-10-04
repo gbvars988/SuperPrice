@@ -1,7 +1,5 @@
 import React from "react";
-import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en";
-import { Flex, Text, Spacer } from "@chakra-ui/react";
+import { Flex, Spacer, Text } from "@chakra-ui/react";
 
 import {
   AiFillStar as FillStar,
@@ -21,8 +19,6 @@ type Props = {
 };
 
 const ReviewCard = (props: Props) => {
-  TimeAgo.addDefaultLocale(en);
-  const timeAgo = new TimeAgo("en-US");
   return (
     <Flex flexDirection="column">
       <Flex align="center" gap="2">
@@ -38,9 +34,6 @@ const ReviewCard = (props: Props) => {
           )}
         </Flex>
         <Spacer />
-        {/* <Text justifySelf={"flex-end"}>
-          {timeAgo.format(new Date(props.review.timestamp))}
-        </Text> */}
       </Flex>
       <Text fontSize="md">{props.review.content}</Text>
     </Flex>
