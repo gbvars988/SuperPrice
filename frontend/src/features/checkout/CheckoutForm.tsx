@@ -111,8 +111,8 @@ const CheckoutForm: React.FC = () => {
     };
 
     setCheckoutInfo(info);
-    console.log("Checkout info is: ");
-    console.table(info);
+    // console.log("Checkout info is: ");
+    // console.table(info);
 
     navigate(PATH.PAYMENT);
   };

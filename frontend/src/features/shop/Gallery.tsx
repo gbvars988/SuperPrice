@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Heading, useColorModeValue, Flex } from "@chakra-ui/react";
+import { Box, Flex, Heading } from "@chakra-ui/react";
 import { LABEL } from "../../language";
 import VProductCard from "./VProductCard";
 import SortOptions from "./SortOptions";
@@ -29,9 +29,9 @@ const getCheapestPrice = (product: product) => {
 };
 
 const Gallery = (props: GalleryProps) => {
-  React.useEffect(() => {
-    console.log(displayProducts);
-  });
+  // React.useEffect(() => {
+  //   console.log(displayProducts);
+  // });
 
   // Determine which products to display
   const displayProducts = React.useMemo(() => {
