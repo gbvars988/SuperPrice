@@ -136,6 +136,21 @@ public class DeliveryControllerTest {
         assertTrue(response.getBody().size() == 2);
     }
 
+    @Test
+    void getDeliveryById() {
+        DeliveryRequest deliveryRequest = new DeliveryRequest(
+                1, "1 test av", "jack@test.com", 1, "delivered");
+        when(this.deliveryService.getDeliveryById(1)).thenReturn(deliveryRequest);
+        ResponseEntity<DeliveryRequest> response = this.deliveryController.getDeliveryById(1);
+        assertNotNull(response);
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(1, response.getBody().getOrderId());
+        assertEquals("1 test av", response.getBody().getAddress());
+        assertEquals("jack@test.com", response.getBody().getEmail());
+        assertEquals(1, response.getBody().getTimeSlotId());
+        assertEquals("delivered", response.getBody().getDeliveryStatus());
+    }
+
     // Test for not found? write exception for not found-able apis (gets, besides 'getAll' types, which should return size = 0).
     
 }
