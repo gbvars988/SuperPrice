@@ -11,6 +11,7 @@ import {LABEL, PATH} from "../../language";
 import {Link, useNavigate} from "react-router-dom";
 import PageContainer from "../../components/common/PageContainer";
 import { CartSummary } from './CartSummary';
+import { TotalCartItems } from './cartTotal';
 
 
 const EditCart: React.FC = () => {
@@ -48,6 +49,8 @@ const EditCart: React.FC = () => {
                     </Flex>
                 </Box>
                 <Center>
+                {TotalCartItems() != '0' &&
+                <Center>
                     <Box mt='50px'>
                         <Button colorScheme="teal"
                             onClick={() => {navigate(PATH.CHECKOUT);}}>
@@ -55,6 +58,28 @@ const EditCart: React.FC = () => {
                         </Button>
                     </Box>
                 </Center>
+                }
+                {TotalCartItems() == '0' &&
+                        <Box alignItems='center'
+                            justifyContent='space-between'
+                            width='100%'>
+                            <Text marginBottom='50px'
+                                fontWeight='bold'
+                                fontSize='15px'>
+                                Your cart is empty.
+                            </Text>
+                            <Button alignItems='center'
+                                justifyContent='center'
+                                aria-label='Start Shopping'
+                                colorScheme='teal'
+                                size='md'
+                                ml='15px'
+                                onClick={() => {navigate(PATH.SHOP);}}>
+                                Shop Now
+                            </Button>
+                        </Box>
+                    }
+                    </Center>
             </VStack>
         </PageContainer>
     );

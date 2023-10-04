@@ -115,7 +115,7 @@ export const CartSummary = () => {
                     </Flex>
                 </React.Fragment>
             ))}
-            
+            {TotalCartItems() != '0' &&
             <Flex align='center' justifyContent='center'>
                 <Heading  alignSelf='center' 
                     as='h1'
@@ -124,6 +124,7 @@ export const CartSummary = () => {
                     Total: ${CartTotal()}
                 </Heading>
             </Flex>
+            }
         </Box>
         
     )
