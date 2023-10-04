@@ -47,7 +47,7 @@ public class DeliveryController {
      *                   ]
      *                    }
      * @return The order that was created in json with orderid, userid, datecreated
-     * e.g.: http://localhost:8082/delivery-serivce/delivery/createorder
+     * e.g.: http://localhost:8082/delivery-service/delivery/createorder
      */
     @PostMapping("/createorder")
     public ResponseEntity<?> createOrder(@RequestBody OrderRequest orderRequest) {
@@ -68,7 +68,7 @@ public class DeliveryController {
      *         "endTime": "10:00:00"
      *     },
      *     ... and so on until 22:00:00
-     * e.g.: http://localhost:8082/delivery-serivce/delivery/timeslots
+     * e.g.: http://localhost:8082/delivery-service/delivery/timeslots
      */
     @GetMapping("/timeslots")
     public ResponseEntity<List<TimeSlotDTO>> getTimeSlots() {
@@ -90,7 +90,7 @@ public class DeliveryController {
      *     "deliveryStatus": "Scheduled"
      * }
      * @return returns a view of what was created in json.
-     * e.g.: http://localhost:8082/delivery-serivce/delivery/requestdelivery
+     * e.g.: http://localhost:8082/delivery-service/delivery/requestdelivery
      */
     @PostMapping("/requestdelivery")
     public ResponseEntity<Delivery> createDelivery(@RequestBody DeliveryRequest deliveryRequest) {
@@ -125,7 +125,7 @@ public class DeliveryController {
      * @param delivery_id path variable
      * @return returns a delivery json with details:
      *              orderId, address, email, timeslotID, deliveryStatus
-     * e.g.: http://localhost:8082/delivery-serivce/delivery/getdeliveriesbyemail/{email}
+     * e.g.: http://localhost:8082/delivery-service/delivery/getdeliveriesbyemail/{email}
      */
     @GetMapping("/getdeliverybyid/{delivery_id}")
     public ResponseEntity<DeliveryRequest> getDeliveryById(@PathVariable int delivery_id) {
