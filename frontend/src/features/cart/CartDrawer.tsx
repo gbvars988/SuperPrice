@@ -91,7 +91,7 @@ function CartDrawer() {
                             width='98%'
                             height='15%'>
                             <Box as='button'
-                                bg='tomato'
+                                
                                 opacity='55%'
                                 lineHeight='16px'
                                 borderRadius='5px'
@@ -101,7 +101,7 @@ function CartDrawer() {
                                 ml='80px'
                                 onClick={() => {clearCart();}}
                                 >
-                                Clear Cart
+                                x Clear Cart
                             </Box>
 
                             <ButtonGroup variant='outline' spacing='6'>

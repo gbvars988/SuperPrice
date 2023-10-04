@@ -69,8 +69,10 @@ export const CartSummary = () => {
                             {item.quantity > 0 &&
                                 <IconButton
                                     {...dec}
+                                    
                                     w='12px'
                                     m='2px'
+                                    
                                     marginRight='4px'
                                     size='sml'
                                     aria-label='Decrease Qty' 
@@ -98,7 +100,7 @@ export const CartSummary = () => {
                         </Flex>
 
                         <Button justifyContent='center'
-                                colorScheme='whiteAlpha' 
+                                colorScheme='black' 
                                 ml='15px'
                                 size='xxs'
                                 width='19px'

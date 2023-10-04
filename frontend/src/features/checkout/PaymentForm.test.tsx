@@ -41,6 +41,8 @@ test("renders the payment form correctly", () => {
     },
     setCheckoutInfo: jest.fn(),
     addToCart: jest.fn(),
+    increaseProductQty: jest.fn(),
+    decreaseProductQty: jest.fn(),
     removeFromCart: jest.fn(),
     clearCart: jest.fn(),
   };
@@ -84,6 +86,8 @@ test("input validation and successful form submission", async () => {
     },
     setCheckoutInfo: jest.fn(),
     addToCart: jest.fn(),
+    increaseProductQty: jest.fn(),
+    decreaseProductQty: jest.fn(),
     removeFromCart: jest.fn(),
     clearCart: jest.fn(),
   };
