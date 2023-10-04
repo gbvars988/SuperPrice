@@ -70,7 +70,7 @@ const DeliveryCard: React.FC<DeliveryCardProps> = ({ orderId }) => {
         </Text>
         <Text>
           <Text as="span" fontWeight="semibold">
-            Timeslot:
+            Delivery time:
           </Text>{" "}
           {timeslot.startTime} - {timeslot.endTime}
         </Text>
