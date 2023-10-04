@@ -62,9 +62,14 @@ const NavBar: React.FC = () => {
               {LABEL.CHECKOUT}
             </Link>
             {user ? (
-              <Button onClick={handleLogout} fontSize={20} fontWeight={400}>
-                Logout
-              </Button>
+              <>
+                <Link as={RouterLink} to={PATH.DELIVERIES} mr={4} fontSize={20}>
+                  {LABEL.DELIVERIES}
+                </Link>
+                <Button onClick={handleLogout} fontSize={20} fontWeight={400}>
+                  Logout
+                </Button>
+              </>
             ) : (
               <Link as={RouterLink} to={PATH.LOGIN} fontSize={20}>
                 Login
