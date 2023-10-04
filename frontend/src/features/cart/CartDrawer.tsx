@@ -96,7 +96,7 @@ function CartDrawer() {
                                 lineHeight='16px'
                                 borderRadius='5px'
                                 padding='3px'
-                                borderBottom='1px'
+                                textDecoration='underline'
                                 mb='20px'
                                 ml='80px'
                                 onClick={() => {clearCart();}}
