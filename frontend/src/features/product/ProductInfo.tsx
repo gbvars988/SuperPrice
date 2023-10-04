@@ -11,7 +11,7 @@ type Props = {
   };
 };
 
-interface IProduct {
+export interface IProduct {
   productID: string;
   name: string;
   weight: number;

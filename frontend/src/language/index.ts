@@ -43,7 +43,12 @@ export const LABEL = {
   ADD_TO_TROLLEY: "Add to trolley",
   REVIEWS: "Reviews",
   NO_REVIEWS: "There are no reviews yet, be the first to review this product.",
+  EDIT_CART: 'Edit Your Shopping Cart',
+  YOUR_CART: 'Your Shopping Cart:',
+  TOTAL_PRICE: 'Total Price: $',
+  ORDER_SUMMARRY: 'Your Order Summary',
 };
+
 export const PATH = {
   ABOUT: "/about",
   CHECKOUT: "/checkout",
@@ -51,4 +56,6 @@ export const PATH = {
   LOGIN: "/login",
   PAYMENT: "/payment",
   SHOP: "/shop",
+  CART: '/editcart',
+  ORDER: '/ordersummary',
 };

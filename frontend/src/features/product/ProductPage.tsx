@@ -161,10 +161,14 @@ const ProductPage = () => {
       addToCart({
         productID: product.productID,
         name: product.name,
+        weight: product.weight,
+        description: product.description,
         quantity: quantity,
         price: cheapestSupermarket.price,
         supermarketName: cheapestSupermarket.supermarketName,
         imageURL: product.imageURL,
+        //supermarketPrices: [],
+        //category: ""
       });
 
       toast({
@@ -186,6 +190,7 @@ const ProductPage = () => {
             fallback={<Skeleton boxSize={{ base: "132.5px", lg: "555px" }} />}
             borderRadius="20px"
             boxSize={{ base: "132.5px", lg: "555px" }}
+            borderRadius="10px"
             objectFit="cover"
             alt={
               product
