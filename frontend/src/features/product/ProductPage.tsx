@@ -190,7 +190,6 @@ const ProductPage = () => {
             fallback={<Skeleton boxSize={{ base: "132.5px", lg: "555px" }} />}
             borderRadius="20px"
             boxSize={{ base: "132.5px", lg: "555px" }}
-            borderRadius="10px"
             objectFit="cover"
             alt={
               product
