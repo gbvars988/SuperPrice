@@ -4,8 +4,9 @@ import HomePage from "../features/home/HomePage";
 import NavBar from "../components/NavBar/NavBar";
 import AuthPage from "../features/auth/AuthPage";
 import ShopPage from "../features/shop/ShopPage";
+import EditCart from '../features/cart/EditCart';
 import ProductPage from "../features/product/ProductPage";
-import { PATH } from "../language";
+import {PATH} from "../language";
 import AboutStatic from "../features/about/AboutStatic";
 import CheckoutPage from "../features/checkout/CheckoutPage";
 import PaymentPage from "../features/checkout/PaymentPage";
@@ -24,6 +25,7 @@ const Router: React.FC = () => {
         <Route path={PATH.CHECKOUT} element={<CheckoutPage />} />
         <Route path={PATH.PAYMENT} element={<PaymentPage />} />
         <Route path={PATH.DELIVERIES} element={<DeliveriesPage />} />
+          <Route path={PATH.CART} element={<EditCart/>}/>
         {/* add more routes later for other features */}
       </Routes>
     </BrowserRouter>

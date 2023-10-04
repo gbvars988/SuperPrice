@@ -7,6 +7,7 @@ import PageContainer from "../../components/common/PageContainer";
 const HomePage: React.FC = () => {
   const navigate = useNavigate();
 
+
   return (
     <PageContainer>
       <VStack spacing={8} align={"center"}>
@@ -17,7 +18,7 @@ const HomePage: React.FC = () => {
         </Box>
         <Box>
           <Button
-            colorScheme="blue"
+            colorScheme="teal"
             onClick={() => {
               navigate(PATH.SHOP);
             }}
@@ -35,6 +36,7 @@ const HomePage: React.FC = () => {
       </VStack>
     </PageContainer>
   );
+
 };
 
 export default HomePage;

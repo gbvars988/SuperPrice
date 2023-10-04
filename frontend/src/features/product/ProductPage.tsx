@@ -161,10 +161,14 @@ const ProductPage = () => {
       addToCart({
         productID: product.productID,
         name: product.name,
+        weight: product.weight,
+        description: product.description,
         quantity: quantity,
         price: cheapestSupermarket.price,
         supermarketName: cheapestSupermarket.supermarketName,
         imageURL: product.imageURL,
+        //supermarketPrices: [],
+        //category: ""
       });
 
       toast({

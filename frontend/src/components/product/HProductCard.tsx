@@ -16,11 +16,12 @@ interface IProduct {
 
 const HProductCard = (props: Props) => {
   return (
-    <Flex gap="2" w="full" maxW="424px" border="1px" borderColor="gray.200">
+    <Flex gap="2" w="full" maxW="424px" border="1px" borderColor="gray.200" borderRadius="10px">
       <Image
         src={props.product?.imageURL}
         objectFit="cover"
         boxSize={{ base: "129px", lg: "129px" }}
+        borderRadius="10px"
         fallback={<Skeleton boxSize={{ base: "129px", lg: "129px" }} />}
       ></Image>
       <Flex flexDir="column" py="2">

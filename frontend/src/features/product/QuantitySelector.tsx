@@ -26,6 +26,7 @@ const QuantitySelector = (props: Props) => {
       justifyItems="center"
       alignItems="center"
       border="1px solid black"
+      borderRadius="10px"
     >
       <QuantityBtn
         icon={<FaMinus color="gray" />}
