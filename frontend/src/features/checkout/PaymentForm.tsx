@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Box,
   Button,
@@ -20,6 +20,7 @@ import "react-credit-cards-2/dist/es/styles-compiled.css";
 import { CartContext } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { PATH } from "../../language";
 
 const PaymentForm: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
@@ -81,6 +82,13 @@ const PaymentForm: React.FC = () => {
 
   // get checkout info
   const { checkoutInfo } = useContext(CartContext);
+
+  // navigate to checkout if any of the checkout info is missing
+  useEffect(() => {
+    if (!checkoutInfo) {
+      navigate(PATH.CHECKOUT);
+    }
+  }, [checkoutInfo]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
