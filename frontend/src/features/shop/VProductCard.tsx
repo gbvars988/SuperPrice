@@ -75,6 +75,7 @@ const VProductCard = (props: VProductCardProps) => {
           <Image
             src={props.product.imageURL}
             alt={props.product.name + " " + props.product.weight + "g"}
+            borderRadius="20px"
             boxSize={{ base: "132.5px", lg: "265px" }}
             objectFit="cover"
             userSelect={"none"}
