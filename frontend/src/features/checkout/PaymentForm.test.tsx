@@ -3,6 +3,7 @@ import { act, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import PaymentForm from "./PaymentForm";
+import { CartContext, CartContextType } from "../../context/CartContext";
 
 const renderWithRouter = (ui: React.ReactElement) => {
   return render(
@@ -15,8 +16,40 @@ const renderWithRouter = (ui: React.ReactElement) => {
   );
 };
 
+type MockCartProviderProps = {
+  value: CartContextType;
+  children: React.ReactNode;
+};
+
+const MockCartProvider: React.FC<MockCartProviderProps> = ({
+  value,
+  children,
+}) => {
+  return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+};
+
 test("renders the payment form correctly", () => {
-  renderWithRouter(<PaymentForm />);
+  const dummyData: CartContextType = {
+    cartItems: [],
+    checkoutInfo: {
+      fullName: "Dummy Name",
+      email: "dummy@email.com",
+      address: "Dummy Address",
+      phone: "123-456-7890",
+      deliveryOption: "Standard",
+      deliveryTime: "09:00 - 10:00",
+    },
+    setCheckoutInfo: jest.fn(),
+    addToCart: jest.fn(),
+    removeFromCart: jest.fn(),
+    clearCart: jest.fn(),
+  };
+
+  renderWithRouter(
+    <MockCartProvider value={dummyData}>
+      <PaymentForm />
+    </MockCartProvider>,
+  );
 
   // check that all labels and inputs are rendered
   const nameInput = screen.getByPlaceholderText("John Doe");
@@ -39,7 +72,27 @@ test("renders the payment form correctly", () => {
 });
 
 test("input validation and successful form submission", async () => {
-  renderWithRouter(<PaymentForm />);
+  const dummyData: CartContextType = {
+    cartItems: [],
+    checkoutInfo: {
+      fullName: "Dummy Name",
+      email: "dummy@email.com",
+      address: "Dummy Address",
+      phone: "123-456-7890",
+      deliveryOption: "Standard",
+      deliveryTime: "09:00 - 10:00",
+    },
+    setCheckoutInfo: jest.fn(),
+    addToCart: jest.fn(),
+    removeFromCart: jest.fn(),
+    clearCart: jest.fn(),
+  };
+
+  renderWithRouter(
+    <MockCartProvider value={dummyData}>
+      <PaymentForm />
+    </MockCartProvider>,
+  );
 
   const nameInput = screen.getByPlaceholderText("John Doe");
   const cardNumberInput = screen.getByPlaceholderText("1234 5678 9123 4567");
