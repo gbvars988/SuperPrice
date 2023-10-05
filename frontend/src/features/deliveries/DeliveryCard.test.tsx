@@ -23,8 +23,8 @@ test("renders DeliveryCard with delivery details", async () => {
     },
   };
 
-  // @ts-ignore
   axios.get
+    // @ts-ignore
     .mockResolvedValueOnce(mockDelivery)
     .mockResolvedValueOnce(mockTimeslot);
 
