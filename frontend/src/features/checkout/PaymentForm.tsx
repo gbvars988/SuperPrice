@@ -90,6 +90,8 @@ const PaymentForm: React.FC = () => {
     }
   }, [checkoutInfo]);
 
+  const { clearCart } = useContext(CartContext);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -97,12 +99,12 @@ const PaymentForm: React.FC = () => {
       return;
     }
 
-    console.log("submitting payment form to backend");
-
-    console.log("Payment info is: ");
-    console.table(state);
-    console.log("Checkout info is: ");
-    console.table(checkoutInfo);
+    // console.log("submitting payment form to backend");
+    //
+    // console.log("Payment info is: ");
+    // console.table(state);
+    // console.log("Checkout info is: ");
+    // console.table(checkoutInfo);
 
     setSubmitted(true);
 
@@ -139,6 +141,7 @@ const PaymentForm: React.FC = () => {
             duration: 5000,
             isClosable: true,
           });
+          clearCart();
           navigate("/");
         } else {
           throw new Error("Failed to request delivery");
