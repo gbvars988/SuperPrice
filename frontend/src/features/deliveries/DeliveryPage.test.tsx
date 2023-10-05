@@ -1,21 +1,31 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { act, render, screen } from "@testing-library/react";
+import { BrowserRouter as Router } from "react-router-dom";
+import axios from "axios";
+import { UserContext } from "../../context/UserContext";
 import DeliveriesPage from "./DeliveryPage";
 
-const renderWithRouter = (ui: React.ReactElement) => {
-  return render(
-    <BrowserRouter>
-      <Routes>
-        <Route path={"/"} element={ui} />
-        <Route path={"/home"} element={<div>Home Page</div>} />
-      </Routes>
-    </BrowserRouter>,
-  );
-};
+jest.mock("axios");
 
-test("renders DeliveriesPage without crashing", () => {
-  renderWithRouter(<DeliveriesPage />);
+test("renders DeliveriesPage and displays deliveries", async () => {
+  // @ts-ignore
+  const mockDeliveryIds = [];
+
+  // @ts-ignore
+  axios.get.mockResolvedValueOnce({ data: mockDeliveryIds });
+
+  const userMock = { email: "test@example.com" };
+
+  await act(async () => {
+    render(
+      // @ts-ignore
+      <UserContext.Provider value={{ user: userMock }}>
+        <Router>
+          <DeliveriesPage />
+        </Router>
+      </UserContext.Provider>,
+    );
+  });
 
   const heading = screen.getByRole("heading", { name: "Your Deliveries" });
   expect(heading).toBeInTheDocument();
