@@ -42,13 +42,7 @@ const DeliveryCard: React.FC<DeliveryCardProps> = ({ orderId }) => {
   }, [delivery]);
 
   return (
-    <Box
-      borderWidth="1px"
-      borderRadius="lg"
-      padding="6"
-      width="full"
-      boxShadow="md"
-    >
+    <Box borderWidth="1px" borderRadius="lg" padding="6" width="full">
       <VStack spacing={3} align="start">
         <Text>
           <Text as="span" fontWeight="semibold">

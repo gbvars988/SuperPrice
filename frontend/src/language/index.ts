@@ -6,7 +6,7 @@ export const LABEL = {
   CLEAR_FILTERS: "Clear filters",
   CONFIRM_PASSWORD: "Confirm password",
   CONFIRM_YOUR_PASSWORD: "Confirm your password",
-  DELIVERIES: "Your Deliveries",
+  DELIVERIES: "Deliveries",
   DELIVERY_OPTIONS: "Delivery options",
   DELIVERY_TIME_SLOT: "Delivery time slot",
   EMAIL: "Email",
@@ -39,15 +39,16 @@ export const LABEL = {
   SUPER_PRICE: "SuperPrice",
   WELCOME: "Welcome to SuperPrice",
   WELCOME_BACK: "Welcome back",
+  YOUR_DELIVERIES: "Your Deliveries",
   NO_PRODUCTS: "No products found",
   INGREDIENTS: "Ingredients",
   ADD_TO_TROLLEY: "Add to trolley",
   REVIEWS: "Reviews",
   NO_REVIEWS: "There are no reviews yet, be the first to review this product.",
-  EDIT_CART: 'Edit Your Shopping Cart',
-  YOUR_CART: 'Your Shopping Cart:',
-  TOTAL_PRICE: 'Total Price: $',
-  ORDER_SUMMARRY: 'Your Order Summary',
+  EDIT_CART: "Edit Your Shopping Cart",
+  YOUR_CART: "Your Shopping Cart:",
+  TOTAL_PRICE: "Total Price: $",
+  ORDER_SUMMARRY: "Your Order Summary",
 };
 
 export const PATH = {
@@ -58,6 +59,6 @@ export const PATH = {
   LOGIN: "/login",
   PAYMENT: "/payment",
   SHOP: "/shop",
-  CART: '/editcart',
-  ORDER: '/ordersummary',
+  CART: "/editcart",
+  ORDER: "/ordersummary",
 };

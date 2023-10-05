@@ -12,7 +12,7 @@ import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { LABEL, PATH } from "../../language";
 import { ColorModeSwitcher } from "../../ColorModeSwitcher";
 import { UserContext } from "../../context/UserContext";
-import CartDrawer from '../../features/cart/CartDrawer';
+import CartDrawer from "../../features/cart/CartDrawer";
 
 const NavBar: React.FC = () => {
   const { user, setUser } = useContext(UserContext);
@@ -58,11 +58,7 @@ const NavBar: React.FC = () => {
             </HStack>
           </HStack>
           <HStack spacing={8} alignItems={"center"}>
-            
             <ColorModeSwitcher justifySelf="flex-end" />
-            <Link as={RouterLink} to={PATH.CHECKOUT} mr={4} fontSize={20}>
-              {LABEL.CHECKOUT}
-            </Link>
             {user ? (
               <>
                 <Link as={RouterLink} to={PATH.DELIVERIES} mr={4} fontSize={20}>
@@ -77,9 +73,8 @@ const NavBar: React.FC = () => {
                 Login
               </Link>
             )}
-            <CartDrawer/>
+            <CartDrawer />
           </HStack>
-          
         </Flex>
       </Container>
     </Box>

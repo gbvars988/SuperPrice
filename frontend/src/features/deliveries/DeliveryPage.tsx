@@ -31,7 +31,7 @@ const DeliveriesPage: React.FC = () => {
     <PageContainer>
       <VStack spacing={6}>
         <Heading size="xl" fontWeight={600}>
-          {LABEL.DELIVERIES}
+          {LABEL.YOUR_DELIVERIES}
         </Heading>
         <VStack spacing={6} w="60%" mt={6}>
           {deliveryIds.length > 0 ? (
