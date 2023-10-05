@@ -49,7 +49,7 @@ const CheckoutForm: React.FC = () => {
       );
       setTimeSlots(response.data);
     } catch (error) {
-      console.error("An error occurred while fetching time slots:", error);
+      console.log("An error occurred while fetching time slots:", error);
       toast({
         title: "An error occurred.",
         description:

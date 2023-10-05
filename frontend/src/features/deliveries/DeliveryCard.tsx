@@ -18,7 +18,7 @@ const DeliveryCard: React.FC<DeliveryCardProps> = ({ orderId }) => {
         );
         setDelivery(response.data);
       } catch (error) {
-        console.error("Error fetching delivery details", error);
+        console.log("Error fetching delivery details", error);
       }
     };
 
@@ -34,7 +34,7 @@ const DeliveryCard: React.FC<DeliveryCardProps> = ({ orderId }) => {
         );
         setTimeslot(response.data);
       } catch (error) {
-        console.error("Error fetching timeslot", error);
+        console.log("Error fetching timeslot", error);
       }
     };
 

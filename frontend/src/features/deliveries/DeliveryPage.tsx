@@ -19,7 +19,7 @@ const DeliveriesPage: React.FC = () => {
         );
         setDeliveryIds(response.data);
       } catch (error) {
-        console.error("Error fetching delivery IDs", error);
+        console.log("Error fetching delivery IDs", error);
       }
     };
 
