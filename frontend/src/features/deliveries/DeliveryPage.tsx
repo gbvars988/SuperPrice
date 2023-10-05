@@ -12,7 +12,6 @@ const DeliveriesPage: React.FC = () => {
   const userEmail = user?.email;
 
   useEffect(() => {
-    console.log("Fetching deliveries for user", userEmail);
     const fetchDeliveryIds = async () => {
       try {
         const response = await axios.get(

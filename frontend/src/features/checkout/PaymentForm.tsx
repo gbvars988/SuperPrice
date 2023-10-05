@@ -99,12 +99,12 @@ const PaymentForm: React.FC = () => {
       return;
     }
 
-    console.log("submitting payment form to backend");
-
-    console.log("Payment info is: ");
-    console.table(state);
-    console.log("Checkout info is: ");
-    console.table(checkoutInfo);
+    // console.log("submitting payment form to backend");
+    //
+    // console.log("Payment info is: ");
+    // console.table(state);
+    // console.log("Checkout info is: ");
+    // console.table(checkoutInfo);
 
     setSubmitted(true);
 
