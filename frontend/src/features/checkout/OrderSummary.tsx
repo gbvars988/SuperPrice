@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {Box, 
     Button, 
     Heading, 
@@ -18,9 +18,12 @@ import {
     AddIcon, 
     MinusIcon,
     ChevronRightIcon} from '@chakra-ui/icons';
-import {LABEL, PATH} from "../../language";
-import {useNavigate} from "react-router-dom";
+import { LABEL, PATH } from "../../language";
+import { useNavigate } from "react-router-dom";
 import PageContainer from "../../components/common/PageContainer";
+import { CartContext } from '../../context/CartContext';
+import { CheckoutForm } from './CheckoutForm';
+import { CartTotal } from '../cart/cartTotal';
 //import { CartSummary } from './CartSummary';
 //import { CartProduct } from './CartProduct';
 import MinusQty from './minus.png';
@@ -46,6 +49,8 @@ const OrderSummaryItem = (props: OrderSummaryItemProps) => {
 
 export const OrderSummary: React.FC = () => {
     const navigate = useNavigate();
+    const { checkoutInfo, cartItems } = useContext(CartContext)
+    const { clearCart } = useContext(CartContext);
     
     return (
         
@@ -69,7 +74,12 @@ export const OrderSummary: React.FC = () => {
                         </AccordionButton>
                         </h2>
                         <AccordionPanel pb={4}>
-                            CART SUMMARY GOES HERE
+                            {cartItems.map((item) => (
+                                [item.name]
+                                {item.quantity}
+                            ))}
+                            CART SUMMARY GOES HERE                            
+
                         </AccordionPanel>
                     
                     </AccordionItem>
@@ -77,8 +87,18 @@ export const OrderSummary: React.FC = () => {
                 </Center>
                 <br/>
                 
+                {checkoutInfo.map((order) => (
+                                <React.Fragment>
+                                    <Flex align='center'
+                                    w='80%'>
+                                        Delivery is set for: {order.deliveryOption}
+                                        Your delivery time is confirmed to be: e{order.deliveryTime}
+                                    </Flex>
+                                </React.Fragment>
+                            ))}
 
                 <OrderSummaryItem label="Subtotal $0.00" />
+                    Item Total: ${CartTotal}
                 <OrderSummaryItem label="Shipping $">
                 </OrderSummaryItem>
                 <br/>
@@ -87,7 +107,7 @@ export const OrderSummary: React.FC = () => {
                 </OrderSummaryItem>
                 <Flex justify="center" mt='50px'>
                 <Text fontSize="xl" fontWeight="semibold">
-                    Total $0.00
+                    Total: ${CartTotal + delivery}
                 </Text>
                 <Text fontSize="xl" fontWeight="extrabold">
                     
@@ -95,6 +115,8 @@ export const OrderSummary: React.FC = () => {
                 </Flex>
                 
         </PageContainer>
+        
     );
+    clearCart();
 };
 
