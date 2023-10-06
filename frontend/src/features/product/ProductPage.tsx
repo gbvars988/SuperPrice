@@ -137,19 +137,40 @@ const ProductPage = () => {
   }) => {
     axios
       .post(
-        `http://localhost:8080/product-service/products/${productID}/reviews`,
+        `http://localhost:8080/product-service/products/reviews`,
         {
+          productId: productID,
           name: data.name,
-          content: data.review,
           rating: data.rating,
+          content: data.review,
         },
       )
       .then((res) => {
         // add review to reviews
-        console.log(res.data);
+        const newReview = {
+          id: res.data.id,
+          name: res.data.name,
+          content: res.data.content,
+          rating: res.data.rating,
+        };
+        setReviews([...reviews, newReview]);
+        toast({
+          title: "Review submitted",
+          description: `Your review has been submitted`,
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
       })
       .catch((err) => {
-        console.log(err);
+        // toast error
+        toast({
+          title: "Error",
+          description: `There was an error submitting your review`,
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
       });
 
     setReviewForm(false);
