@@ -5,6 +5,7 @@ import com.superprice.productms.model.Product;
 import com.superprice.productms.model.SupermarketProduct;
 import com.superprice.productms.repository.ProductRepository;
 import com.superprice.productms.repository.SupermarketProductRepository;
+import com.superprice.productms.repository.ReviewRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -27,10 +28,13 @@ public class ProductServiceImplTest {
 
     private ProductServiceImpl productService;
 
+    @Mock
+    private ReviewRepository reviewRepository;
+
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        productService = new ProductServiceImpl(productRepository, supermarketProductRepository);
+        productService = new ProductServiceImpl(productRepository, supermarketProductRepository, reviewRepository);
     }
 
     @Test

@@ -208,3 +208,7 @@ INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
     (3, 46, 18.00),
     (3, 47, 17.25),
     (3, 48, 19.00);
+
+
+INSERT INTO Review (ReviewID, ProductID, Name, Rating, Content) VALUES
+    (1, 1, "Bob", 4, "They are pretty nice!");

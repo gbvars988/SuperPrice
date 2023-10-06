@@ -1,4 +1,5 @@
 -- Create Product Table
+DROP TABLE IF EXISTS Review;
 DROP TABLE IF EXISTS SupermarketProduct;
 DROP TABLE IF EXISTS Supermarket;
 DROP TABLE IF EXISTS Product;
@@ -27,5 +28,14 @@ CREATE TABLE IF NOT EXISTS SupermarketProduct (
     Price DOUBLE NOT NULL,
     PRIMARY KEY (SupermarketID, ProductID),
     FOREIGN KEY (SupermarketID) REFERENCES Supermarket(SupermarketID),
+    FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+    );
+
+CREATE TABLE IF NOT EXISTS Review (
+    ReviewID INT PRIMARY KEY AUTO_INCREMENT,
+    ProductID INT,
+    Name VARCHAR(255) NOT NULL,
+    Rating INT,
+    Content TEXT,
     FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
     );

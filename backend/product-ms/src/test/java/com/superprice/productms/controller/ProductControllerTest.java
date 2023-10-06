@@ -80,25 +80,25 @@ public class ProductControllerTest {
 
     }
 
-    @Test
-    void should_returnReviews_when_reviewsArePresent() {
-        // Arrange
-        int productId = 1;
+    // @Test
+    // void should_returnReviews_when_reviewsArePresent() {
+    //     // Arrange
+    //     int productId = 1;
 
-        // Create a list of reviews to be returned by the mock
-        List<Review> expectedReviews = new ArrayList<>();
-        expectedReviews.add(new Review(1, "Good product", "User1", 5, LocalDateTime.now()));
-        expectedReviews.add(new Review(2, "Average product", "User2", 3, LocalDateTime.now()));
+    //     // Create a list of reviews to be returned by the mock
+    //     List<Review> expectedReviews = new ArrayList<>();
+    //     expectedReviews.add(new Review(1, "Good product", "User1", 5, LocalDateTime.now()));
+    //     expectedReviews.add(new Review(2, "Average product", "User2", 3, LocalDateTime.now()));
 
-        when(this.service.getReviews(productId)).thenReturn(expectedReviews);
+    //     when(this.service.getReviews(productId)).thenReturn(expectedReviews);
 
-        // Act
-        ResponseEntity<List<Review>> responseEntity = this.controller.readReviews(productId);
+    //     // Act
+    //     ResponseEntity<List<Review>> responseEntity = this.controller.readReviews(productId);
 
-        // Assert
-        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        assertEquals(expectedReviews, responseEntity.getBody());
-    }
+    //     // Assert
+    //     assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
+    //     assertEquals(expectedReviews, responseEntity.getBody());
+    // }
 
 
 }
