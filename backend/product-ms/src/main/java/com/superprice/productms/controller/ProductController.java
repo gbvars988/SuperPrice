@@ -82,6 +82,9 @@ public class ProductController {
     @GetMapping("/{product_id}/reviews")
     public ResponseEntity<List<Review>> readReviews(@PathVariable int product_id) {
         List<Review> reviews = productService.getReviews(product_id);
+        if(reviews == null) {
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok(reviews);
     }
 

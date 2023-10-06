@@ -82,23 +82,34 @@ public class ProductControllerTest {
 
     @Test
     void should_returnReviews_when_reviewsArePresent() {
-        // Arrange
         int productId = 1;
+        List<Review> reviews = new ArrayList<>();
+        reviews.add(new Review(1, 1, "Test Name 1", 4, "Test Review 1"));
+        reviews.add(new Review(2, 1, "Test Name 2", 3, "Test Review 2"));
 
-        // Create a list of reviews to be returned by the mock
-        List<Review> expectedReviews = new ArrayList<>();
-        expectedReviews.add(new Review(1, "Good product", "User1", 5, LocalDateTime.now()));
-        expectedReviews.add(new Review(2, "Average product", "User2", 3, LocalDateTime.now()));
+        when(service.getReviews(productId)).thenReturn(reviews);
 
-        when(this.service.getReviews(productId)).thenReturn(expectedReviews);
+        ResponseEntity<List<Review>> result = this.controller.readReviews(productId);
 
-        // Act
-        ResponseEntity<List<Review>> responseEntity = this.controller.readReviews(productId);
+        assertEquals(HttpStatus.OK, result.getStatusCode());
 
-        // Assert
-        assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        assertEquals(expectedReviews, responseEntity.getBody());
+        List<Review> actualReviews = result.getBody();
+
+        assertEquals(2, actualReviews.size());
+        assertEquals("Test Name 1", actualReviews.get(0).getName());
+        assertEquals("Test Name 2", actualReviews.get(1).getName());
     }
+
+    @Test
+    void should_return_404_when_noReviewsArePresent() {
+        int productId = 1;
+        when(service.getReviews(productId)).thenReturn(null);
+
+        ResponseEntity<List<Review>> result = this.controller.readReviews(productId);
+
+        assertEquals(HttpStatus.NOT_FOUND, result.getStatusCode());
+    }
+
 
 
 }

@@ -208,3 +208,38 @@ INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
     (3, 46, 18.00),
     (3, 47, 17.25),
     (3, 48, 19.00);
+
+
+INSERT INTO Review (ReviewID, ProductID, Name, Rating, Content) VALUES
+    (1, 1, "Bob", 4, "They are pretty nice!"),
+    (2, 1, "Bob", 2, "Actually, not so good"),
+    (3, 2, "Alice", 5, "The sweetness is just right! A staple in my kitchen."),
+    (4, 2, "Charlie", 4, "Good quality, but I prefer them a tad riper."),
+    (5, 3, "Denise", 5, "Juicy and plump! The best cherries I've tasted in a while."),
+    (6, 4, "Evan", 3, "Not bad, but I've had better dates."),
+    (7, 5, "Fay", 4, "Perfectly sweet and great in my morning smoothie."),
+    (8, 6, "Gary", 5, "Absolutely love these. Tangy, sweet, and fresh."),
+    (9, 7, "Hilda", 5, "The zest and juice are perfect for my cooking needs."),
+    (10, 8, "Igor", 4, "Almost as good as the ones I've had in the tropics."),
+    (11, 10, "Jenny", 5, "Crispy and fresh. My rabbits love them too!"),
+    (12, 11, "Kenny", 5, "Very fresh. Goes great in my salads."),
+    (13, 14, "Liam", 4, "Good quality, but sometimes inconsistent."),
+    (14, 15, "Monica", 5, "Always fresh and the yolks are rich and creamy."),
+    (15, 16, "Nate", 3, "Decent butter, but I prefer mine a bit saltier."),
+    (16, 17, "Olivia", 5, "Creamy and perfect for my morning granola."),
+    (17, 18, "Paul", 5, "This cheese is gold! Melts perfectly on my sandwiches."),
+    (18, 19, "Quinn", 5, "Soft and fluffy. Best when toasted with some jam."),
+    (19, 21, "Rachel", 5, "Rich and buttery, a must-have for my breakfast."),
+    (20, 22, "Steve", 5, "These bagels are top-notch. Perfect with lox."),
+    (21, 24, "Tina", 5, "Deliciously tender and flavorful."),
+    (22, 26, "Uri", 4, "A delicacy in my home. But a tad too salty for my taste."),
+    (23, 28, "Vera", 5, "My kids love this with a splash of honey."),
+    (24, 29, "Wes", 4, "Great value for money. A staple in my pantry."),
+    (25, 31, "Xena", 5, "The best wake-me-up! A strong shot to start my day."),
+    (26, 34, "Yasmine", 5, "Tender and flavorful. Perfect for a BBQ."),
+    (27, 35, "Zane", 5, "Simply the best I've had. Melts in your mouth!");
+
+
+
+
+

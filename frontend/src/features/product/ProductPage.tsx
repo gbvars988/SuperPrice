@@ -51,9 +51,8 @@ interface ReqISupermarket {
 }
 interface ProductReview {
   id: number;
-  username: string;
+  name: string;
   content: string;
-  timestamp: string;
   rating: number;
 }
 
@@ -140,7 +139,7 @@ const ProductPage = () => {
       .post(
         `http://localhost:8080/product-service/products/${productID}/reviews`,
         {
-          username: data.name,
+          name: data.name,
           content: data.review,
           rating: data.rating,
         },

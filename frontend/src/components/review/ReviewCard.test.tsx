@@ -7,7 +7,7 @@ describe("ReviewCard Component", () => {
   it("renders the reviewer's username", () => {
     const mockReview = {
       id: 1,
-      username: "John",
+      name: "John",
       content: "Great product!",
       timestamp: "2023-09-28",
       rating: 5,
@@ -19,7 +19,7 @@ describe("ReviewCard Component", () => {
   it("renders the review content", () => {
     const mockReview = {
       id: 1,
-      username: "John",
+      name: "John",
       content: "Great product!",
       timestamp: "2023-09-28",
       rating: 5,
@@ -31,7 +31,7 @@ describe("ReviewCard Component", () => {
   it("renders the correct number of filled and outlined stars", () => {
     const mockReview = {
       id: 1,
-      username: "John",
+      name: "John",
       content: "Good product!",
       timestamp: "2023-09-28",
       rating: 3,
