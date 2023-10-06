@@ -124,9 +124,9 @@ public class ProductServiceImplTest {
         when(productRepository.findById(review.getProductId())).thenReturn(Optional.of(new Product()));
         when(reviewRepository.save(review)).thenReturn(review);
 
-        boolean result = productService.writeReview(review);
+        Review result = productService.writeReview(review);
 
-        assertEquals(true, result);
+        assertEquals(review, result);
     }
 
     @Test
@@ -134,9 +134,9 @@ public class ProductServiceImplTest {
         Review review = new Review(1, 1, "Test Name", 4, "Test Review");
         when(productRepository.findById(review.getProductId())).thenReturn(Optional.empty());
 
-        boolean result = productService.writeReview(review);
+        Review result = productService.writeReview(review);
 
-        assertEquals(false, result);
+        assertEquals(null, result);
     }
 
 }
