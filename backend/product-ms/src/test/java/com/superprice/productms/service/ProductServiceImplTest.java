@@ -3,6 +3,7 @@ package com.superprice.productms.service;
 import com.superprice.productms.dto.ProductDto;
 import com.superprice.productms.model.Product;
 import com.superprice.productms.model.SupermarketProduct;
+import com.superprice.productms.model.Review;
 import com.superprice.productms.repository.ProductRepository;
 import com.superprice.productms.repository.SupermarketProductRepository;
 import com.superprice.productms.repository.ReviewRepository;
@@ -26,10 +27,11 @@ public class ProductServiceImplTest {
     @Mock
     private SupermarketProductRepository supermarketProductRepository;
 
-    private ProductServiceImpl productService;
-
     @Mock
     private ReviewRepository reviewRepository;
+    
+    private ProductServiceImpl productService;
+
 
     @BeforeEach
     public void setUp() {
@@ -80,6 +82,21 @@ public class ProductServiceImplTest {
 
         assertEquals(1, result.size());
         assertEquals(2.99, result.get(0).getPrice());
+    }
+
+    @Test
+    public void testGetReviewsByProductId(){
+        int productId = 1;
+        List<Review> reviews = new ArrayList<>();
+        reviews.add(new Review(1, 1, "Test Name 1", 4, "Test Review 1"));
+        reviews.add(new Review(2, 1, "Test Name 2", 3, "Test Review 2"));        
+        when(reviewRepository.findByProductId(productId)).thenReturn(reviews);
+
+        List<Review> result = productService.getReviews(productId);
+
+        assertEquals(2, result.size());
+        assertEquals("Test Name 1", result.get(0).getName());
+        assertEquals("Test Name 2", result.get(1).getName());
     }
 
 }
