@@ -19,7 +19,7 @@ describe("ReviewList Component", () => {
     const mockReviews = [
       {
         id: 1,
-        username: "John",
+        name: "John",
         content: "Great product!",
         timestamp: "2023-09-28",
         rating: 5,

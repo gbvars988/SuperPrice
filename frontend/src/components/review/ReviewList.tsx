@@ -7,10 +7,9 @@ import ReviewCard from "./ReviewCard";
 
 interface ProductReview {
   id: number;
-  username: string;
-  content: string;
-  timestamp: string;
+  name: string;
   rating: number;
+  content: string;
 }
 
 interface ReviewListProps {
