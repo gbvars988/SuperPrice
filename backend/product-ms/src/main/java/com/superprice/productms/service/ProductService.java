@@ -15,7 +15,7 @@ public interface ProductService {
 
     List<SupermarketProduct> comparePrices(int productId);
 
-    boolean writeReview(Review review);
+    Review writeReview(Review review);
 
     List<Review> getReviews(int productId);
 

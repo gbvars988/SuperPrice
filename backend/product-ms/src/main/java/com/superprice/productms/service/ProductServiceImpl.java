@@ -70,15 +70,15 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public boolean writeReview(Review review) {
+    public Review writeReview(Review review) {
         Optional<Product> productOptional = productRepository.findById(review.getProductId());
         // check if product exists
         if (productOptional.isPresent()) {
             // check if review is valid
             reviewRepository.save(review);
-            return true;
+            return review;
         }
-        return false;
+        return null;
     }
 
     @Override

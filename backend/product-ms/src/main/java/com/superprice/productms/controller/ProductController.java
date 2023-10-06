@@ -75,7 +75,7 @@ public class ProductController {
     @PostMapping("/reviews")
     // The users review will be deserialized from JSON body to an object of Review type. Attributes in JSON must match
     // Review member variables.
-    public ResponseEntity<String> writeReview(@RequestBody Review review) {
+    public ResponseEntity<?> writeReview(@RequestBody Review review) {
         // check all required fields are present
         if(review.getProductId() == 0 || review.getRating() == 0 || review.getContent() == null || review.getName() == null || review.getContent() == "" || review.getName() == "") {
             return ResponseEntity.badRequest().body("Missing required fields.");
@@ -83,9 +83,9 @@ public class ProductController {
         if(review.getRating() < 0 || review.getRating() > 5) {
             return ResponseEntity.badRequest().body("Rating must be between 0 and 5.");
         }
-        boolean res = productService.writeReview(review);
-        if(res) {
-            return ResponseEntity.ok("Review added successfully");
+        Review newReview = productService.writeReview(review);
+        if(newReview != null) {
+            return ResponseEntity.ok(newReview);
         }
         else {
             return ResponseEntity.badRequest().body("Product does not exist.");
