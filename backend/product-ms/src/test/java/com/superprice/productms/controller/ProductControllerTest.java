@@ -110,6 +110,74 @@ public class ProductControllerTest {
         assertEquals(HttpStatus.NOT_FOUND, result.getStatusCode());
     }
 
+    @Test
+    void should_returnOk_when_postReview() {
+        Review review = new Review(1, 1, "Test Name 1", 4, "Test Review 1");
+        when(service.writeReview(review)).thenReturn(true);
+
+        ResponseEntity<String> result = this.controller.writeReview(review);
+
+        assertEquals(HttpStatus.OK, result.getStatusCode());
+    }
+
+    @Test
+    void should_returnBadRequest_when_postReview_invalid_productId() {
+        Review review = new Review(1, 1, "Test Name 1", 4, "Test Review 1");
+        review.setProductId(-2);
+        when(service.writeReview(review)).thenReturn(false);
+
+        ResponseEntity<String> result = this.controller.writeReview(review);
+
+        assertEquals(HttpStatus.BAD_REQUEST, result.getStatusCode());
+        // check response body is correct = Product does not exist.
+        assertEquals("Product does not exist.", result.getBody());
+    }
+
+    @Test
+    void should_returnBadRequest_when_postReview_invalid_rating() {
+        Review review = new Review(1, 1, "Test Name 1", 4, "Test Review 1");
+        review.setRating(6);
+        when(service.writeReview(review)).thenReturn(true);
+
+        ResponseEntity<String> result = this.controller.writeReview(review);
+
+        assertEquals(HttpStatus.BAD_REQUEST, result.getStatusCode());
+    }
+
+    @Test
+    void should_returnBadRequest_when_postReview_invalid_content() {
+        Review review = new Review(1, 1, "Test Name 1", 4, "Test Review 1");
+        review.setContent("");
+        when(service.writeReview(review)).thenReturn(true);
+
+        ResponseEntity<String> result = this.controller.writeReview(review);
+
+        assertEquals(HttpStatus.BAD_REQUEST, result.getStatusCode());
+    }
+
+    @Test
+    void should_returnBadRequest_when_postReview_invalid_name() {
+        Review review = new Review(1, 1, "Test Name 1", 4, "Test Review 1");
+        review.setName("");
+        when(service.writeReview(review)).thenReturn(true);
+
+        ResponseEntity<String> result = this.controller.writeReview(review);
+
+        assertEquals(HttpStatus.BAD_REQUEST, result.getStatusCode());
+    }
+
+    @Test
+    void should_returnBadRequest_when_postReview_invalid_rating2() {
+        Review review = new Review(1, 1, "Test Name 1", 4, "Test Review 1");
+        review.setRating(-1);
+        when(service.writeReview(review)).thenReturn(true);
+
+        ResponseEntity<String> result = this.controller.writeReview(review);
+
+        assertEquals(HttpStatus.BAD_REQUEST, result.getStatusCode());
+    }
+
+
 
 
 }
