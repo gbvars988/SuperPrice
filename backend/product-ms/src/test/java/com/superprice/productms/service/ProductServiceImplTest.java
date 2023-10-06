@@ -118,4 +118,25 @@ public class ProductServiceImplTest {
         assertEquals(0, result.size());
     }
 
+    @Test
+    public void writeReviewTest() {
+        Review review = new Review(1, 1, "Test Name", 4, "Test Review");
+        when(productRepository.findById(review.getProductId())).thenReturn(Optional.of(new Product()));
+        when(reviewRepository.save(review)).thenReturn(review);
+
+        boolean result = productService.writeReview(review);
+
+        assertEquals(true, result);
+    }
+
+    @Test
+    public void writeReviewTestWhenProductDoesNotExist() {
+        Review review = new Review(1, 1, "Test Name", 4, "Test Review");
+        when(productRepository.findById(review.getProductId())).thenReturn(Optional.empty());
+
+        boolean result = productService.writeReview(review);
+
+        assertEquals(false, result);
+    }
+
 }
