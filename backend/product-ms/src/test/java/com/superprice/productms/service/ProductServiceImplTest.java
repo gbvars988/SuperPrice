@@ -29,7 +29,7 @@ public class ProductServiceImplTest {
 
     @Mock
     private ReviewRepository reviewRepository;
-    
+
     private ProductServiceImpl productService;
 
 
@@ -89,7 +89,11 @@ public class ProductServiceImplTest {
         int productId = 1;
         List<Review> reviews = new ArrayList<>();
         reviews.add(new Review(1, 1, "Test Name 1", 4, "Test Review 1"));
-        reviews.add(new Review(2, 1, "Test Name 2", 3, "Test Review 2"));        
+        reviews.add(new Review(2, 1, "Test Name 2", 3, "Test Review 2"));
+
+        Product product = new Product(productId, "Test Product", "Description", "Category", "image.jpg", 100);
+        
+        when(productRepository.findById(productId)).thenReturn(Optional.of(product));
         when(reviewRepository.findByProductId(productId)).thenReturn(reviews);
 
         List<Review> result = productService.getReviews(productId);
@@ -97,6 +101,21 @@ public class ProductServiceImplTest {
         assertEquals(2, result.size());
         assertEquals("Test Name 1", result.get(0).getName());
         assertEquals("Test Name 2", result.get(1).getName());
+    }
+
+    @Test
+    public void testGetReviewsByProductIdWhenNoReviews(){
+        int productId = 1;
+        List<Review> reviews = new ArrayList<>();
+
+        Product product = new Product(productId, "Test Product", "Description", "Category", "image.jpg", 100);
+        
+        when(productRepository.findById(productId)).thenReturn(Optional.of(product));
+        when(reviewRepository.findByProductId(productId)).thenReturn(reviews);
+
+        List<Review> result = productService.getReviews(productId);
+
+        assertEquals(0, result.size());
     }
 
 }
