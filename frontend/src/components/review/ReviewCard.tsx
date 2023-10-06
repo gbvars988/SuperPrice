@@ -8,9 +8,8 @@ import {
 
 interface ProductReview {
   id: number;
-  username: string;
+  name: string;
   content: string;
-  timestamp: string;
   rating: number;
 }
 
@@ -22,7 +21,7 @@ const ReviewCard = (props: Props) => {
   return (
     <Flex flexDirection="column">
       <Flex align="center" gap="2">
-        <Text fontSize="lg">{props.review.username}</Text>
+        <Text fontSize="lg">{props.review.name}</Text>
         {/* Star rating */}
         <Flex gap="1">
           {[...Array(5)].map((_, i) =>

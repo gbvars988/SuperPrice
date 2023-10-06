@@ -1,12 +1,11 @@
 package com.superprice.productms.service;
 
-
-
 //import com.superprice.productms.dto.ProductDto;
 import com.superprice.productms.dto.ProductDto;
 import com.superprice.productms.dto.SupermarketPriceDto;
 import com.superprice.productms.model.*;
 import com.superprice.productms.repository.ProductRepository;
+import com.superprice.productms.repository.ReviewRepository;
 
 import com.superprice.productms.repository.SupermarketProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,17 +18,21 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService {
 
     private ProductRepository productRepository;
+
     private final SupermarketProductRepository supermarketProductRepository;
 
+    private final ReviewRepository reviewRepository;
+
     @Autowired
-    public ProductServiceImpl(ProductRepository productRepository, SupermarketProductRepository supermarketProductRepository) {
+    public ProductServiceImpl(ProductRepository productRepository,
+            SupermarketProductRepository supermarketProductRepository, ReviewRepository reviewRepository) {
         this.productRepository = productRepository;
         this.supermarketProductRepository = supermarketProductRepository;
+        this.reviewRepository = reviewRepository;
     }
-
 
     @Override
     public List<ProductDto> searchProductsByName(String query) {
@@ -55,7 +58,8 @@ public class ProductServiceImpl implements ProductService{
         dto.setImageURL(product.getImageURL());
         dto.setWeight(product.getWeight());
 
-        List<SupermarketProduct> supermarketProducts = supermarketProductRepository.findByProductId(product.getProductId());
+        List<SupermarketProduct> supermarketProducts = supermarketProductRepository
+                .findByProductId(product.getProductId());
         List<SupermarketPriceDto> supermarketPrices = supermarketProducts.stream()
                 .map(sp -> new SupermarketPriceDto(sp.getSupermarketId(), sp.getSupermarket().getName(), sp.getPrice()))
                 .collect(Collectors.toList());
@@ -65,31 +69,35 @@ public class ProductServiceImpl implements ProductService{
         return dto;
     }
 
-
-
-
-
     @Override
-    public void writeReview(int product_id, Review review) {
-        // save review to DB.
-        // TODO: DB creation.
+    public Review writeReview(Review review) {
+        Optional<Product> productOptional = productRepository.findById(review.getProductId());
+        // check if product exists
+        if (productOptional.isPresent()) {
+            // check if review is valid
+            reviewRepository.save(review);
+            return review;
+        }
+        return null;
     }
 
     @Override
     public List<Review> getReviews(int product_id) {
-        List<Review> reviews = new ArrayList<>();
-        reviews.add(new Review(23,
-                "This is the most fantastic milk you'll ever drink",
-                "John_Doe",
-                5,
-                LocalDateTime.now()));
-        return reviews;
+        Optional<Product> productOptional = productRepository.findById(product_id);
+        if (productOptional.isPresent()) {
+            // Product product = productOptional.get();
+            List<Review> reviews = reviewRepository.findByProductId(product_id);
+            return reviews;
+        } else {
+            return null; 
+        }
     }
 
     @Override
     public List<SupermarketProduct> comparePrices(int productId) {
         return supermarketProductRepository.findByProductId(productId);
     }
+
     @Override
     public boolean updateProductPrice(int productID, int supermarketID, double newPrice) {
         SupermarketProduct sp = supermarketProductRepository.findByProductIdAndSupermarketId(productID, supermarketID);
@@ -97,11 +105,11 @@ public class ProductServiceImpl implements ProductService{
             sp.setPrice(newPrice);
             supermarketProductRepository.save(sp);
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
+
     @Override
     public ProductDto getProductById(int productId) {
         Optional<Product> productOptional = productRepository.findById(productId);
@@ -121,37 +129,36 @@ public class ProductServiceImpl implements ProductService{
         supermarketPriceDto.setPrice(sp.getPrice());
         return supermarketPriceDto;
     }
-//    public List<ProductDto> addProduct(List<ProductDto> products) {
-//        List<ProductDto> savedProducts = new ArrayList<>();
-//        for (ProductDto productDto : products) {
-//            Product product = Product.builder()
-//                    .ProductID(productDto.getProductID())
-//                    .Name(productDto.getName())
-//                    .Description(productDto.getDescription())
-//                    .Category(productDto.getDescription())
-//                    .ImageURL(productDto.getImageURL())
-//                    .Weight(productDto.getWeight())
-////                    .Supermarkets(productDto.getSupermarkets())
-//                    .build();
-//            product = productRepository.save(product);
-//
-//            savedProducts.add(ProductDto.builder().ProductID(product.getProductID())
-//                    .Name(product.getName())
-//                    .Description(product.getDescription())
-//                    .Category(product.getCategory())
-//                    .ImageURL(product.getImageURL())
-//                    .Weight(product.getWeight())
-////                    .Supermarkets(product.getSupermarkets())
-//                    .build());
-//        }
-//        return savedProducts;
-//    }
+    // public List<ProductDto> addProduct(List<ProductDto> products) {
+    // List<ProductDto> savedProducts = new ArrayList<>();
+    // for (ProductDto productDto : products) {
+    // Product product = Product.builder()
+    // .ProductID(productDto.getProductID())
+    // .Name(productDto.getName())
+    // .Description(productDto.getDescription())
+    // .Category(productDto.getDescription())
+    // .ImageURL(productDto.getImageURL())
+    // .Weight(productDto.getWeight())
+    //// .Supermarkets(productDto.getSupermarkets())
+    // .build();
+    // product = productRepository.save(product);
+    //
+    // savedProducts.add(ProductDto.builder().ProductID(product.getProductID())
+    // .Name(product.getName())
+    // .Description(product.getDescription())
+    // .Category(product.getCategory())
+    // .ImageURL(product.getImageURL())
+    // .Weight(product.getWeight())
+    //// .Supermarkets(product.getSupermarkets())
+    // .build());
+    // }
+    // return savedProducts;
+    // }
 
-//    @Override
-//    public List<ProductDto> searchProducts(String query) {
-//        // Call the custom repository method to search for products by name
-//        return productRepository.findByProductName(query);
-//    }
-
+    // @Override
+    // public List<ProductDto> searchProducts(String query) {
+    // // Call the custom repository method to search for products by name
+    // return productRepository.findByProductName(query);
+    // }
 
 }

@@ -1,41 +1,29 @@
 package com.superprice.productms.model;
 
-import java.time.LocalDateTime;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Entity(name = "review")
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
 public class Review {
-    private int id;
-    private String content;
-    private String username;
+    @Id 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ReviewID")
+    private int reviewId;
+    @Column(name = "ProductID")
+    private int productId;
+    @Column(name = "Name")
+    private String name;
+    @Column(name = "Rating")
     private int rating;
-    private LocalDateTime timestamp;
-
-    public Review(int id, String content, String username, int rating, LocalDateTime timestamp) {
-        this.id = id;
-        this.content = content;
-        this.username = username;
-        this.rating = rating;
-        this.timestamp = timestamp;
-    }
-
-    public LocalDateTime getTimestamp() {
-        return timestamp;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public String getUsername() {
-        return username;
-    }
+    @Column(name = "Content")
+    private String content;
 
 }
 
