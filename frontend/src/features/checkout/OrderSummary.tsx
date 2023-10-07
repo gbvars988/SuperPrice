@@ -60,6 +60,7 @@ export const OrderSummary: React.FC = () => {
     return (
         
         <PageContainer>
+            
                 <Box>
                     <Heading as="h1" size="xl" textAlign={"center"} lineHeight={"40px"}>
                         {LABEL.ORDER_SUMMARY}
@@ -79,14 +80,29 @@ export const OrderSummary: React.FC = () => {
                         </AccordionButton>
                         </h2>
                         <AccordionPanel pb={4}>
-                            {cartItems.map((item) => (
-                                <React.Fragment>
+                        {cartItems.map((item) => (
+                            <React.Fragment>
+                                    <Box>
+                                    <Flex align="flex-end" 
+                            alignItems='center' 
+                            width='100px'>
+                            <Image src={item.imageURL} 
+                                alt={item.name} 
+                                boxSize='20px' 
+                                className="rounded-md h-24" 
+                                borderRadius='10px' 
+                                marginRight={'8px'} 
+                                align='center'/>
+                            <Text fontSize='15px' 
+                                mr='25px'>
                                 {item.name}
-                                {item.quantity}
-                                </React.Fragment>
-                            ))}
+                            </Text>
+                        </Flex>
+                                {item.quantity}</Box>
+                                
                             CART SUMMARY GOES HERE                            
-
+                            </React.Fragment>
+                            ))}
                         </AccordionPanel>
                     
                     </AccordionItem>
@@ -108,8 +124,10 @@ export const OrderSummary: React.FC = () => {
                     Return Home
                     </Button>
                 </Box>
-
+                
+                
         </PageContainer>
+        
         
     );
     clearCart();
