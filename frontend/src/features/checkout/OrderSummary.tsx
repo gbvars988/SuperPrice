@@ -3,10 +3,8 @@ import {Box,
     Button, 
     Heading, 
     Image, 
-    Stack, 
     Text, 
     Flex, 
-    Link,
     Accordion,
     AccordionItem,
     AccordionButton,
@@ -19,23 +17,6 @@ import { useNavigate } from "react-router-dom";
 import PageContainer from "../../components/common/PageContainer";
 import { CartContext } from '../../context/CartContext';
 
-type OrderSummaryItemProps = {
-    label: string
-    value?: string
-    children?: React.ReactNode
-}
-
-const OrderSummaryItem = (props: OrderSummaryItemProps) => {
-    const { label, value, children } = props
-    return (
-      <Flex marginTop='50px' justify="center" fontSize="m">
-        <Text fontWeight="medium" >
-          {label}
-        </Text>
-        {value ? <Text fontWeight="medium">{value}</Text> : children}
-      </Flex>
-    )
-  }
 
 export const OrderSummary: React.FC = () => {
     const navigate = useNavigate();
