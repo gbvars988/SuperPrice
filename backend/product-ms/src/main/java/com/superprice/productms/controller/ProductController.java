@@ -9,6 +9,7 @@ import com.superprice.productms.model.*;
 
 import com.superprice.productms.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +20,11 @@ import java.util.List;
 @RequestMapping("products")
 public class ProductController {
 
+    @Value("${user.service.url}")
+    private String userServiceURL;
+
+    @Value("${notifications.service.url}")
+    private String notificationsServiceURL;
     private final ProductService productService;
     private final RestTemplate restTemplate = new RestTemplate();
     @Autowired
@@ -123,8 +129,10 @@ public class ProductController {
             HttpEntity<String> requestEntity = new HttpEntity<>(headers);
             ProductDto productDto = productService.getProductById(request.getProductID());
 
+            String userEndpoint = userServiceURL + "/user-service/user/getUsers";
             ResponseEntity<List<UserDto>> responseEntity = restTemplate.exchange(
-                    "http://localhost:8081/user-service/user/getUsers",
+//                    "http://localhost:8081/user-service/user/getUsers",
+                    userEndpoint,
                     HttpMethod.GET,
                     requestEntity,
                     new ParameterizedTypeReference<List<UserDto>>() {}
@@ -136,6 +144,8 @@ public class ProductController {
             notificationDto.setSupermarket(productService.getSupermarketProductInfo(request.getProductID(), request.getSupermarketID()).getSupermarketName());
             notificationDto.setNewPrice(request.getNewPrice());
             notificationDto.setProductName(productDto.getName());
+
+            String notificationsEndpoint = notificationsServiceURL + "/notifications/pricedrop";
             for (UserDto user : users) {
 
                 notificationDto.setUserEmail(user.getEmail());
@@ -143,7 +153,8 @@ public class ProductController {
                 notificationDto.setLastName(user.getLastName());
 
                 restTemplate.postForObject(
-                        "http://localhost:8083/notifications/pricedrop",
+//                        "http://localhost:8083/notifications/pricedrop",
+                        notificationsEndpoint,
                         notificationDto,
                         ResponseEntity.class
                 );
@@ -156,15 +167,6 @@ public class ProductController {
                     " Supermarket ID: " + request.getSupermarketID() + " pair does not exist.", HttpStatus.BAD_REQUEST);
         }
     }
-
-
-
-
-//    @PostMapping("/add")
-//    public List<ProductDto> addProducts(@RequestBody List<ProductDto> products) {
-//        List<ProductDto> productDtos = productService.addProduct(products);
-//        return productDtos;
-//    }
 
 
 }

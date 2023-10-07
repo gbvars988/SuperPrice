@@ -28,6 +28,4 @@ public class Order {
     @Column(name = "Datecreated")
     private LocalDateTime dateCreated;
 
-//    @Column(name = "Status")
-//    private String status;
 }

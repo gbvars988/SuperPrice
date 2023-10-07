@@ -4,21 +4,19 @@ import { useParams } from "react-router-dom";
 
 import PageContainer from "../../components/common/PageContainer";
 import {
+  Button,
   Flex,
   Image,
   Skeleton,
   Text,
-  useToast,
-  Button,
   useColorModeValue,
+  useToast,
 } from "@chakra-ui/react";
 import ProductInfo from "./ProductInfo";
 import QuantitySelector from "./QuantitySelector";
 import AddBtn from "./AddBtn";
 import HProductCard from "../../components/product/HProductCard";
 import ReviewList from "../../components/review/ReviewList";
-
-import { LABEL } from "../../language/index";
 import { CartContext } from "../../context/CartContext";
 import ReviewForm from "../../components/review/ReviewForm";
 
@@ -49,6 +47,7 @@ interface ReqISupermarket {
   };
   price: number;
 }
+
 interface ProductReview {
   id: number;
   name: string;
@@ -74,12 +73,12 @@ const ProductPage = () => {
 
   const toast = useToast();
 
+  const productServiceUrl = process.env.REACT_APP_PRODUCT_SERVICE_URL;
+
   useEffect(() => {
     if (!productID) return;
     axios
-      .get(
-        `http://localhost:8080/product-service/products/compare/${productID}`,
-      )
+      .get(`${productServiceUrl}/products/compare/${productID}`)
       .then((res) => {
         setProduct(res.data);
         const p = res.data[0];
@@ -119,9 +118,7 @@ const ProductPage = () => {
       });
 
     axios
-      .get(
-        `http://localhost:8080/product-service/products/${productID}/reviews`,
-      )
+      .get(`${productServiceUrl}/products/${productID}/reviews`)
       .then((res) => {
         setReviews(res.data);
       })
@@ -136,15 +133,12 @@ const ProductPage = () => {
     rating: number;
   }) => {
     axios
-      .post(
-        `http://localhost:8080/product-service/products/reviews`,
-        {
-          productId: productID,
-          name: data.name,
-          rating: data.rating,
-          content: data.review,
-        },
-      )
+      .post(`${productServiceUrl}/products/reviews`, {
+        productId: productID,
+        name: data.name,
+        rating: data.rating,
+        content: data.review,
+      })
       .then((res) => {
         // add review to reviews
         const newReview = {
