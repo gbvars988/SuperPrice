@@ -22,8 +22,8 @@ import { LABEL, PATH } from "../../language";
 import { useNavigate } from "react-router-dom";
 import PageContainer from "../../components/common/PageContainer";
 import { CartContext } from '../../context/CartContext';
-import { CheckoutForm } from './CheckoutForm';
-import { CartTotal } from '../cart/cartTotal';
+import CheckoutForm  from './CheckoutForm';
+import PaymentForm from './PaymentForm';
 //import { CartSummary } from './CartSummary';
 //import { CartProduct } from './CartProduct';
 import MinusQty from './minus.png';
@@ -49,15 +49,20 @@ const OrderSummaryItem = (props: OrderSummaryItemProps) => {
 
 export const OrderSummary: React.FC = () => {
     const navigate = useNavigate();
-    const { checkoutInfo, cartItems } = useContext(CartContext)
-    const { clearCart } = useContext(CartContext);
+    const { checkoutInfo, cartItems, clearCart } = useContext(CartContext)
+    const calculateTotal = () => {
+        return cartItems
+          .reduce((sum, item) => sum + item.price * item.quantity, 0)
+          .toFixed(2);
+      };
+
     
     return (
         
         <PageContainer>
                 <Box>
                     <Heading as="h1" size="xl" textAlign={"center"} lineHeight={"40px"}>
-                        {LABEL.ORDER_SUM}
+                        {LABEL.ORDER_SUMMARY}
                     </Heading>
                 </Box>
                 <br />
@@ -75,8 +80,10 @@ export const OrderSummary: React.FC = () => {
                         </h2>
                         <AccordionPanel pb={4}>
                             {cartItems.map((item) => (
-                                [item.name]
+                                <React.Fragment>
+                                {item.name}
                                 {item.quantity}
+                                </React.Fragment>
                             ))}
                             CART SUMMARY GOES HERE                            
 
@@ -86,7 +93,29 @@ export const OrderSummary: React.FC = () => {
                     </Accordion>
                 </Center>
                 <br/>
+
+
+                <OrderSummaryItem label="Subtotal $0.00" />
+                    Total: ${calculateTotal()}
+                <br/>
+
+                <Text fontSize="xl" fontWeight="extrabold">
                 
+                </Text>
+                <Box display="flex" justifyContent="center" mt={10}>
+                    <Button
+                    onClick={() => {navigate(PATH.HOMEPAGE);}}>
+                    Return Home
+                    </Button>
+                </Box>
+
+        </PageContainer>
+        
+    );
+    clearCart();
+};
+
+/*                
                 {checkoutInfo.map((order) => (
                                 <React.Fragment>
                                     <Flex align='center'
@@ -96,27 +125,13 @@ export const OrderSummary: React.FC = () => {
                                     </Flex>
                                 </React.Fragment>
                             ))}
-
-                <OrderSummaryItem label="Subtotal $0.00" />
-                    Item Total: ${CartTotal}
-                <OrderSummaryItem label="Shipping $">
-                </OrderSummaryItem>
-                <br/>
-                <Center><Text>Delivery:</Text></Center>
+                            
+                                            <Center><Text>Delivery:</Text></Center>
                 <OrderSummaryItem label="Coupon Amount $">
                 </OrderSummaryItem>
                 <Flex justify="center" mt='50px'>
                 <Text fontSize="xl" fontWeight="semibold">
                     Total: ${CartTotal + delivery}
                 </Text>
-                <Text fontSize="xl" fontWeight="extrabold">
-                    
-                </Text>
-                </Flex>
-                
-        </PageContainer>
-        
-    );
-    clearCart();
-};
-
+                            
+                            */

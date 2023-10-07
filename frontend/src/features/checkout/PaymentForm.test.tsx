@@ -38,6 +38,7 @@ test("renders the payment form correctly", () => {
       phone: "123-456-7890",
       deliveryOption: "Standard",
       deliveryTime: "09:00 - 10:00",
+      //orderID: "111"
     },
     setCheckoutInfo: jest.fn(),
     addToCart: jest.fn(),
@@ -83,6 +84,7 @@ test("input validation and successful form submission", async () => {
       phone: "123-456-7890",
       deliveryOption: "Standard",
       deliveryTime: "09:00 - 10:00",
+      //orderID: "111"
     },
     setCheckoutInfo: jest.fn(),
     addToCart: jest.fn(),

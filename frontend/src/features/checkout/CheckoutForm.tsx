@@ -33,6 +33,7 @@ const CheckoutForm: React.FC = () => {
   const [deliveryOption, setDeliveryOption] = useState("");
   const [deliveryTime, setDeliveryTime] = useState("");
   const [timeSlots, setTimeSlots] = useState<TimeSlot[]>([]);
+  const [orderID, setOrderID] = useState("")
 
   const [error, setError] = useState<string | null>(null);
 
@@ -119,6 +120,7 @@ const CheckoutForm: React.FC = () => {
       phone,
       deliveryOption,
       deliveryTime,
+      orderID
     };
 
     setCheckoutInfo(info);

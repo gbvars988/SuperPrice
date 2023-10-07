@@ -141,8 +141,8 @@ const PaymentForm: React.FC = () => {
             duration: 5000,
             isClosable: true,
           });
-          clearCart();
-          navigate("/");
+          //clearCart();
+          navigate(PATH.ORDER);
         } else {
           throw new Error("Failed to request delivery");
         }

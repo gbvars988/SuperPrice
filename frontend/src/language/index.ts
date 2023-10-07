@@ -48,7 +48,7 @@ export const LABEL = {
   EDIT_CART: "Edit Your Shopping Cart",
   YOUR_CART: "Your Shopping Cart:",
   TOTAL_PRICE: "Total Price: $",
-  ORDER_SUMMARRY: "Your Order Summary",
+  ORDER_SUMMARY: "Your Order Summary",
 };
 
 export const PATH = {
