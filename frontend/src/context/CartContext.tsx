@@ -20,7 +20,7 @@ export type CheckoutInfo = {
   phone: string;
   deliveryOption: string;
   deliveryTime: string;
-  //orderID: any;
+  orderId: number;
 };
 
 

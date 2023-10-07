@@ -66,10 +66,13 @@ export const OrderSummary: React.FC = () => {
                         {LABEL.ORDER_SUMMARY}
                     </Heading>
                 </Box>
+                <Text align='center' marginTop='50px'>Thanks for your order, {checkoutInfo?.fullName}</Text>
+                <Text align='center' marginTop='20px'>We have sent a confirmation to your email: <b>{checkoutInfo?.email}</b></Text>
                 <br />
                 <br/>
                     <Center>
-                    <Accordion alignItems='Center' justifyContent="center"  maxWidth='250px' allowToggle>
+                    
+                    <Accordion alignItems='Center' justifyContent="center"  width='40%' allowToggle>
                         <AccordionItem>
                         <h2>
                         <AccordionButton>
@@ -82,45 +85,47 @@ export const OrderSummary: React.FC = () => {
                         <AccordionPanel pb={4}>
                         {cartItems.map((item) => (
                             <React.Fragment>
-                                    <Box>
+                                <Box justifyContent='center'>
                                     <Flex align="flex-end" 
-                            alignItems='center' 
-                            width='100px'>
-                            <Image src={item.imageURL} 
-                                alt={item.name} 
-                                boxSize='20px' 
-                                className="rounded-md h-24" 
-                                borderRadius='10px' 
-                                marginRight={'8px'} 
-                                align='center'/>
+                                        alignItems='center' 
+                                        
+                                        width='80%'>
+                                    <Image src={item.imageURL} 
+                                        alt={item.name} 
+                                        boxSize='30px' 
+                                        className="rounded-md h-24" 
+                                        borderRadius='10px' 
+                                        marginRight={'8px'} />
                             <Text fontSize='15px' 
                                 mr='25px'>
-                                {item.name}
+                                {item.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x {item.quantity}
                             </Text>
                         </Flex>
-                                {item.quantity}</Box>
                                 
-                            CART SUMMARY GOES HERE                            
+                                </Box>
+                                
+                                                    
                             </React.Fragment>
                             ))}
                         </AccordionPanel>
                     
                     </AccordionItem>
                     </Accordion>
-                </Center>
+                    </Center>
+                    <Center>
                 <br/>
-
-
-                <OrderSummaryItem label="Subtotal $0.00" />
-                    Total: ${calculateTotal()}
-                <br/>
-
-                <Text fontSize="xl" fontWeight="extrabold">
+                <Text marginTop='50px'>Your order ID is: <b>{checkoutInfo?.orderId}</b></Text>
                 
+                    
+                
+                </Center>
+                
+                <Text marginTop='50px' align='center' fontSize="xl" fontWeight="bold">
+                Total: ${calculateTotal()}
                 </Text>
                 <Box display="flex" justifyContent="center" mt={10}>
                     <Button
-                    onClick={() => {navigate(PATH.HOMEPAGE);}}>
+                    onClick={() => {navigate(PATH.HOMEPAGE); clearCart()}}>
                     Return Home
                     </Button>
                 </Box>
