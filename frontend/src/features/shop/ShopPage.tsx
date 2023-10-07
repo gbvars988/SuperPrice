@@ -1,12 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import {
-  Box,
-  Heading,
-  HStack,
-  useColorModeValue,
-  VStack,
-} from "@chakra-ui/react";
+import { Box, Heading, HStack, VStack } from "@chakra-ui/react";
 import PageContainer from "../../components/common/PageContainer";
 import Categories from "./Categories";
 import { LABEL } from "../../language";
@@ -30,9 +24,11 @@ const ShopPage: React.FC = () => {
 
   const [keyword, setKeyword] = useState("");
 
+  const productServiceUrl = process.env.REACT_APP_PRODUCT_SERVICE_URL;
+
   useEffect(() => {
     axios
-      .get("http://localhost:8080/product-service/products/all")
+      .get(`${productServiceUrl}/products/all`)
       .then((res) => {
         setProducts(res.data);
       })
@@ -44,7 +40,7 @@ const ShopPage: React.FC = () => {
   const updateKeyword = (keyword: string) => {
     axios
       .get(
-        `http://localhost:8080/product-service/products/search?query=${keyword.toLowerCase()}`,
+        `${productServiceUrl}/products/search?query=${keyword.toLowerCase()}`,
       )
       .then((res) => {
         console.log(res.data);

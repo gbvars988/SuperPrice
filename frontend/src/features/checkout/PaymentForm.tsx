@@ -92,6 +92,8 @@ const PaymentForm: React.FC = () => {
 
   const { clearCart } = useContext(CartContext);
 
+  const deliveryServiceUrl = process.env.REACT_APP_DELIVERY_SERVICE_URL;
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -110,7 +112,7 @@ const PaymentForm: React.FC = () => {
 
     try {
       const orderResponse = await axios.post(
-        "http://localhost:8082/delivery-service/delivery/createorder",
+        `${deliveryServiceUrl}/delivery/createorder`,
         {
           userId: null,
           orderItems: cartItems.map((item) => ({
@@ -122,7 +124,7 @@ const PaymentForm: React.FC = () => {
 
       if (orderResponse.status === 201) {
         const deliveryResponse = await axios.post(
-          "http://localhost:8082/delivery-service/delivery/requestdelivery",
+          `${deliveryServiceUrl}/delivery/requestdelivery`,
           {
             orderId: orderResponse.data.orderId,
             address: checkoutInfo!.address,
