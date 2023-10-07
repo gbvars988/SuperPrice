@@ -52,26 +52,28 @@ services:
   productdb:
     platform: "linux/amd64"
     image: mysql
+    command: --lower_case_table_names=1
     restart: unless-stopped
     environment:
-      MYSQL_USER: root
+#      MYSQL_USER: 'root'
       MYSQL_DATABASE: productdb
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_LOWER_CASE_TABLE_NAMES: "1"
-    ports:
-      - "3306:3306"
+#      MYSQL_LOWER_CASE_TABLE_NAMES: 0
+#    ports:
+#      - "3307:3306"
     volumes:
       - productdb:/var/lib/mysql
 
   deliverydb:
     platform: "linux/amd64"
     image: mysql
+    command: --lower_case_table_names=1
     restart: unless-stopped
     environment:
 #      MYSQL_USER: root
       MYSQL_DATABASE: deliverydb
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_LOWER_CASE_TABLE_NAMES: "1"
+#      MYSQL_LOWER_CASE_TABLE_NAMES: 0
 #    ports:
 #      - "3306:3306"
     volumes:
@@ -79,11 +81,12 @@ services:
   userdb:
     platform: "linux/amd64"
     image: mysql
+    command: --lower_case_table_names=1
     restart: unless-stopped
     environment:
       MYSQL_DATABASE: userdb
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
-      MYSQL_LOWER_CASE_TABLE_NAMES: "1"
+#      MYSQL_LOWER_CASE_TABLE_NAMES: 0
 #    ports:
 #      - "3306:3306"
     volumes:

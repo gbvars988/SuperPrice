@@ -1,4 +1,4 @@
-INSERT INTO TimeSlot (StartTime, EndTime) VALUES
+INSERT INTO timeslot (StartTime, EndTime) VALUES
     ('09:00:00', '10:00:00'),
     ('10:00:00', '11:00:00'),
     ('11:00:00', '12:00:00'),
