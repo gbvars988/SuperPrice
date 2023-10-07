@@ -11,11 +11,13 @@ const DeliveriesPage: React.FC = () => {
   const { user } = useContext(UserContext);
   const userEmail = user?.email;
 
+  const deliveryServiceUrl = process.env.REACT_APP_DELIVERY_SERVICE_URL;
+
   useEffect(() => {
     const fetchDeliveryIds = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8082/delivery-service/delivery/getdeliveriesbyemail/${userEmail}`,
+          `${deliveryServiceUrl}/delivery/getdeliveriesbyemail/${userEmail}`,
         );
         setDeliveryIds(response.data);
       } catch (error) {

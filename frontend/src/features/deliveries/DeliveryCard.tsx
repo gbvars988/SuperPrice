@@ -10,11 +10,13 @@ const DeliveryCard: React.FC<DeliveryCardProps> = ({ orderId }) => {
   const [delivery, setDelivery] = useState<any>({});
   const [timeslot, setTimeslot] = useState<any>({});
 
+  const deliveryServiceUrl = process.env.REACT_APP_DELIVERY_SERVICE_URL;
+
   useEffect(() => {
     const fetchDeliveryDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8082/delivery-service/delivery/getdeliverybyid/${orderId}`,
+          `${deliveryServiceUrl}/delivery/getdeliverybyid/${orderId}`,
         );
         setDelivery(response.data);
       } catch (error) {
@@ -30,7 +32,7 @@ const DeliveryCard: React.FC<DeliveryCardProps> = ({ orderId }) => {
       if (!delivery.timeSlotId) return;
       try {
         const response = await axios.get(
-          `http://localhost:8082/delivery-service/delivery/timeslots/${delivery.timeSlotId}`,
+          `${deliveryServiceUrl}/delivery/timeslots/${delivery.timeSlotId}`,
         );
         setTimeslot(response.data);
       } catch (error) {
