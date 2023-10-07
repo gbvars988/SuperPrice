@@ -13,7 +13,6 @@ import {
 import MinusQty from './minus.png';
 import PlusQty from './plus.png';
 import { CartContext, CartItem } from '../../context/CartContext';
-import { CartTotal, TotalCartItems } from './cartTotal';
 
 
 export const CartSummary = () => {
@@ -26,6 +25,19 @@ export const CartSummary = () => {
       min: 0,
       max: 100
     })
+
+    const TotalCartItems = () => {
+        return cartItems
+          .reduce((ttl: number, item: CartItem) => ttl + item.quantity, 0)
+          .toFixed(0);
+      };
+
+    const CartTotal = () => {
+      return cartItems
+        .reduce((sum, item) => sum + item.price * item.quantity, 0)
+        .toFixed(2);
+      };
+
     
     const inc = getIncrementButtonProps()
     const dec = getDecrementButtonProps()
@@ -65,14 +77,11 @@ export const CartSummary = () => {
                             align='left' 
                             justify="center"  
                             key={item.productID}>
-
                             {item.quantity > 0 &&
                                 <IconButton
                                     {...dec}
-                                    
                                     w='12px'
                                     m='2px'
-                                    
                                     marginRight='4px'
                                     size='sml'
                                     aria-label='Decrease Qty' 

@@ -21,13 +21,19 @@ import cartImage from "./cart.png";
 import { LABEL, PATH } from "../../language";
 import { useNavigate } from "react-router-dom";
 import { CartSummary } from "./CartSummary";
-import { CartContext } from "../../context/CartContext";
-import { TotalCartItems } from "./cartTotal";
+import { CartContext, CartItem } from "../../context/CartContext";
 
 function CartDrawer() {
+
   const navigate = useNavigate();
   const { cartItems, clearCart } = useContext(CartContext);
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const TotalCartItems = () => {
+    return cartItems
+      .reduce((ttl: number, item: CartItem) => ttl + item.quantity, 0)
+      .toFixed(0);
+  };
 
   return (
     <>
@@ -79,27 +85,13 @@ function CartDrawer() {
           </Box>
           <DrawerFooter>
             {TotalCartItems() != "0" && (
-              <Box
-                alignItems="center"
+              
+              <Box alignItems="center"
                 justifyContent="center"
                 width="98%"
-                height="15%"
-              >
-                <Box
-                  as="button"
-                  opacity="55%"
-                  lineHeight="16px"
-                  borderRadius="5px"
-                  padding="3px"
-                  textDecoration="underline"
-                  mb="20px"
-                  ml="80px"
-                  onClick={() => {
-                    clearCart();
-                  }}
-                >
-                  x Clear Cart
-                </Box>
+                height="15%">
+              
+                
 
                 <ButtonGroup variant="outline" spacing="6">
                   <Button
@@ -126,6 +118,20 @@ function CartDrawer() {
                     Checkout
                   </Button>
                 </ButtonGroup>
+
+                <Button opacity="75%"
+                  lineHeight="16px"
+                  borderRadius="5px"
+                  padding="3px"
+                  textDecoration="underline"
+                  mt="20px"
+                  ml="80px"
+                  onClick={() => {
+                    clearCart();
+                  }}
+                >
+                  x Clear Cart
+                </Button>
               </Box>
             )}
             {TotalCartItems() == "0" && (
