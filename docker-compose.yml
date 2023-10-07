@@ -10,8 +10,12 @@ services:
       spring.datasource.driverClassName: com.mysql.cj.jdbc.Driver
       spring.datasource.username: root
       spring.datasource.password: ${DB_PASSWORD}
+      USER_MS_URL: http://user:8081
+      NOTIFICATIONS_MS_URL: http://notifications:8083
     depends_on:
       - database
+      - delivery
+      - user
 
   delivery:
     platform: "linux/amd64"
