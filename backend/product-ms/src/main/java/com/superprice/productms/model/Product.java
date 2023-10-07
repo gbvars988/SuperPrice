@@ -29,36 +29,6 @@ public class Product {
     private String imageURL;
     @Column(name = "Weight")
     private double weight;
-//    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-//    private List<String> Supermarkets;
-
-//    public Product(int productID, String name, String description, int categoryID, String imageURL) {
-//        this.productID = productID;
-//        this.name = name;
-//        this.description = description;
-//        this.categoryID = categoryID;
-//        this.imageURL = imageURL;
-//    }
-
-//    public int getProductID() {
-//        return productID;
-//    }
-//
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public String getDescription() {
-//        return description;
-//    }
-
-//    public int getCategoryID() {
-//        return categoryID;
-//    }
-
-//    public String getImageURL() {
-//        return imageURL;
-//    }
 
 
 }

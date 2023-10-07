@@ -128,8 +128,6 @@ public class DeliveryServiceImpl implements DeliveryService{
             dto.setTimeSlotId(timeSlot.getTimeSlotID());
         }
 
-//        dto.setOrderId(order.getOrderId());
-//        dto.setTimeSlotId(timeSlot.getTimeSlotID());
 
         return dto;
     }

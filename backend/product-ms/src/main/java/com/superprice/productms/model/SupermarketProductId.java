@@ -16,5 +16,4 @@ public class SupermarketProductId implements Serializable {
     private int supermarketId;
     private int productId;
 
-    // Getters, setters, hashCode, and equals methods
 }

@@ -158,13 +158,4 @@ public class ProductController {
     }
 
 
-
-
-//    @PostMapping("/add")
-//    public List<ProductDto> addProducts(@RequestBody List<ProductDto> products) {
-//        List<ProductDto> productDtos = productService.addProduct(products);
-//        return productDtos;
-//    }
-
-
 }
