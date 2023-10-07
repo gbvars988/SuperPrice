@@ -11,6 +11,7 @@ import AboutStatic from "../features/about/AboutStatic";
 import CheckoutPage from "../features/checkout/CheckoutPage";
 import PaymentPage from "../features/checkout/PaymentPage";
 import DeliveriesPage from "../features/deliveries/DeliveryPage";
+import { OrderSummary } from '../features/checkout/OrderSummary';
 
 const Router: React.FC = () => {
   return (
@@ -26,6 +27,7 @@ const Router: React.FC = () => {
         <Route path={PATH.PAYMENT} element={<PaymentPage />} />
         <Route path={PATH.DELIVERIES} element={<DeliveriesPage />} />
           <Route path={PATH.CART} element={<EditCart/>}/>
+                <Route path={PATH.ORDER} element={<OrderSummary/>}/>
         {/* add more routes later for other features */}
       </Routes>
     </BrowserRouter>

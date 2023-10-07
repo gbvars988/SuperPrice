@@ -1,5 +1,4 @@
 import React from "react";
-import { IProduct } from '../features/product/ProductInfo';
 
 //export interface CartItem extends IProduct {
 export type CartItem = {
@@ -20,6 +19,7 @@ export type CheckoutInfo = {
   phone: string;
   deliveryOption: string;
   deliveryTime: string;
+  orderId: number;
 };
 
 
@@ -111,22 +111,12 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     //updateCartTotal(updatedProducts);
   };
 
-/*
-  const removeFromCart = (item: CartItem) => {
-    setCartItems((prevItems) =>
-      prevItems.filter((i) => i.item !== item),
-    );
-
-    
-  };
-*/
   const removeFromCart = (productToRemove: CartItem) => {
     const updatedProducts = cartItems.filter(
       (product: CartItem) => product.productID !== productToRemove.productID
     );
 
     setCartItems(updatedProducts);
-    //updateCartTotal(updatedProducts);
   };
 
 

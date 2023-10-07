@@ -26,6 +26,9 @@ const PaymentForm: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false); // add 3 sec delay
 
+    // get checkout info
+  const { checkoutInfo, setCheckoutInfo } = useContext(CartContext);
+
   const [state, setState] = useState({
     name: "",
     number: "",
@@ -80,8 +83,7 @@ const PaymentForm: React.FC = () => {
     return true;
   };
 
-  // get checkout info
-  const { checkoutInfo } = useContext(CartContext);
+
 
   // navigate to checkout if any of the checkout info is missing
   useEffect(() => {
@@ -92,7 +94,10 @@ const PaymentForm: React.FC = () => {
 
   const { clearCart } = useContext(CartContext);
 
+  const deliveryServiceUrl = process.env.REACT_APP_DELIVERY_SERVICE_URL;
+
   const handleSubmit = async (e: React.FormEvent) => {
+
     e.preventDefault();
 
     if (!validateInputs()) {
@@ -110,7 +115,7 @@ const PaymentForm: React.FC = () => {
 
     try {
       const orderResponse = await axios.post(
-        "http://localhost:8082/delivery-service/delivery/createorder",
+        `${deliveryServiceUrl}/delivery/createorder`,
         {
           userId: null,
           orderItems: cartItems.map((item) => ({
@@ -122,7 +127,7 @@ const PaymentForm: React.FC = () => {
 
       if (orderResponse.status === 201) {
         const deliveryResponse = await axios.post(
-          "http://localhost:8082/delivery-service/delivery/requestdelivery",
+          `${deliveryServiceUrl}/delivery/requestdelivery`,
           {
             orderId: orderResponse.data.orderId,
             address: checkoutInfo!.address,
@@ -131,6 +136,7 @@ const PaymentForm: React.FC = () => {
             deliveryStatus: "Scheduled",
           },
         );
+        
 
         if (deliveryResponse.status === 201) {
           toast({
@@ -141,11 +147,17 @@ const PaymentForm: React.FC = () => {
             duration: 5000,
             isClosable: true,
           });
-          clearCart();
-          navigate("/");
+          //clearCart();
+          setCheckoutInfo({
+            ...checkoutInfo!,
+            orderId: orderResponse.data.orderId,
+          });
+          navigate(PATH.ORDER);
+
         } else {
           throw new Error("Failed to request delivery");
         }
+
       } else {
         throw new Error("Failed to create order");
       }

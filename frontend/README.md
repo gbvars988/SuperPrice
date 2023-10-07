@@ -5,7 +5,6 @@ styling. See the following commands for how to run the app.
 
 Please run `npm install` before running any of the following commands.
 
-
 In the project directory, you can run:
 
 ### `npm start`
@@ -34,3 +33,26 @@ ready to be deployed!
 See the section about
 [deployment](https://facebook.github.io/create-react-app/docs/deployment) for
 more information.
+
+### Building the Docker image
+
+To build the Docker image, run the following command:
+
+```bash
+docker build -t superprice-frontend .
+```
+
+### Running the Docker image
+
+To run the Docker image, run the following command:
+
+```bash
+docker run -p 3000:3000 superprice-frontend
+```
+
+You can override the env variables by passing them in as arguments to the
+`docker run` command. For example, to override the `REACT_APP_USER_SERVICE_URL` variable, run the following command:
+
+```bash
+docker run -p 3000:3000 -e REACT_APP_USER_SERVICE_URL=123.123.1234/user-service superprice-frontend
+```

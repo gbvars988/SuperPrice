@@ -33,6 +33,7 @@ const CheckoutForm: React.FC = () => {
   const [deliveryOption, setDeliveryOption] = useState("");
   const [deliveryTime, setDeliveryTime] = useState("");
   const [timeSlots, setTimeSlots] = useState<TimeSlot[]>([]);
+  const [orderId] = useState<number>(0);
 
   const [error, setError] = useState<string | null>(null);
 
@@ -42,10 +43,12 @@ const CheckoutForm: React.FC = () => {
 
   const toast = useToast();
 
+  const deliveryServiceUrl = process.env.REACT_APP_DELIVERY_SERVICE_URL;
+
   const fetchTimeSlots = async () => {
     try {
       const response = await axios.get<TimeSlot[]>(
-        "http://localhost:8082/delivery-service/delivery/timeslots",
+        `${deliveryServiceUrl}/delivery/timeslots`,
       );
       setTimeSlots(response.data);
     } catch (error) {
@@ -119,6 +122,7 @@ const CheckoutForm: React.FC = () => {
       phone,
       deliveryOption,
       deliveryTime,
+      orderId
     };
 
     setCheckoutInfo(info);
