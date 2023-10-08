@@ -51,14 +51,19 @@ Other tools will be required to complete the project (e.g., Docker)
 See the backend/README.md for more details on getting the backend microservices started.
 
 Optional if you do not have MySQL setup on your device:
+
 1. Download and install the MySQL community server for your OS - https://dev.mysql.com/downloads/mysql/
 2. Select a password for the root user and remember it during installation
 3. Download and install MySQL shell for your OS - https://dev.mysql.com/downloads/shell/
-4. **Mandatory:** Verify your MySQL db is up by running `mysql -u root -p` in a terminal and entering your password, it should open
+4. **Mandatory:** Verify your MySQL db is up by running `mysql -u root -p` in a terminal and entering your password, it
+   should open
    a MySQL shell
-5. **Mandatory:** Change the password in `__-ms/src/main/resources/application.properties` to the one you selected in the MySQL installation step (for the microservices you want to run)
-6. **Mandatory:** cd into `__-ms/` and run `mvn clean package` to build the microservice (for M2, start up user-ms and product-ms, others are still WIP)
-7. **Mandatory:** Run `java -jar target/*.jar` to run the microservice where '*' is package name (e.g. product-ms-0.0.1-SNAPSHOT.jar)
+5. **Mandatory:** Change the password in `__-ms/src/main/resources/application.properties` to the one you selected in
+   the MySQL installation step (for the microservices you want to run)
+6. **Mandatory:** cd into `__-ms/` and run `mvn clean package` to build the microservice (for M2, start up user-ms and
+   product-ms, others are still WIP)
+7. **Mandatory:** Run `java -jar target/*.jar` to run the microservice where '*' is package name (e.g.
+   product-ms-0.0.1-SNAPSHOT.jar)
 8. AWS account is using s3436258@student.rmit.edu.au account (Ronald Ho - s3436258)
 
 ## Frontend
@@ -82,6 +87,12 @@ Optional if you do not have MySQL setup on your device:
     - Link the pull request to the ticket in the project board via the description - valid keywords
       include `closes #XX`, `fixes #XX`, `resolves #XX` etc.
 
+# Running the application with Docker
 
+If you are running the application locally with docker, make sure you have MySQL installed on your machine as discussed
+in the backend section. You will also need to have docker installed on your machine.
+
+Simply run `docker-compose -f docker-compose-local.yml --env-file compose-vars.env up` in the root directory of the
+project to start the application.
 
 
