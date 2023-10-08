@@ -1,10 +1,10 @@
 -- Create Product Table
-DROP TABLE IF EXISTS Review;
-DROP TABLE IF EXISTS SupermarketProduct;
-DROP TABLE IF EXISTS Supermarket;
-DROP TABLE IF EXISTS Product;
-# DROP TABLE IF EXISTS Product;
-CREATE TABLE IF NOT EXISTS Product (
+DROP TABLE IF EXISTS review;
+DROP TABLE IF EXISTS supermarketproduct;
+DROP TABLE IF EXISTS supermarket;
+DROP TABLE IF EXISTS product;
+
+CREATE TABLE IF NOT EXISTS product (
     ProductID INT PRIMARY KEY AUTO_INCREMENT,
     Name VARCHAR(255) NOT NULL,
     Description TEXT,
@@ -13,29 +13,29 @@ CREATE TABLE IF NOT EXISTS Product (
     Weight DOUBLE
     );
 
-# Create Supermarket Table
-# DROP TABLE IF EXISTS Supermarket;
-CREATE TABLE IF NOT EXISTS Supermarket (
+# Create supermarket Table
+# DROP TABLE IF EXISTS supermarket;
+CREATE TABLE IF NOT EXISTS supermarket (
     SupermarketID INT PRIMARY KEY AUTO_INCREMENT,
     Name VARCHAR(255) NOT NULL
     );
 
 -- Create SupermarketProduct Table
-# DROP TABLE IF EXISTS SupermarketProduct;
-CREATE TABLE IF NOT EXISTS SupermarketProduct (
+# DROP TABLE IF EXISTS supermarketproduct;
+CREATE TABLE IF NOT EXISTS supermarketproduct (
     SupermarketID INT,
     ProductID INT,
     Price DOUBLE NOT NULL,
     PRIMARY KEY (SupermarketID, ProductID),
-    FOREIGN KEY (SupermarketID) REFERENCES Supermarket(SupermarketID),
-    FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+    FOREIGN KEY (SupermarketID) REFERENCES supermarket(SupermarketID),
+    FOREIGN KEY (ProductID) REFERENCES product(ProductID)
     );
 
-CREATE TABLE IF NOT EXISTS Review (
+CREATE TABLE IF NOT EXISTS review (
     ReviewID INT PRIMARY KEY AUTO_INCREMENT,
     ProductID INT,
     Name VARCHAR(255) NOT NULL,
     Rating INT,
     Content TEXT,
-    FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
+    FOREIGN KEY (ProductID) REFERENCES product(ProductID)
     );

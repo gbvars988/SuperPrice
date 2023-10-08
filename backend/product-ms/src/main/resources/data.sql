@@ -1,10 +1,10 @@
--- Insert Data into Supermarket Table
-INSERT INTO Supermarket (Name) VALUES ('Coles');
-INSERT INTO Supermarket (Name) VALUES ('Woolworths');
-INSERT INTO Supermarket (Name) VALUES ('Aldi');
+-- Insert Data into supermarket Table
+INSERT INTO supermarket (Name) VALUES ('Coles');
+INSERT INTO supermarket (Name) VALUES ('Woolworths');
+INSERT INTO supermarket (Name) VALUES ('Aldi');
 
--- Insert Data into Product Table
-INSERT INTO Product (Name, Description, Category, ImageURL, Weight) VALUES
+-- Insert Data into product Table
+INSERT INTO product (Name, Description, Category, ImageURL, Weight) VALUES
     ('Apple', 'Fresh Red Apple', 'Fruit & Vegetables', 'https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80', 150),
     ('Banana', 'Sweet ripe bananas.', 'Fruit & Vegetables', 'https://images.unsplash.com/photo-1640958900081-7b069dd23e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80', 120),
     ('Cherry', 'Juicy red cherries.', 'Fruit & Vegetables', 'https://images.pexels.com/photos/966416/pexels-photo-966416.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 10),
@@ -54,10 +54,10 @@ INSERT INTO Product (Name, Description, Category, ImageURL, Weight) VALUES
     ('Lamb Chops', 'Grass-fed lamb chops', 'Meat & Seafood', 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRzIKULWn-FBudSTZa9aAI7WnZ4DQvCRdWvssYftWRZ8ekVqMMk', 500),
     ('Scallops', 'Fresh sea scallops', 'Meat & Seafood', 'https://t3.gstatic.com/images?q=tbn:ANd9GcTbiVo6mGy-8qrx_vSXbnE8cDNs-cSgvpW_HyEu23k3Md3qFGwG', 300);
 
--- Insert Data into SupermarketProduct Table (SupermarketID, ProductID, Price)
+-- Insert Data into supermarketproduct Table (supermarketID, productID, Price)
 
--- Prices for products in Coles (SupermarketID = 1)
-INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
+-- Prices for products in Coles (supermarketID = 1)
+INSERT INTO supermarketproduct (supermarketID, productID, Price) VALUES
     (1, 1, 1.20),
     (1, 2, 0.60),
     (1, 3, 2.50),
@@ -107,8 +107,8 @@ INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
     (1, 47, 19.50),
     (1, 48, 16.75);
 
--- Prices for products in Woolworths (SupermarketID = 2)
-INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
+-- Prices for products in Woolworths (supermarketID = 2)
+INSERT INTO supermarketproduct (supermarketID, productID, Price) VALUES
     (2, 1, 1.40),
     (2, 2, 0.50),
     (2, 3, 2.80),
@@ -158,8 +158,8 @@ INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
     (2, 47, 18.50),
     (2, 48, 19.75);
 
--- Prices for products in Aldi (SupermarketID = 3)
-INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
+-- Prices for products in Aldi (supermarketID = 3)
+INSERT INTO supermarketproduct (supermarketID, productID, Price) VALUES
     (3, 1, 1.20),
     (3, 2, 0.60),
     (3, 3, 2.10),
@@ -210,7 +210,7 @@ INSERT INTO SupermarketProduct (SupermarketID, ProductID, Price) VALUES
     (3, 48, 19.00);
 
 
-INSERT INTO Review (ReviewID, ProductID, Name, Rating, Content) VALUES
+INSERT INTO review (reviewID, productID, Name, Rating, Content) VALUES
     (1, 1, "Bob", 4, "They are pretty nice!"),
     (2, 1, "Bob", 2, "Actually, not so good"),
     (3, 2, "Alice", 5, "The sweetness is just right! A staple in my kitchen."),

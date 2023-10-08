@@ -25,3 +25,4 @@ ENV REACT_APP_DELIVERY_SERVICE_URL=http://localhost:8082/delivery-service
 EXPOSE 3000
 
 CMD ["npm", "start"]
+
