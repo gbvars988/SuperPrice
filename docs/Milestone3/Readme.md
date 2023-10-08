@@ -5,6 +5,7 @@
 - SRS Document - PDF in this folder
 - Project Report - PDF in this folder
 - Contribution Document - PDF in this folder
+- Changes and Revisions Doc - PDF in this folder
 
 ## Link to video recording
 
