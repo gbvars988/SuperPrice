@@ -1,0 +1,45 @@
+version: '3.4'
+services:
+  product:
+    platform: "linux/amd64"
+    image: 225476876933.dkr.ecr.us-east-1.amazonaws.com/product-service:latest
+    ports:
+      - "8080:8080"
+    environment:
+      spring.datasource.url: jdbc:mysql://productdb:3306/productdb?useUnicode=true&characterEncoding=utf8&useSSL=false&allowPublicKeyRetrieval=true
+      spring.datasource.driverClassName: com.mysql.cj.jdbc.Driver
+      spring.datasource.username: root
+      spring.datasource.password: ${DB_PASSWORD}
+      USER_MS_URL: http://user:8081
+      NOTIFICATIONS_MS_URL: http://notifications:8083
+    depends_on:
+      - productdb
+
+  frontend:
+    platform: "linux/amd64"
+    image: 225476876933.dkr.ecr.us-east-1.amazonaws.com/frontend:latest
+    ports:
+      - "80:3000"
+    environment:
+      REACT_APP_PRODUCT_SERVICE_URL: http://product:8080/product-service
+    depends_on:
+      - product
+
+  productdb:
+    platform: "linux/amd64"
+    image: mysql
+    command: --lower_case_table_names=1
+    restart: unless-stopped
+    environment:
+      #      MYSQL_USER: 'root'
+      MYSQL_DATABASE: productdb
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    #      MYSQL_LOWER_CASE_TABLE_NAMES: 0
+    #    ports:
+    #      - "3307:3306"
+    volumes:
+      - productdb:/var/lib/mysql
+
+
+volumes:
+  productdb:

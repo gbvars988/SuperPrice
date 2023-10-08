@@ -1,0 +1,7 @@
+version: '3.4'
+services:
+  frontend:
+    platform: "linux/amd64"
+    image: 225476876933.dkr.ecr.us-east-1.amazonaws.com/frontend:latest
+    ports:
+      - "80:3000"
