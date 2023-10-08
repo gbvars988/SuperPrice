@@ -1,10 +1,10 @@
 # Soft copies for all documents
 
-- [Final P08-01 - Product and Sprint Backlogs](https://docs.google.com/spreadsheets/d/1p8N0eP6t-Jv5ML8D_uHkn9_mXzpryyGufjW36MMh4Ic/edit?usp=sharing)
 - Sprint 2 retro notes - PDF in this folder
 - Product and Sprint Backlog - PDF in this folder
 - SRS Document - PDF in this folder
 - Project Report - PDF in this folder
+- Contribution Document - PDF in this folder
 
 ## Link to video recording
 
