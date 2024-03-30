@@ -2,6 +2,8 @@
 
 ![Main CI status](https://github.com/cosc2299-sept-2023/team-project-group-p8-01/actions/workflows/ci.yml/badge.svg?branch=main)
 
+![Main CI status](https://github.com/gbvars988/SuperPrice_WebApp/actions/workflows/ci.yml/badge.svg?branch=main)
+
 # RMIT COSC2299 SEPT Major Project
 
 # Group Information
