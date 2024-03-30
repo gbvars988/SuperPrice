@@ -23,15 +23,7 @@
 * Github Project Board : https://github.com/orgs/cosc2299-sept-2023/projects/109
 * [Figma design](https://www.figma.com/file/gdtCVGjLBgJYozRHVMdZ43/SuperPrice-Design?type=design&node-id=0-1&mode=design&t=CCWUZsLUoPtW3Bl8-0)
 
-## Code documentation - Release 0.1.0 - date
-
-* feature 1
-* feature 2
-* feature 3
-
 # Run Instructions
-
-Up to date instructions on how to run your project.
 
 # Initial Setup
 
